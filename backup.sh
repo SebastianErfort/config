@@ -1,2 +1,2 @@
 rsync -a ~/.vimrc .
-rsync -a ~/.vim .
+rsync -a --exclude plugged ~/.vim .
