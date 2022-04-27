@@ -1,6 +1,7 @@
 " ===================================== SETTINGS ===================================================
-"
+
 " basic
+set encoding=utf-8
 set nocompatible
 
 " Syntax highlighting
@@ -50,8 +51,8 @@ set nostartofline
 set autoindent
 set smarttab
 set expandtab " replace tabs by spaces
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 
 " Execute local vimrc's
 set exrc   " enable per-directory .vimrc files
@@ -62,12 +63,15 @@ if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
 
-" filetypes
+" filetype-specific settings
 au BufNewFile,BufRead *.{gpl,gpls,gplt,gnuplot,gnu,GNU} setf gnuplot
 au BufNewFile,BufRead *.{out,log,com,test}* setf fortran
+au BufNewFile,BufRead *.{yml,yaml}* setf yaml
+
+au BufNewFile,BufRead *.{py}* set foldmethod=indent
 
 " (c)tags file
-set tags=.tags
+set tags+=.tags
 
 
 " ================================= MAPPINGS ========================================================
@@ -99,11 +103,11 @@ let mapleader=',' " Change leader to ',' as it's easier accessible on non-englis
 "
 " ================================= PLUGINS ========================================================
 " vim-plug
-" if empty(glob('~/.vim/autoload/plug.vim'))
-"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"   autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
-" endif
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+endif
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -117,6 +121,7 @@ call plug#begin('~/.vim/plugged')
 " Syntax highlighting
 " Plug 'vim-scripts/gnuplot-syntax-highlighting'
 Plug 'plasticboy/vim-markdown'
+Plug 'rodjek/vim-puppet'
 
 " nerdcommenter: Commenting functionality
 Plug 'preservim/nerdcommenter'
@@ -124,20 +129,15 @@ Plug 'preservim/nerdcommenter'
 " Matchit: extended matching for % operator (HTML, ...)
 " Plug 'adelarsq/vim-matchit'
 
-" taglist: The "Tag List" plugin is a source code browser plugin for Vim and
-" provides an overview of the structure of source code files and allows
-" you to efficiently browse through source code files for different
-" programming languages.
-" Plug 'vim-scripts/taglist.vim' " git version outdated, install manually,
-" see https://www.vim.org/scripts/script.php?script_id=273
+" Taglist: Source Code Browser plugin for Vim
+" Plug 'yegappan/taglist'
+" Tagbar: a class outline viewer vor VIM
+Plug 'preservim/tagbar'
 
 " Nerdtree: The NERDTree is a file system explorer for the Vim editor.
 Plug 'preservim/nerdtree'
 " Nerdtree tabs: This plugin aims at making NERDTree feel like a true panel, independent of tabs.
 Plug 'jistr/vim-nerdtree-tabs'
-
-" Filebrowser:
-" Plug 'davvil/dotvim/blob/master/plugin/filebrowser.vim '
 
 " ctags: This script uses exuberant ctags to build the list of tags for the current file.
 " Plug 'vim-scripts/ctags.vim'
@@ -152,18 +152,20 @@ Plug 'vim-scripts/star-search'
 Plug 'vim-airline/vim-airline'
 
 " Airline themes
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 
 " vim-fugitive:
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
+
+" vim-obsession: enhance vim sessions (auto-save, statusline, support directories)
+Plug 'tpope/vim-obsession'
 
 " CSApprox:
 Plug 'godlygeek/CSApprox'
 
 " Color themes:
-" Plug 'ajmwagar/vim-deus'
-" Plug 'gosukiwi/vim-atom-dark'
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+Plug 'srcery-colors/srcery-vim'
 
 " delimitMate: auto-completion of paranthesis, etc.
 Plug 'Raimondi/delimitMate'
@@ -173,16 +175,56 @@ Plug 'godlygeek/tabular'
 
 " YouCompleteMe: is a fast, as-you-type, fuzzy-search code completion engine for Vim.
 " See: https://valloric.github.io/YouCompleteMe/
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
-" Indent guide lines
-" Plug 'Yggdroot/indentLine'
+" " CoC: (Conquer of Completion) "Nodejs extension host for vim & neovim, load
+" " extensions like VSCode and host language servers."
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Vim-diagram: syntax highlighting for Mermaid Markdown-ish diagrams
+" Plug 'zhaozg/vim-diagram'
 
 " Initialize plugin system
 call plug#end()
 
 
 " ~~~ Plugin settings ~~~
+
+" Colorscheme
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
+" For dark version.
+set background=dark
+" Set contrast.
+" This configuration option should be placed before `colorscheme gruvbox-material`.
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:gruvbox_material_background = 'hard'
+colorscheme gruvbox-material
+" colorscheme srcery
+
+" Airline
+" custom z section (line/column numbers) bc. column nr. was cut off with default
+let g:airline_section_z = "%p%% \ue0a1%l/%L Ξ %c"
+" let g:airline_section_z = ''
+let g:airline_theme = 'gruvbox_material'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_left_sep="\uE0B0" " '▶'
+let g:airline_right_sep="\uE0B2" " '◀'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+" let g:airline_symbols.linenr='¶'
+" let g:airline_symbols.paste='∥'
+" let g:airline_symbols.whitespace='☲' " 'Ξ'
+" Needs vim-fugitive
+let g:airline#extensions#branch#enabled =1
+let g:airline_symbols.branch="\uE0A0"
+
+" Tagbar:
+nmap <F10> :TagbarToggle<CR>
 
 " Nerdtree:
 " Open Nerdtree when vim starts - comment out to prevent
@@ -191,17 +233,6 @@ call plug#end()
 map <C-n> :NERDTreeToggle <CR>
 " autocmd VimEnter * NERDTreeClose " Doesn't work, still opens on startup
 let g:NERDTreeHijackNetrw=0
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_left_sep='▶'
-let g:airline_right_sep='◀'
-" let g:airline_symbols.linenr='¶'
-" let g:airline_symbols.branch='⎇' " 'ᚠ'
-" let g:airline_symbols.paste='∥'
-" let g:airline_symbols.whitespace='☲' " 'Ξ'
-
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
@@ -211,36 +242,11 @@ let g:NERDDefaultAlign = 'left'
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
 
-" Indent line
-" Do not overwrite conceal color by gray and use theme color instead.
-" let g:indentLine_setColors=0
-" More beautiful lines
-" Note: these characters will only work with files whose encoding is UTF-8.
-" let g:indentLine_char="▏"
-" let g:indentLine_char="┊"
-" " Default conceal settings
-" let g:indentLine_concealcursor='inc'
-" let g:indentLine_conceallevel=2
-" " Toggle IndentLine by hitting F10
-" map <F10> :IndentLinesToggle<CR>
-
 " YouCompleteMe
 " Install: cd ~/.vim/plugged/YouCompleteMe && ./install.py --clang-completer
 " Select key mapping for scrolling the completion list.
-" let g:ycm_key_list_select_completion = ['<Down>']
-" let g:ycm_key_list_previous_completion = ['<up>']
-
-
-" ====================================== COLORSCHEME ===============================================
-
-if filereadable(glob("~/.vim/plugged/gruvbox/colors/gruvbox.vim"))
-   colors gruvbox
-   if has('gui_running')
-"      set guifont=Input
-      " Change comment color to a light blue
-      hi Comment guifg=#87bdd8
-   endif
-endif
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
 
 
 " ========================================= GVIM ===============================
@@ -269,6 +275,17 @@ endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 
+" =============================== Auto Commands ===============================
+" augroup tags
+"   autocmd!
+"   " clean up ctags file on exit
+"   autocmd VimLeave * !rm .tags
+"   " (re-)create ctags file on save TODO this is not save to execute just
+"   anywhere (for example home dir!)
+"   autocmd BufWritePost,FileWritePost * !ctags -R -f .tags *
+" augroup end
+
+
 " =============================== vim-latex ===============================
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a single file. This will confuse Latex-Suite. Set your grep
@@ -288,11 +305,9 @@ autocmd FIletype tex setlocal spell spelllang=de,en
 "autocmd Filetype tex setlocal makeprg=make
 
 
-" === FORTRAN ===
-autocmd Filetype fortran let fortran_free_source=1 " This messes up some syntax highlighting in fixed form fortran.
-autocmd Filetype fortran let fortran_do_enddo=1
-autocmd Filetype fortran setlocal colorcolumn=6,73,133 " Optical indicator for character limits
-autocmd Filetype fortran let fortran_fold=1
-autocmd Filetype fortran let fortran_fold_conditionals=1
-autocmd Filetype fortran let fortran_fold_multilinecomments=1 " This for some reason leads to huge cpu load while typing
-autocmd Filetype fortran let fortran_have_tabs=1
+" === NVIM ===
+" if has('nvim')
+"   # nvim-only settings
+" endif
+
+
