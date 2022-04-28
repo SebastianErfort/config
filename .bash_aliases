@@ -86,10 +86,16 @@ function ssh_cm () {
         echo "$s"
       done;;
     status)
-      for s in $(ls ~/.ssh/cm_*); do
-        echo "$s"
-        ssh_cm_status "$s"
-      done;;
+      control_masters=$(ls ~/.ssh/cm_* 2>/dev/null) #|| true
+      if [ ! -z $control_masters ]; then
+        for s in $control_masters; do
+          echo "$s"
+          ssh_cm_status "$s"
+        done
+      else
+        echo 'No control masters active.'
+      fi
+      ;;
     connect | open)
       [[ ! -z "$2" ]] && ssh "$2" ;;
     disconnect | close | kill)

@@ -163,11 +163,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 
 " CSApprox:
-Plug 'godlygeek/CSApprox'
+" Plug 'godlygeek/CSApprox'
 
 " Color themes:
 Plug 'sainnhe/gruvbox-material'
-Plug 'srcery-colors/srcery-vim'
+" Plug 'srcery-colors/srcery-vim'
+
+" vim-css-color: Preview colours in source code while editing
+Plug 'ap/vim-css-color'
 
 " delimitMate: auto-completion of paranthesis, etc.
 Plug 'Raimondi/delimitMate'
@@ -204,7 +207,6 @@ set background=dark
 " Available values: 'hard', 'medium'(default), 'soft'
 let g:gruvbox_material_background = 'hard'
 colorscheme gruvbox-material
-" colorscheme srcery
 
 " Airline
 " custom z section (line/column numbers) bc. column nr. was cut off with default
