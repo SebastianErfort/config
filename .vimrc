@@ -75,32 +75,34 @@ set tags+=.tags
 
 
 " ================================= MAPPINGS ========================================================
+let mapleader=',' " Change leader to ',' as it's easier accessible on non-english keyboards
+
 " This unsets the 'last search pattern' register by hitting F3
 nnoremap <F3> :noh <CR> <CR> :<backspace> kw
-map Y y$
-" inoremap <esc> <C-O>l<esc>
+" Remove trailing whitespace
+nnoremap <F4> :%s/[ ]\+$//g <CR>
+" toggle wrapping by hitting F9
+map <F9> :set wrap!<CR>
+" Delete current buffer, but first move to previous one such that pane is not closed
+nnoremap <C-q> :bp\|bd #<CR>
+inoremap <C-q> :bp\|bd #<CR>
 " ctrl+s for saving
 noremap <C-S> :update <CR>
 vnoremap <C-S> <C-C> :update <CR>
 inoremap <C-S> <Esc> <C-O> :update <CR>
+
 " return for newline in movement mode
-nmap <S-Enter> O <Esc>
 nmap <CR> o <Esc>
+nmap <S-CR> O <Esc>
 " ctrl+k to kill line
 noremap <C-K> dd
 inoremap <C-K> <esc> ddi
 " ctrl+j for to insert line break/new line
 nnoremap <NL> i <CR> <ESC>
-" esc disable last search highlighting
-" toggle wrapping by hitting F9
-map <F9> :set wrap!<CR>
-" Delete current buffer and move to previous one -> window is not closed
-nnoremap <C-q> :bp\|bd #<CR>
-inoremap <C-q> :bp\|bd #<CR>
+" Copy line from caret to EOL
+map Y y$
 
-let mapleader=',' " Change leader to ',' as it's easier accessible on non-english keyboards
 
-"
 " ================================= PLUGINS ========================================================
 " vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))

@@ -1,0 +1,61 @@
+### BASIC INFORMATION
+
+# Display and change hostname
+# Edit /etc/{hosts,hostname}
+hostname
+hostnamectl
+hostnamectl set-hostname _new_hostname_
+
+# List (builtin) commands
+compgen -b              # list builtin bash commands from possible auto-completions
+compgen -c              # list commands from possible auto-completions
+enable                  # List bash builtins and whether they're enabled
+(IFS=': '; ls -1 $PATH) # list available commands from PATH environment variable
+
+
+### HARDWARE
+# Storage
+lsblk # list block devices
+mount # verbose list of mount points
+lsusb # list usb devices
+
+# Other
+lspci # list PCI devices
+sudo dmidecode --type 17 # Print RAM info
+
+
+### COMMANDS
+## File out-/input
+cut -d " " -f 2,3 # Cut fields from file/standard input if omitted. Delimiter " ", fields 2+3
+
+# bash variables and functions
+$0 # Script/executable name
+${FUNCNAME[0]} # Last function on the function stack, inside a function its name
+
+# Create password hash
+mkpasswd -m sha-512 [-S $salt]
+
+
+## SSH & remote
+# Control Master: check status
+ssh -S /path/to/socket -O check <bogus arg>
+# Edit remote files
+vim scp://user@server[:port]//path/to/file
+# other supported protocols: sftp, rsync, https, ...
+
+
+### PASS
+# Generate password with hopefully save set of special characters
+PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate name length
+
+
+### GIT
+git config --global -e # Edit global git config file
+
+
+### KDE
+
+# Fix task manager panel disappearing when disconnecting external monitor
+# Edit ~/.config/plasma-org.kde.plasma.desktop-appletsrc:
+# lastScreen=0
+nohup kquitapp5 plasmashell && kstart5 plasmashell >/dev/null 2>&1 &
