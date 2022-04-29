@@ -86,7 +86,7 @@ function ssh_cm () {
         echo "$s"
       done;;
     status)
-      control_masters=$(ls ~/.ssh/cm_* 2>/dev/null) #|| true
+      control_masters=$(ls ~/.ssh/cm_* 2>/dev/null)
       if [ ! -z $control_masters ]; then
         for s in $control_masters; do
           echo "$s"
