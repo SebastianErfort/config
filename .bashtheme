@@ -1,66 +1,63 @@
 # Using tput seems to break my terminal (Konsole): using keys such as Home results in the displayed
 # text being f'd up and the caret does weird shit
-# if [[ "$TERM" =~ 'derp' ]]; then
-#     Bold=$(tput bold)
-#     Underline=$(tput smul)
-#     Italic=$(tput sitm)
-#     Info=$(tput setaf 2)
-#     Error=$(tput setaf 160)
-#     Warn=$(tput setaf 214)
-#     Reset=$(tput sgr0)
-#     # Use like
-#     # echo "${info}INFO${Reset}: This is an ${bold}info${Reset} message"
-#     # echo "${error}ERROR${Reset}: This is an ${underline}error${Reset} message"
-#     # echo "${warn}WARN${Reset}: This is a ${italic}warning${Reset} message"
-#
-#     # Regular Colors
-#     Black=$(tput setaf 232)
-#     Grey=$(tput setaf 250)
-#     Red=$(tput setaf 1)
-#     DarkRed=$(tput setaf 88)
-#     Green=$(tput setaf 34)
-#     Yellow=$(tput setaf 226)
-#     Blue=$(tput setaf 69)
-#     Purple=$(tput setaf 128)
-#     Cyan=$(tput setaf 75)
-#     White=$(tput setaf 255)
-#     Teal=$(tput setaf 30)
-#     Orange=$(tput setaf 214)
-#
-#     # Bold
-#     BBlack=$Black$Bold
-#     BGrey=$Grey$Bold
-#     BRed=$Red$Bold
-#     BGreen=$Green$Bold
-#     BYellow=$Yellow$Bold
-#     BBlue=$Blue$Bold
-#     BPurple=$Purple$Bold
-#     BCyan=$Cyan$Bold
-#     BWhite=$White$Bold
-#     BTeal=$Teal$Bold
-#     BOrange=$Orange$Bold
-#
-#     # Underlined
-#     UBlack=$Black$Underline
-#     UGrey=$Grey$Underline
-#     URed=$Red$Underline
-#     UGreen=$Green$Underline
-#     UYellow=$Yellow$Underline
-#     UBlue=$Blue$Underline
-#     UPurple=$Purple$Underline
-#     UCyan=$Cyan$Underline
-#     UWhite=$White$Underline
-#
-# else
+if [[ "$TERM" =~ 256 ]]; then
+    Bold=$(tput bold)
+    Underline=$(tput smul)
+    Italic=$(tput sitm)
+    Info=$(tput setaf 2)
+    Error=$(tput setaf 160)
+    Warn=$(tput setaf 214)
+    Reset=$(tput sgr0)
+    # Use like
+    # echo "${info}INFO${Reset}: This is an ${bold}info${Reset} message"
+    # echo "${error}ERROR${Reset}: This is an ${underline}error${Reset} message"
+    # echo "${warn}WARN${Reset}: This is a ${italic}warning${Reset} message"
+
+    # Regular Colors
+    Black=$(tput setaf 232)
+    Grey=$(tput setaf 250)
+    Red=$(tput setaf 1)
+    DarkRed=$(tput setaf 88)
+    Green=$(tput setaf 34)
+    Yellow=$(tput setaf 226)
+    Blue=$(tput setaf 69)
+    BrightBlue=$(tput setaf 80)
+    Purple=$(tput setaf 128)
+    Cyan=$(tput setaf 75)
+    White=$(tput setaf 255)
+    Teal=$(tput setaf 36)
+    Orange=$(tput setaf 214)
+    Colours="Black Grey Red DarkRed Green Yellow Blue BrightBlue Purple Cyan White Teal Orange"
+
+    # Cyberpunk palette
+    # CbRed=$(tput setaf 197)
+    # CbPink=$(tput setaf 201)
+    # CbBlue=$(tput setaf 87)
+    # CbDarkBlue=$(tput setaf 26)
+    # CbGreen=$(tput setaf 40)
+    # CbOrange=$(tput setaf 214)
+    # CbYellow=$(tput setaf 220)
+    # Colours+="CbRed CbPink CbBlue CbDarkBlue CbGreen CbOrange CbYellow"
+
+    # Bold
+    for c in $Colours; do
+      eval "B$c=\$$c\$Bold"
+    done
+    # Underlined
+    for c in $Colours; do
+      eval "U$c=\$$c\$Underline"
+    done
+
+else
     Bold="\[\033[1m\]"
     Italic="\[\033[3m\]"
     Underline="\033[4m"
-    # Info=$(tput setaf 2)
-    # Error=$(tput setaf 160)
-    # Warn=$(tput setaf 214)
+    Info=$(tput setaf 2)
+    Error=$(tput setaf 160)
+    Warn=$(tput setaf 214)
     Reset="\033[0m"
 
-    # Regular Colors
+    Regular Colors
     Black="\[\033[0;30m\]"
     Grey="\[\033[0;37m\]"
     Red="\[\033[0;31m\]"
@@ -71,7 +68,7 @@
     Mint="\[\033[0;36m\]"
     White="\[\033[0;37m\]"
 
-    # Bold
+    Bold
     BBlack="\[\033[1;30m\]"
     BGrey="\[\033[1;37m\]"
     BRed="\[\033[1;31m\]"
@@ -82,7 +79,7 @@
     BMint="\[\033[1;36m\]"
     BWhite="\[\033[1;37m\]"
 
-    # Underlined
+    Underlined
     UBlack="\[\033[4;30m\]"
     UGrey="\[\033[4;37m\]"
     URed="\[\033[4;31m\]"
@@ -92,4 +89,4 @@
     UPurple="\[\033[4;35m\]"
     UMint="\[\033[4;36m\]"
     UWhite="\[\033[4;37m\]"
-# fi
+fi
