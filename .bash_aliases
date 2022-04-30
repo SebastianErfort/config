@@ -112,7 +112,7 @@ function ssh_cm () {
 
 # FIXME Generate password within pass command, with characters defined by $PASSWORD_STORE_CHARACTER_SET
 function pass-gen () {
-  [ $# -ne 2 ] && echo "Error. Usage: ${FUNCNAME[0]} name length" ; return 1
+  [ $# -ne 2 ] && echo "Error. Usage: ${FUNCNAME[0]} name length" && return 2
   PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate "$1" "$2"
 }
 
