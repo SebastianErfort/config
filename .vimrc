@@ -167,7 +167,6 @@ Plug 'tpope/vim-obsession'
 
 " Color themes:
 Plug 'sainnhe/gruvbox-material'
-" Plug 'srcery-colors/srcery-vim'
 
 " vim-css-color: Preview colours in source code while editing
 Plug 'ap/vim-css-color'

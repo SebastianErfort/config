@@ -29,12 +29,8 @@ function error_test {
 
 prompt() {
   error_test
-  if [[ "$TERM" =~ derp ]]; then
-    PS1="$Grey[$Reset$BBlue\A$Reset$Grey][$Reset$ES_COLOUR$EXIT_STATUS$Reset$Grey][$Reset$BTeal\u@\h$Reset$Grey]$Reset$BOrange\w$Reset$Grey>$Reset "
-    # Cyberpunk
-    # PS1="$CbDarkBlue[$Reset$BCbBlue\A$Reset$CbDarkBlue][$Reset$ES_COLOUR$EXIT_STATUS$Reset$CbDarkBlue][$Reset$BCbOrange\u@${HOSTNAME}$Reset$CbDarkBlue]$Reset$BCbPink\w$Reset$CbDarkBlue>$Reset"
-  else
-    PS1="$Grey[$Reset$BBlue\A$Reset$Grey][$Reset$ES_COLOUR$EXIT_STATUS$Reset$Grey][$Reset$BTeal\u@\h$Reset$Grey]$Reset$BOrange\w$Reset$Grey>$Reset "
-  fi
+  PS1="$Reset$Grey[$Reset$BBlue\A$Reset$Grey][$Reset$ES_COLOUR$EXIT_STATUS$Reset$Grey][$Reset$BTeal\u@\h$Reset$Grey]$Reset$BOrange\w$Reset$Grey>$Reset "
+  # Cyberpunk
+  # PS1="$CbDarkBlue[$Reset$BCbBlue\A$Reset$CbDarkBlue][$Reset$ES_COLOUR$EXIT_STATUS$Reset$CbDarkBlue][$Reset$BCbOrange\u@${HOSTNAME}$Reset$CbDarkBlue]$Reset$BCbPink\w$Reset$CbDarkBlue>$Reset"
 }
 PROMPT_COMMAND=prompt
