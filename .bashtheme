@@ -1,6 +1,6 @@
 # Using tput seems to break my terminal (Konsole): using keys such as Home results in the displayed
 # text being f'd up and the caret does weird shit
-if [[ "$TERM" =~ 256 ]]; then
+if [[ "$TERM" =~ derp ]]; then
     Bold="\[$(tput bold)\]"
     Underline="\[$(tput smul)\]"
     Italic="\[$(tput sitm)\]"
