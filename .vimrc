@@ -140,6 +140,10 @@ Plug 'preservim/tagbar'
 Plug 'preservim/nerdtree'
 " Nerdtree tabs: This plugin aims at making NERDTree feel like a true panel, independent of tabs.
 Plug 'jistr/vim-nerdtree-tabs'
+" FIXME doesn't seem to do anyting w/o the plugin below
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" FIXME only shows rectangles
+" Plug 'ryanoasis/vim-devicons'
 
 " ctags: This script uses exuberant ctags to build the list of tags for the current file.
 " Plug 'vim-scripts/ctags.vim'
@@ -176,6 +180,9 @@ Plug 'Raimondi/delimitMate'
 
 " Tabular: indent visual selection wrt. to characters that can be specified
 Plug 'godlygeek/tabular'
+
+" Indentline: display indentation lines
+Plug 'Yggdroot/indentLine'
 
 " YouCompleteMe: is a fast, as-you-type, fuzzy-search code completion engine for Vim.
 " See: https://valloric.github.io/YouCompleteMe/
@@ -244,6 +251,13 @@ let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
+
+" NerdCommenter:
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" IndentLine:
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " YouCompleteMe
 " Install: cd ~/.vim/plugged/YouCompleteMe && ./install.py --clang-completer
