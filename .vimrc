@@ -257,7 +257,7 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDCreateDefaultMappings = 1
 
 " IndentLine:
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_char_list = ['┊'] "'|', '¦', '┆', 
 
 " YouCompleteMe
 " Install: cd ~/.vim/plugged/YouCompleteMe && ./install.py --clang-completer
