@@ -39,7 +39,7 @@ alias mkdir='mkdir -pv' # let mkdir create parent folders if needed and report
 alias df='df -H'
 alias du='du -ch'
 
-alias lsblkl='lsblk -pb -o NAME,TYPE,HOTPLUG,LABEL,SIZE,FSSIZE,FSTYPE,PARTTYPENAME,MOUNTPOINTS'
+alias lsblkl='lsblk -pb -o NAME,TYPE,LABEL,SIZE,FSSIZE,FSTYPE,PARTTYPENAME,PARTFLAGS,MAJ:MIN,MOUNTPOINTS,HOTPLUG'
  
 function os_version() {
   echo $(sed -n '/\<NAME\>/p' /etc/os-release | awk -F'=' '{print $2}' | sed 's/"//g') $(sed -n '/\<VERSION\>/p' /etc/os-release | awk -F'=' '{print $2}' | sed 's/"//g')

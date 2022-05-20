@@ -48,14 +48,16 @@ set backspace=indent,eol,start
 set nostartofline
 
 " indentation
-set autoindent
 set smarttab
-set expandtab " replace tabs by spaces
-set softtabstop=2
+set tabstop=2
 set shiftwidth=2
+set softtabstop=2
+set expandtab " replace tabs by spaces
+set autoindent
+set smartindent
 
 " Execute local vimrc's
-set exrc   " enable per-directory .vimrc files
+" set exrc   " enable per-directory .vimrc files
 set secure " disable unsafe commands in local .vimrc files
 
 " use system clipboard
@@ -140,10 +142,12 @@ Plug 'preservim/tagbar'
 Plug 'preservim/nerdtree'
 " Nerdtree tabs: This plugin aims at making NERDTree feel like a true panel, independent of tabs.
 Plug 'jistr/vim-nerdtree-tabs'
-" FIXME doesn't seem to do anyting w/o the plugin below
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" FIXME only shows rectangles
-" Plug 'ryanoasis/vim-devicons'
+" VIM Nerdtree Syntax Highlighting: does what the name implies. TODO It's slow!
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" VIM DevIcons: Icons/glyphs for filetypes, folders etc.
+Plug 'ryanoasis/vim-devicons'
+" Nerd Fonts: project patching developer targeted fonts with a high number of glyphs (icons)
+" Plug 'ryanoasis/nerd-fonts'
 
 " ctags: This script uses exuberant ctags to build the list of tags for the current file.
 " Plug 'vim-scripts/ctags.vim'
@@ -216,19 +220,19 @@ colorscheme gruvbox-material
 
 " Airline
 " custom z section (line/column numbers) bc. column nr. was cut off with default
-let g:airline_section_z = "%p%% \ue0a1%l/%L Ξ %c"
+let g:airline_section_z = "%p%% \ue0a1%l/%L: %c"
 " let g:airline_section_z = ''
 let g:airline_theme = 'gruvbox_material'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_left_sep="\uE0B0" " '▶'
-let g:airline_right_sep="\uE0B2" " '◀'
+let g:airline_left_sep="\uE0B0"
+let g:airline_right_sep="\uE0B2"
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 " let g:airline_symbols.linenr='¶'
 " let g:airline_symbols.paste='∥'
-" let g:airline_symbols.whitespace='☲' " 'Ξ'
+let g:airline_symbols.whitespace='‿' "'☲' 'Ξ'
 " Needs vim-fugitive
 let g:airline#extensions#branch#enabled =1
 let g:airline_symbols.branch="\uE0A0"
@@ -251,6 +255,17 @@ let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
+" Nerdtree Syntax Highlight: mostly performance tweaks, otherwise it's quite laggy
+" Disable some highlighting matches to improve performance
+let g:NERDTreeDisableExactMatchHighlight = 1
+let g:NERDTreeDisablePatternMatchHighlight = 1
+let g:NERDTreeLimitedSyntax = 1 " limit syntax for the most popular extensions
+" Disable default extension highlighting
+" let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+" Add file extensions to be highlighted
+" let g:NERDTreeSyntaxEnabledExtensions = ['bashrc', 'vimrc', 'conf', 'gitconfig', 'gitignore']
+" disable cursorline in Nerdtree, reducing some regex execution and lag
+let NERDTreeHighlightCursorline = 0
 
 " NerdCommenter:
 " Create default mappings
