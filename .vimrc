@@ -188,9 +188,15 @@ Plug 'godlygeek/tabular'
 " Indentline: display indentation lines
 Plug 'Yggdroot/indentLine'
 
-" YouCompleteMe: is a fast, as-you-type, fuzzy-search code completion engine for Vim.
-" See: https://valloric.github.io/YouCompleteMe/
-Plug 'Valloric/YouCompleteMe'
+" if has('nvim')
+"   " nvim-only settings
+"   " Neovim LSP config: collection of common configurations for Neovim's built-in language server client
+"   Plug 'neovim/nvim-lspconfig'
+" else
+  " YouCompleteMe: is a fast, as-you-type, fuzzy-search code completion engine for Vim.
+  " See: https://valloric.github.io/YouCompleteMe/
+  Plug 'Valloric/YouCompleteMe'
+" endif
 
 " " CoC: (Conquer of Completion) "Nodejs extension host for vim & neovim, load
 " " extensions like VSCode and host language servers."
@@ -220,7 +226,7 @@ colorscheme gruvbox-material
 
 " Airline
 " custom z section (line/column numbers) bc. column nr. was cut off with default
-let g:airline_section_z = "%p%% \ue0a1%l/%L: %c"
+let g:airline_section_z = "%p%% ☲ %l/%L: %c" " powerline line number symbol: \ue0a1
 " let g:airline_section_z = ''
 let g:airline_theme = 'gruvbox_material'
 let g:airline#extensions#tabline#enabled = 1
@@ -339,7 +345,8 @@ autocmd FIletype tex setlocal spell spelllang=de,en
 
 " === NVIM ===
 " if has('nvim')
-"   # nvim-only settings
+"   " nvim-only settings
+" else
+"   " vim-only settings
 " endif
-
 
