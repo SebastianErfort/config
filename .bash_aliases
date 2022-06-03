@@ -40,7 +40,7 @@ alias df='df -H'
 alias du='du -ch'
 
 alias lsblkl='lsblk -pb -o NAME,TYPE,LABEL,SIZE,FSSIZE,FSTYPE,PARTTYPENAME,PARTFLAGS,MAJ:MIN,MOUNTPOINTS,HOTPLUG'
- 
+
 function os_version() {
   echo $(sed -n '/\<NAME\>/p' /etc/os-release | awk -F'=' '{print $2}' | sed 's/"//g') $(sed -n '/\<VERSION\>/p' /etc/os-release | awk -F'=' '{print $2}' | sed 's/"//g')
 }
@@ -53,13 +53,15 @@ alias now='date +"%H:%M"' # Print time hh:mm:ss human-readable
 alias nows='date +"%H:%M:%S"' # Print time hh:mm:ss human-readable
 # Add an "alert" alias for long running commands. Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" \
-  && cvlc --no-video /usr/share/sounds/freedesktop/stereo/complete.oga >/dev/null 2>&1 &'
+  && cvlc --no-video /usr/share/sounds/freedesktop/stereo/complete.oga >/dev/null 2>&1'
 
 alias gvimadd='gvim --servername GVIM --remote' # open file in existing instance
 
 alias pipe2clip='xclip -r -selection clipboard'
-alias clip2qr='xclip -o | qrencode -o - | feh --force-aliasing -ZF -'
-alias pipe2qr='qrencode -o - | feh --force-aliasing -ZF -'
+alias clip2qr='xclip -o | qrencode -o -'
+alias pipe2qr='qrencode -o'
+alias qr2screen='qrencode -o - | feh --force-aliasing -ZF -'
+alias img2screen='feh --force-aliasing -ZF -'
 
 # TODO Shortcuts to various things bundled in one place, so I don't have to remember it all
 # function portal() {
@@ -148,11 +150,14 @@ function obsidian() {
 ### GIT ###
 alias glog='GIT_PAGER=cat git log' # git log cat'ed
 alias gtree='git ls-tree --full-tree -r --name-only HEAD'
-
+alias gdiff='git diff'
+alias gdiff-igws='git diff -b' # Ignore whitespace changes
+alias gcomm-am='git commit -am' # commit, automatically adding modified files, with inline message
 
 ### KDE ###
 alias kwin-restart='nohup plasmashell --replace >/dev/null 2>&1 &; nohup kwin --replace >/dev/null 2>&1 &'
-alias zypper_purge='sudo zypper rm -u'
+alias zyppurge='sudo zypper rm -u'
+alias zypdup='sudo zypper dup -y --auto-agree-with-licenses'
 
 
 ### DEVICES ###

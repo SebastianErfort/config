@@ -51,7 +51,7 @@ set nostartofline
 set smarttab
 set tabstop=2
 set shiftwidth=2
-set softtabstop=2
+set softtabstop=-1
 set expandtab " replace tabs by spaces
 set autoindent
 set smartindent
@@ -124,7 +124,9 @@ call plug#begin('~/.vim/plugged')
 
 " Syntax highlighting
 " Plug 'vim-scripts/gnuplot-syntax-highlighting'
-Plug 'plasticboy/vim-markdown'
+if !has('nvim')
+  Plug 'plasticboy/vim-markdown' " Causes problems (at least in nvim)
+endif
 Plug 'rodjek/vim-puppet'
 
 " nerdcommenter: Commenting functionality
@@ -188,15 +190,19 @@ Plug 'godlygeek/tabular'
 " Indentline: display indentation lines
 Plug 'Yggdroot/indentLine'
 
-" if has('nvim')
+if has('nvim')
 "   " nvim-only settings
 "   " Neovim LSP config: collection of common configurations for Neovim's built-in language server client
-"   Plug 'neovim/nvim-lspconfig'
-" else
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+  " Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+else
   " YouCompleteMe: is a fast, as-you-type, fuzzy-search code completion engine for Vim.
   " See: https://valloric.github.io/YouCompleteMe/
   Plug 'Valloric/YouCompleteMe'
-" endif
+endif
 
 " " CoC: (Conquer of Completion) "Nodejs extension host for vim & neovim, load
 " " extensions like VSCode and host language servers."

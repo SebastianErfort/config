@@ -23,8 +23,8 @@ fi
 PS1="\u@\h:\w>"
 
 function error_test {
-    EXIT_STATUS=$?
-    [[ $EXIT_STATUS -eq 0 ]] && ES_COLOUR=$BGreen || ES_COLOUR=$BRed
+  EXIT_STATUS=$?
+  [[ $EXIT_STATUS -eq 0 ]] && ES_COLOUR=$BGreen || ES_COLOUR=$BRed
 }
 
 prompt() {
