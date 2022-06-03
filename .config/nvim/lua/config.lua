@@ -47,10 +47,12 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- TODO move to plugins.lua
+
 -- -- luasnip setup
 -- local luasnip = require 'luasnip'
 
--- nvim-cmp setup TODO move to plugins.lua
+-- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
   -- snippet = {

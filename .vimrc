@@ -197,6 +197,7 @@ if has('nvim')
   Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
   " Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'saadparwaiz1/cmp_luasnip' " lua snippet completion source for nvim-cmp
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 else
   " YouCompleteMe: is a fast, as-you-type, fuzzy-search code completion engine for Vim.
