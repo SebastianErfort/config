@@ -39,8 +39,8 @@ alias mkdir='mkdir -pv' # let mkdir create parent folders if needed and report
 alias df='df -H'
 alias du='du -ch'
 
-alias lsblkl='lsblk -pb -o NAME,TYPE,LABEL,SIZE,FSSIZE,FSTYPE,PARTTYPENAME,PARTFLAGS,MAJ:MIN,MOUNTPOINTS,HOTPLUG'
-
+alias lsblkl='lsblk -pb -o NAME,MAJ:MIN,TYPE,SIZE,FSSIZE,FSTYPE,MOUNTPOINTS,HOTPLUG,LABEL,PARTTYPENAME,PARTFLAGS'
+ 
 function os_version() {
   echo $(sed -n '/\<NAME\>/p' /etc/os-release | awk -F'=' '{print $2}' | sed 's/"//g') $(sed -n '/\<VERSION\>/p' /etc/os-release | awk -F'=' '{print $2}' | sed 's/"//g')
 }
@@ -200,3 +200,6 @@ function dmesg() {
 
 # Firefox
 alias ffse='nohup firefox -P "Sebastian Erfort" >/dev/null 2>&1 &'
+# Rename images with EXIF data (to date and time taken, plus a number if multiple files with same name)
+# Use like: command directory
+alias picture_rename="exiftool '-filename<CreateDate' -d %Y%m%d_%H%M%S%%-c.%%e"
