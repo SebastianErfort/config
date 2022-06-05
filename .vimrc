@@ -120,7 +120,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " vim-latex: aka latex-suite
-" Plug 'vim-latex/vim-latex'
+Plug 'vim-latex/vim-latex'
 
 " Syntax highlighting
 " Plug 'vim-scripts/gnuplot-syntax-highlighting'

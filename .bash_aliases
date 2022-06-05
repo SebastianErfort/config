@@ -62,6 +62,8 @@ alias clip2qr='xclip -o | qrencode -o -'
 alias pipe2qr='qrencode -o'
 alias qr2screen='qrencode -o - | feh --force-aliasing -ZF -'
 alias img2screen='feh --force-aliasing -ZF -'
+alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
+# add author: --SphinxTransformer.author="$1"
 
 # TODO Shortcuts to various things bundled in one place, so I don't have to remember it all
 # function portal() {
@@ -112,14 +114,23 @@ function ssh_cm () {
   esac
 }
 
-# FIXME Generate password within pass command, with characters defined by $PASSWORD_STORE_CHARACTER_SET
+# Get data usage by file type
+function filesizebytype() {
+  find . -type f -iname "*.$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
+}
+# Get data usage by file name
+function filesizebyname() {
+  find . -type f -iname "$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
+}
+
+# Generate password within pass command, with characters defined by $PASSWORD_STORE_CHARACTER_SET
 function pass-gen () {
   [ $# -ne 2 ] && echo "Error. Usage: ${FUNCNAME[0]} name length" && return 2
   PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate "$1" "$2"
 }
 
 # System commands
-function network-restart() {
+function nwrestart() {
   command systemctl restart NetworkManager
 }
 
