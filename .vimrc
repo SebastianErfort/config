@@ -326,7 +326,7 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 "   " clean up ctags file on exit
 "   autocmd VimLeave * !rm .tags
 "   " (re-)create ctags file on save TODO this is not save to execute just
-"   anywhere (for example home dir!)
+"   anywhere (for example home dir will take forever!)
 "   autocmd BufWritePost,FileWritePost * !ctags -R -f .tags *
 " augroup end
 
@@ -348,6 +348,8 @@ autocmd Filetype tex setlocal nofoldenable wrap linebreak nolist
 autocmd Filetype tex setlocal textwidth=0 wrapmargin=0 formatoptions+=l
 autocmd FIletype tex setlocal spell spelllang=de,en
 "autocmd Filetype tex setlocal makeprg=make
+" disable conceal to prevent rendering of symbols
+let g:tex_conceal = ""
 
 
 " === NVIM ===
