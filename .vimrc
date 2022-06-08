@@ -177,6 +177,8 @@ Plug 'tpope/vim-obsession'
 
 " Color themes:
 Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/everforest'
+Plug 'sainnhe/sonokai'
 
 " vim-css-color: Preview colours in source code while editing
 Plug 'ap/vim-css-color'
@@ -215,7 +217,6 @@ endif
 " Initialize plugin system
 call plug#end()
 
-
 " ~~~ Plugin settings ~~~
 
 " Colorscheme
@@ -228,8 +229,10 @@ set background=dark
 " Set contrast.
 " This configuration option should be placed before `colorscheme gruvbox-material`.
 " Available values: 'hard', 'medium'(default), 'soft'
-let g:gruvbox_material_background = 'hard'
-colorscheme gruvbox-material
+" let g:gruvbox_material_background = 'soft'
+" colorscheme gruvbox-material
+" let g:sonokai_style = 'andromeda'
+colorscheme sonokai
 
 " Airline
 " custom z section (line/column numbers) bc. column nr. was cut off with default
