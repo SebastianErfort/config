@@ -214,3 +214,5 @@ alias ffse='nohup firefox -P "Sebastian Erfort" >/dev/null 2>&1 &'
 # Rename images with EXIF data (to date and time taken, plus a number if multiple files with same name)
 # Use like: command directory
 alias picture_rename="exiftool '-filename<CreateDate' -d %Y%m%d_%H%M%S%%-c.%%e"
+# run latexmk, trying to guess main tex file
+alias latexmkspeciale='grep -l '\''\documentclass'\'' *tex | xargs latexmk -pdf -pvc -silent'

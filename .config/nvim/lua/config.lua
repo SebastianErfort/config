@@ -1,11 +1,8 @@
 -- LSP
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
+  -- require('cmp').on_attach ! doesn't seem to work
   -- require('completion').on_attach()
 
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -39,22 +36,15 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = {'pyright'} -- specify language servers here
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
-
 -- TODO move to plugins.lua
+-- ============================================================================
 
--- -- luasnip setup
+-- luasnip setup
 -- local luasnip = require 'luasnip'
 
--- nvim-cmp setup
+-- NVIM-CMP autocompletion
 local cmp = require 'cmp'
-cmp.setup {
+cmp.setup{
   -- snippet = {
   --   expand = function(args)
   --     luasnip.lsp_expand(args.body)
@@ -92,3 +82,16 @@ cmp.setup {
     -- { name = 'luasnip' },
   },
 }
+
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+local servers = {'pyright'} -- specify language servers here: 'texlab'
+-- texlab installation: zypper in texlab
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end

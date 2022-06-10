@@ -191,13 +191,14 @@ Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
 
 if has('nvim')
-"   " nvim-only settings
-"   " Neovim LSP config: collection of common configurations for Neovim's built-in language server client
+  " nvim-only settings
+  " Neovim LSP config: collection of common configurations for Neovim's built-in language server client
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
-  " Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/nvim-cmp'
-  Plug 'saadparwaiz1/cmp_luasnip' " lua snippet completion source for nvim-cmp
+  " Plug 'saadparwaiz1/cmp_luasnip' " lua snippet completion source for nvim-cmp
+  " Plug 'latex-lsp/texlab' " LaTeX LSP server. Or install from OS repos
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 else
   " YouCompleteMe: is a fast, as-you-type, fuzzy-search code completion engine for Vim.
