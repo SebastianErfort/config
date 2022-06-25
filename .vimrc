@@ -192,11 +192,15 @@ Plug 'Yggdroot/indentLine'
 
 if has('nvim')
   " nvim-only settings
-  " Neovim LSP config: collection of common configurations for Neovim's built-in language server client
+  " LSP config: collection of common configurations for Neovim's built-in language server client
   Plug 'neovim/nvim-lspconfig'
+  " === LSP Autocompletion ===
+  " nvim-cmp
   Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/nvim-cmp'
+  " Snippet engines
+  " Plug 'L3MON4D3/LuaSnip'
   " Plug 'saadparwaiz1/cmp_luasnip' " lua snippet completion source for nvim-cmp
   " Plug 'latex-lsp/texlab' " LaTeX LSP server. Or install from OS repos
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -286,7 +290,7 @@ let NERDTreeHighlightCursorline = 0
 let g:NERDCreateDefaultMappings = 1
 
 " IndentLine:
-let g:indentLine_char_list = ['┊'] "'|', '¦', '┆', 
+let g:indentLine_char_list = ['┊'] "'|', '¦', '┆',
 
 " YouCompleteMe
 " Install: cd ~/.vim/plugged/YouCompleteMe && ./install.py --clang-completer
