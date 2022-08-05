@@ -128,7 +128,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " vim-latex: aka latex-suite
-" Plug 'vim-latex/vim-latex'
+Plug 'vim-latex/vim-latex'
 
 " Syntax highlighting
 " Plug 'vim-scripts/gnuplot-syntax-highlighting'
@@ -199,9 +199,11 @@ Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
 
 if has('nvim')
-"   " nvim-only settings
-"   " Neovim LSP config: collection of common configurations for Neovim's built-in language server client
+  " nvim-only settings
+  " LSP config: collection of common configurations for Neovim's built-in language server client
   Plug 'neovim/nvim-lspconfig'
+  " === LSP Autocompletion ===
+  " nvim-cmp
   Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
   " Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
@@ -334,7 +336,7 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 "   " clean up ctags file on exit
 "   autocmd VimLeave * !rm .tags
 "   " (re-)create ctags file on save TODO this is not save to execute just
-"   anywhere (for example home dir!)
+"   anywhere (for example home dir will take forever!)
 "   autocmd BufWritePost,FileWritePost * !ctags -R -f .tags *
 " augroup end
 
@@ -356,6 +358,8 @@ autocmd Filetype tex setlocal nofoldenable wrap linebreak nolist
 autocmd Filetype tex setlocal textwidth=0 wrapmargin=0 formatoptions+=l
 autocmd FIletype tex setlocal spell spelllang=de,en
 "autocmd Filetype tex setlocal makeprg=make
+" disable conceal to prevent rendering of symbols
+let g:tex_conceal = ""
 
 
 " === NVIM ===

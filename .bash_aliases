@@ -62,6 +62,8 @@ alias clip2qr='xclip -o | qrencode -o -'
 alias pipe2qr='qrencode -o'
 alias qr2screen='qrencode -o - | feh --force-aliasing -ZF -'
 alias img2screen='feh --force-aliasing -ZF -'
+alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
+# add author: --SphinxTransformer.author="$1"
 
 # TODO Shortcuts to various things bundled in one place, so I don't have to remember it all
 # function portal() {
@@ -120,6 +122,15 @@ function sshcm () {
   esac
 }
 
+# Get data usage by file type
+function filesizebytype() {
+  find . -type f -iname "*.$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
+}
+# Get data usage by file name
+function filesizebyname() {
+  find . -type f -iname "$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
+}
+
 # Generate password within pass command, with characters defined by $PASSWORD_STORE_CHARACTER_SET
 # This set of special characters should be a bit safer with services that don't allow everything.
 function pass-gen () {
@@ -128,7 +139,7 @@ function pass-gen () {
 }
 
 # System commands
-function network-restart() {
+function nwrestart() {
   command systemctl restart NetworkManager
 }
 
@@ -216,3 +227,5 @@ alias ffse='nohup firefox -P "Sebastian Erfort" >/dev/null 2>&1 &'
 # Rename images with EXIF data (to date and time taken, plus a number if multiple files with same name)
 # Use like: command directory
 alias picture_rename="exiftool '-filename<CreateDate' -d %Y%m%d_%H%M%S%%-c.%%e"
+# run latexmk, trying to guess main tex file
+alias latexmkspeciale='grep -l '\''\documentclass'\'' *tex | xargs latexmk -pdf -pvc -silent'

@@ -1,12 +1,8 @@
 -- LSP
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
-  -- require('completion').on_attach()
+  -- require'completion'.on_attach()
 
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -39,22 +35,19 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = {'pyright'} -- specify language servers here
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
+-- ============================================================================
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
--- TODO move to plugins.lua
+-- === (Auto-)Completion ===
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
--- -- luasnip setup
+-- NVIM-CMP autocompletion (with LuaSnip)
+-- See nvim-cmp documentation, https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp/
 -- local luasnip = require 'luasnip'
-
--- nvim-cmp setup
 local cmp = require 'cmp'
-cmp.setup {
+cmp.setup{
   -- snippet = {
   --   expand = function(args)
   --     luasnip.lsp_expand(args.body)
@@ -88,7 +81,32 @@ cmp.setup {
     end, { 'i', 's' }),
   }),
   sources = {
+    { name = 'path' },
     { name = 'nvim_lsp' },
+    { name = 'buffer' },
     -- { name = 'luasnip' },
   },
+  formatting = {
+  fields = {'menu', 'abbr', 'kind'},
+  format = function(entry, item)
+    local menu_icon = {
+      path = '🖫',
+      buffer = 'Ω',
+      nvim_lsp = 'λ',
+      -- luasnip = '⋗',
+    }
+
+    item.menu = menu_icon[entry.source.name]
+    return item
+  end,
+  },
 }
+
+local servers = {'pyright','texlab'} -- specify language servers here
+-- texlab installation: zypper in texlab or from github and compile (Rust)
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
