@@ -4,6 +4,6 @@
 # FONTS
 cd ~/.fonts
 for a in $(ls *.zip); do
-  unzip $a & # TODO Check parallelization
+  unzip $a & # TODO Check parallelization, limit number of concurrent jobs
 done
 wait

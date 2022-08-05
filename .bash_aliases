@@ -1,4 +1,4 @@
-# Personal theme: colours, etc.
+  # Personal theme: colours, etc.
 if [ -f ~/.bashtheme ]; then
         . ~/.bashtheme
 fi
@@ -40,7 +40,7 @@ alias df='df -H'
 alias du='du -ch'
 
 alias lsblkl='lsblk -pb -o NAME,MAJ:MIN,TYPE,SIZE,FSSIZE,FSTYPE,MOUNTPOINTS,HOTPLUG,LABEL,PARTTYPENAME,PARTFLAGS'
- 
+
 function os_version() {
   echo $(sed -n '/\<NAME\>/p' /etc/os-release | awk -F'=' '{print $2}' | sed 's/"//g') $(sed -n '/\<VERSION\>/p' /etc/os-release | awk -F'=' '{print $2}' | sed 's/"//g')
 }
@@ -76,11 +76,20 @@ alias img2screen='feh --force-aliasing -ZF -'
 # }
 # complete -f -X '~/.portal/*' portal
 
+# Diverse hardware info
+# function hwinfo() {
+#   if [[ ! -z $1 ]]; then
+#     arg = "$1"
+#   else
+#     select TODO continue
+#   fi
+# }
+
 # SSH ControlMaster helpers
-function ssh_cm_status () {
+function sshcm-status () {
   ssh -S "$1" -O check bla
 }
-function ssh_cm () {
+function sshcm () {
   [[ -z "$1" ]] && echo -e "Error. Usage: ${FUNCNAME[0]} ${Underline}command${Reset} [argument]" && return 2
   case "$1" in
     list)
@@ -92,12 +101,11 @@ function ssh_cm () {
       if [ ! -z $control_masters ]; then
         for s in $control_masters; do
           echo "$s"
-          ssh_cm_status "$s"
+          sshcm-status "$s"
         done
       else
         echo 'No control masters active.'
-      fi
-      ;;
+      fi;;
     connect | open)
       [[ ! -z "$2" ]] && ssh "$2" ;;
     disconnect | close | kill)
@@ -112,7 +120,8 @@ function ssh_cm () {
   esac
 }
 
-# FIXME Generate password within pass command, with characters defined by $PASSWORD_STORE_CHARACTER_SET
+# Generate password within pass command, with characters defined by $PASSWORD_STORE_CHARACTER_SET
+# This set of special characters should be a bit safer with services that don't allow everything.
 function pass-gen () {
   [ $# -ne 2 ] && echo "Error. Usage: ${FUNCNAME[0]} name length" && return 2
   PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate "$1" "$2"
@@ -148,6 +157,7 @@ function obsidian() {
 
 
 ### GIT ###
+alias gstatus='git status'
 alias glog='GIT_PAGER=cat git log' # git log cat'ed
 alias gtree='git ls-tree --full-tree -r --name-only HEAD'
 alias gdiff='git diff'
@@ -155,7 +165,10 @@ alias gdiff-igws='git diff -b' # Ignore whitespace changes
 alias gcomm-am='git commit -am' # commit, automatically adding modified files, with inline message
 
 ### KDE ###
-alias kwin-restart='nohup plasmashell --replace >/dev/null 2>&1 &; nohup kwin --replace >/dev/null 2>&1 &'
+function kwin-restart() {
+  nohup plasmashell --replace >/dev/null 2>&1 &
+  nohup kwin --replace >/dev/null 2>&1 &
+}
 alias zyppurge='sudo zypper rm -u'
 alias zypdup='sudo zypper dup -y --auto-agree-with-licenses'
 
