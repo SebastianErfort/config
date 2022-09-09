@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 lsblk -f
--f: include filesystems
+# -f: include filesystems
 
 # This doesn't work on my machine
 # disk=()

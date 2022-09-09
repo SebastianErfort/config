@@ -62,6 +62,7 @@ alias clip2qr='xclip -o | qrencode -o -'
 alias pipe2qr='qrencode -o'
 alias qr2screen='qrencode -o - | feh --force-aliasing -ZF -'
 alias img2screen='feh --force-aliasing -ZF -'
+alias jpl='jupyter-lab'
 alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
 # add author: --SphinxTransformer.author="$1"
 
@@ -95,12 +96,12 @@ function sshcm () {
   [[ -z "$1" ]] && echo -e "Error. Usage: ${FUNCNAME[0]} ${Underline}command${Reset} [argument]" && return 2
   case "$1" in
     list)
-      for s in $(ls ~/.ssh/cm_*); do
+      for s in $(ls ~/.ssh/cm_* 2>/dev/null || echo 'None'); do
         echo "$s"
       done;;
     status)
       control_masters=$(ls ~/.ssh/cm_* 2>/dev/null)
-      if [ ! -z $control_masters ]; then
+      if [[ ! -z $control_masters ]]; then
         for s in $control_masters; do
           echo "$s"
           sshcm-status "$s"

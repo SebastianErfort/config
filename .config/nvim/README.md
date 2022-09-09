@@ -1,3 +1,5 @@
+[[vim]]
+
 ### Links
 [This Week in Neovim](https://this-week-in-neovim.org/)
 
