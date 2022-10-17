@@ -73,7 +73,7 @@ if has('unnamedplus')
 endif
 
 " (c)tags file
-set tags+=.tags
+set tags=.tags
 
 
 " ================================= MAPPINGS ========================================================

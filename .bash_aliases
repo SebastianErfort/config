@@ -101,7 +101,7 @@ function sshcm () {
       done;;
     status)
       control_masters=$(ls ~/.ssh/cm_* 2>/dev/null)
-      if [[ ! -z $control_masters ]]; then
+      if [ -n $control_masters ]; then
         for s in $control_masters; do
           echo "$s"
           sshcm-status "$s"
@@ -112,8 +112,9 @@ function sshcm () {
     connect | open)
       [[ ! -z "$2" ]] && ssh "$2" ;;
     disconnect | close | kill)
-      if [ ! -z "$2" ]; then
-        s=$(ls ~/.ssh/cm_*${2}*)
+      if [ -n "$2" ]; then
+        s=$(ls ~/.ssh/cm_*${2}* 2>/dev/null)
+        [ -z "$s" ] && return
         echo "Disconnecting host $2 (socket $s)."
         ssh -S "$s" -O exit bla
       fi;;
@@ -165,6 +166,9 @@ function dolphin() {
 }
 function obsidian() {
   command obsidian ${@} > /dev/null 2>&1 &
+}
+function gwenview() {
+  command gwenview "$@" > /dev/null 2>&1 &
 }
 
 

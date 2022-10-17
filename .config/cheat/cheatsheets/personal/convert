@@ -1,0 +1,31 @@
+# To convert a file from jpg to pdf
+convert original.jpg converted.pdf
+
+# To resize an image to a fixed width and proportional height:
+convert original.jpg -resize 100x converted.jpg
+
+# To resize an image to a fixed height and proportional width:
+convert original.jpg -resize x100 converted.jpg
+
+# To resize an image to a fixed width and height:
+convert original.jpg -resize 100x100 converted.jpg
+
+# To resize an image and simultaneously change its file type:
+convert original.jpg -resize 100x converted.png
+
+# To resize all images from a directory:
+for file in $(ls original/image/path/); do
+    convert $file -resize 150 converted/image/path/$(basename ${file%.*}).png
+done
+
+# To convert an N page pdf to N images (will autonumber):
+convert -density 150 arch1.pdf -quality 80 'output.jpg'
+
+# To convert an N page pdf to N images with explicit filename formatting:
+convert -density 150 arch1.pdf -quality 80 'output-%d.jpg'
+
+# Crop image(s) by size and offset: width x height +left margin +top margin
+convert image.png -crop 1280x1024+20+100
+
+# overlay with text
+convert -font helvetica -fill blue -pointsize $(( height/fraction )) -gravity center -draw "text 0,$(( height/4 )) 'My message'" input.jpg output.jpg

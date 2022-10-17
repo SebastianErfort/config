@@ -1,0 +1,17 @@
+# To see example usage of a program:
+cheat <command>
+
+# To edit a cheatsheet
+cheat -e <command>
+
+# To list available cheatsheets
+cheat -l
+cheat -l -t networking # tagged "networking"
+cheat -l -p personal # in the "personal" path
+
+# To search available cheatsheets
+cheat -s <command>
+cheat -r -s '(?:[0-9]{1,3}\.){3}[0-9]{1,3}' # by regex, here an IP address
+
+# To get the current `cheat' version
+cheat -v
