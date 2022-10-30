@@ -220,8 +220,8 @@ if has('nvim')
   let g:vimtex_complete_ignore_case = 1
   let g:vimtex_complete_smart_case = 1
   let g:vimtex_compiler_progname='nvr'
-  set spell spelllang=en_us
-  set spellfile=$HOME/.config/nvim/spell/en.utf-8.add
+  " set spell spelllang=en_us
+  " set spellfile=$HOME/.config/nvim/spell/en.utf-8.add
   inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
   autocmd FileType tex setlocal ts=2 sw=2 sts=0 expandtab spell
   Plug 'honza/vim-snippets'
