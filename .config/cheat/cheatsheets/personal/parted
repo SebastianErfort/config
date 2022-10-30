@@ -1,0 +1,17 @@
+# list partition layout on all block devices
+parted -l
+
+# create a new disklabel (partition table)
+parted -s $DEV mklabel gpt
+
+# create a new partition
+parted -s $DEV mkpart [part-type name fs-type] start end
+
+# auto-align new partitions for optimal performance (requires rough start/end for flexibility)
+parted -a opt /dev/$DEV mkpart NEWPART FSTYPE START END
+
+# machine-readable output with field separator ":"
+parted -m
+
+# JSON output
+parted -j

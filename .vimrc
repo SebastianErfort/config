@@ -8,13 +8,6 @@ set nocompatible
 " set exrc   " enable per-directory .vimrc files
 set secure " disable unsafe commands in local .vimrc files
 
-" Syntax highlighting
-syntax on " Set syntax highlighting. Needs to be before filetype ... on to be working in split windows.
-filetype indent plugin on " Filetype detection
-
-" folding
-set foldmethod=syntax
-
 " options
 set hidden
 set autowriteall
@@ -51,24 +44,23 @@ set smartcase
 set backspace=indent,eol,start
 set nostartofline
 
-" filetype detection
+" Syntax highlighting, filetype detection
+syntax on " Set syntax highlighting. Needs to be before filetype ... on to be working in split windows.
+filetype indent plugin on " Filetype detection
 au BufNewFile,BufRead *.{gpl,gpls,gplt,gnuplot,gnu,GNU} setf gnuplot
 au BufNewFile,BufRead *.{out,log,com,test}* setf fortran
 au BufNewFile,BufRead *.*{yml,yaml} setf yaml
 
 " indentation & folds
+set foldmethod=syntax
 set smarttab
-" set tabstop=2
-set shiftwidth=2
-set softtabstop=-1 " use value of shiftwidth
-set expandtab " replace tabs by spaces
 set autoindent
 set smartindent
 " General: force indentation for all buffers, all file types
-autocmd FileType * setlocal shiftwidth=2 softtabstop=-1 expandtab
+autocmd FileType * setlocal shiftwidth=4 softtabstop=-1 expandtab
 " Python: so far poor support of syntax fold
-autocmd FileType python setlocal foldmethod=indent
-" Fortran: so far poor support of syntax fold
+autocmd FileType python setlocal foldmethod=indent tw=100
+" Fortran: so far poor support of syntax fold. Using 3 bc. of 'historic reasons'
 autocmd FileType fortran setlocal shiftwidth=3 softtabstop=-1 expandtab foldmethod=indent 
 " YAML: so far poor support of syntax fold
 autocmd FileType yaml setlocal foldmethod=indent
@@ -81,7 +73,7 @@ if has('unnamedplus')
 endif
 
 " (c)tags file
-set tags+=.tags
+set tags=.tags
 
 
 " ================================= MAPPINGS ========================================================
