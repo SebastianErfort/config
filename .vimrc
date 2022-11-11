@@ -43,6 +43,8 @@ set smartcase
 " editing
 set backspace=indent,eol,start
 set nostartofline
+set splitbelow
+set splitright
 
 " Syntax highlighting, filetype detection
 syntax on " Set syntax highlighting. Needs to be before filetype ... on to be working in split windows.
