@@ -1,0 +1,237 @@
+{
+  "main": {
+    "id": "6a9fcc3f8b59b5f3",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ba5469ee46b262f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bf5a7bfe1102bb95",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cit/journal/today.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b8170f0be503fffc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/security.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f7a886b32b3f7601",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/science/rug.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4834181de2b50912",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cit/notes/LWP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ef430bbe82daed8f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cit/notes/Gitlab.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b731e6732d6b5dfd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cit/notes/NoMachine.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "401e27c084ebfef8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cit/notes/unattended.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "84817e42a369ba19",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/Hardware.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "bfab0d6658d3807c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/linux.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 8
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "497630df7e302ac8",
+    "type": "split",
+    "children": [
+      {
+        "id": "cb7103f007b23db6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "946789bd2cdcba12",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "99d1cddaa098d101",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "vmware",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "90440153badb307e",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 212.5
+  },
+  "right": {
+    "id": "39ac82a9d8bfcbff",
+    "type": "split",
+    "children": [
+      {
+        "id": "e56654ed455d161e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f30c1357f1d4cf75",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "life/tech/linux.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6edb3236601cd3ee",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "567842b2ef2c3e78",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "life/tech/linux.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 263.5
+  },
+  "active": "bfab0d6658d3807c",
+  "lastOpenFiles": [
+    "life/tech/Hardware.md",
+    "cit/notes/SimonBusman_RoboLab.md",
+    "cit/notes/unattended.md",
+    "cit/notes/NoMachine.md",
+    "life/tech/security.md",
+    "cit/notes/Disk_encryption.md",
+    "cit/journal.md",
+    "cit/notes/Gitlab.md",
+    "cit/notes/MFA.md",
+    "life/science/rug.md"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "legacyEditor": false,
+  "livePreview": true,
+  "foldHeading": true,
+  "foldIndent": true,
+  "showLineNumber": true,
+  "vimMode": true,
+  "alwaysUpdateLinks": true,
+  "promptDelete": false,
+  "useTab": false,
+  "tabSize": 2,
+  "userIgnoreFilters": [
+    "\"/*.jpeg/\""
+  ],
+  "showFrontmatter": false,
+  "newLinkFormat": "relative",
+  "useMarkdownLinks": false,
+  "defaultViewMode": "preview",
+  "pdfExportSettings": {
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}

@@ -149,9 +149,9 @@ function nwrestart() {
 # function subl() {
 #   command /usr/bin/sublime_text/sublime_text "$@" > /dev/null 2>&1 &
 # }
-function qpdf() {
-  command qpdfview "$@" > /dev/null 2>&1 &
-}
+# function qpdf() {
+#   command qpdfview "$@" > /dev/null 2>&1 &
+# }
 function subm() {
   command /usr/local/bin/sublime_merge/sublime_merge "$@" > /dev/null 2>&1 &
 }

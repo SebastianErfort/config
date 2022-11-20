@@ -22,6 +22,6 @@ sed '/Once upon a time/i\Chapter 1'
 # To add a line after a matching pattern:
 sed '/happily ever after/a\The end.'
 #
-# search line in and replace with new (multi-) line, preserving indentation,
+# search for line and replace with new (multi-) line, preserving indentation,
 # create backup file with suffix .bak
 sed -i".bak" 's/^\(\s*\)#*.*KEY=\S\+/\1KEY=true\n\1KEY=true/'

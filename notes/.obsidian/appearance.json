@@ -1,0 +1,12 @@
+{
+  "baseFontSize": 16,
+  "theme": "moonstone",
+  "enabledCssSnippets": [
+    "enlarge_image_hover",
+    "hide_from_file_explorer",
+    "highlight_md_links"
+  ],
+  "cssTheme": "Primary",
+  "monospaceFontFamily": "JetBrainsMono Nerd Font Mono",
+  "accentColor": ""
+}
