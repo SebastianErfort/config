@@ -8,24 +8,48 @@
         "type": "tabs",
         "children": [
           {
-            "id": "bf5a7bfe1102bb95",
+            "id": "686850775fe85b33",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cit/journal/today.md",
+                "file": "cit/journal.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "b8170f0be503fffc",
+            "id": "bf5a7bfe1102bb95",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/Network.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4d4120bce91efd44",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "life/tech/security.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c6104495aecbebfc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/linux.md",
                 "mode": "source",
                 "source": false
               }
@@ -80,18 +104,6 @@
             }
           },
           {
-            "id": "401e27c084ebfef8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cit/notes/unattended.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "84817e42a369ba19",
             "type": "leaf",
             "state": {
@@ -114,9 +126,44 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "c38d69dae7556200",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cit/notes/unattended.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6b8179f63922942a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cit/notes/CIT.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d728e319369317ce",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/linux.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ],
-        "currentTab": 8
+        ]
       }
     ],
     "direction": "vertical"
@@ -145,7 +192,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "vmware",
+                "query": "kerberos",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -182,8 +229,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "life/tech/linux.md",
-                "collapseAll": false,
+                "file": "cit/journal.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -210,7 +257,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "life/tech/linux.md"
+                "file": "cit/journal.md"
               }
             }
           }
@@ -221,17 +268,17 @@
     "direction": "horizontal",
     "width": 263.5
   },
-  "active": "bfab0d6658d3807c",
+  "active": "686850775fe85b33",
   "lastOpenFiles": [
-    "life/tech/Hardware.md",
-    "cit/notes/SimonBusman_RoboLab.md",
-    "cit/notes/unattended.md",
-    "cit/notes/NoMachine.md",
+    "life/tech/linux.md",
     "life/tech/security.md",
-    "cit/notes/Disk_encryption.md",
-    "cit/journal.md",
-    "cit/notes/Gitlab.md",
-    "cit/notes/MFA.md",
-    "life/science/rug.md"
+    "cit/notes/security.md",
+    "life/tech/Network.md",
+    "cit/journal/today.md",
+    "life/tech/vim.md",
+    "life/tech/Python.md",
+    "cit/notes/CIT.md",
+    "life/science/rug.md",
+    "cit/journal/2022 w8.md"
   ]
 }
