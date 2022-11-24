@@ -197,22 +197,46 @@ if has('nvim')
   " nvim-only settings
   " LSP config: collection of common configurations for Neovim's built-in language server client
   Plug 'neovim/nvim-lspconfig'
-  " === LSP Autocompletion ===
-  " nvim-cmp
-  Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+  " " === LSP and autocompletion ===
+  " Use release branch (recommended)
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'lervag/vimtex'
+  let g:tex_flavor='latex'
+  let g:vimtex_view_method='zathura'
+  let g:vimtex_quickfix_mode=0
+  set conceallevel=0
+  " let g:tex_conceal='abdmg'
+  let g:vimtex_compiler_latexmk = { 'options' : [ '-pdf', '-pdflatex="xelatex --shell-escape %O %S"', '-verbose', '-file-line-error', '-synctex=1', '-interaction=nonstopmode',  ] }
+  map <leader>mb :VimtexCompile<cr>
+  map <leader>mee :VimtexErrors<cr>
+  autocmd FileType tex setlocal ts=2 sw=2 sts=0 expandtab spell
+  let g:vimtex_complete_enabled = 1
+  let g:vimtex_complete_close_braces = 1
+  let g:vimtex_complete_ignore_case = 1
+  let g:vimtex_complete_smart_case = 1
+  let g:vimtex_compiler_progname='nvr'
+  " set spell spelllang=en_us
+  " set spellfile=$HOME/.config/nvim/spell/en.utf-8.add
+  inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+  autocmd FileType tex setlocal ts=2 sw=2 sts=0 expandtab spell
+  Plug 'honza/vim-snippets'
+  let g:UltiSnipsExpandTrigger='<c-h>'
+  let g:UltiSnipsJumpForwardTrigger='<c-h>'
+  let g:UltiSnipsJumpBackwardTrigger='<c-g>'
+  let g:UltiSnipsSnippetDirectories=['UltiSnips', '$HOME/.config/nvim/snippets/UltiSnips/']
+  " Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
   " Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
-  Plug 'saadparwaiz1/cmp_luasnip' " lua snippet completion source for nvim-cmp
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
+  " Snippet engines
+  " Plug 'L3MON4D3/LuaSnip'
+  " Plug 'saadparwaiz1/cmp_luasnip' " lua snippet completion source for nvim-cmp
+  " Plug 'latex-lsp/texlab' " LaTeX LSP server. Or install from OS repos
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 else
   " YouCompleteMe: is a fast, as-you-type, fuzzy-search code completion engine for Vim.
   " See: https://valloric.github.io/YouCompleteMe/
   Plug 'Valloric/YouCompleteMe'
 endif
-
-" " CoC: (Conquer of Completion) "Nodejs extension host for vim & neovim, load
-" " extensions like VSCode and host language servers."
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Vim-diagram: syntax highlighting for Mermaid Markdown-ish diagrams
 " Plug 'zhaozg/vim-diagram'
@@ -299,6 +323,24 @@ let g:indentLine_char_list = ['┊'] "'|', '¦', '┆',
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 
+if has('nvim')
+  " Use tab for trigger completion with characters ahead and navigate.
+  " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+  " other plugin before putting this into your config.
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ CheckBackspace() ? "\<TAB>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+  function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  " coc.source.vimtex.enable
+  hi default CocUnderline cterm=underline gui=undercurl
+endif
 
 " ========================================= GVIM ===============================
 " GVim Setting
@@ -336,7 +378,7 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 " augroup end
 
 
-" =============================== vim-latex ===============================
+" =============================== latex ===============================
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a single file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
@@ -347,14 +389,15 @@ set grepprg=grep\ -nH\ $*
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 let g:Tex_SmartKeyQuote=0
-
-" latex filetype settings
-autocmd Filetype tex setlocal nofoldenable wrap linebreak nolist
-autocmd Filetype tex setlocal textwidth=0 wrapmargin=0 formatoptions+=l
-autocmd FIletype tex setlocal spell spelllang=de,en
-"autocmd Filetype tex setlocal makeprg=make
 " disable conceal to prevent rendering of symbols
 let g:tex_conceal = ""
+autocmd Filetype tex setlocal nofoldenable wrap linebreak nolist
+autocmd Filetype tex setlocal textwidth=0 wrapmargin=0 formatoptions+=l
+autocmd Filetype tex setlocal spell spelllang=de,en
+" autocmd Filetype tex setlocal makeprg=make
+augroup tex
+  let g:indentLine_enabled=0 " IndentLine activates conceal which renders like shit
+augroup end
 
 
 " === NVIM ===

@@ -35,78 +35,78 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- ============================================================================
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
--- === (Auto-)Completion ===
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-
--- NVIM-CMP autocompletion (with LuaSnip)
--- See nvim-cmp documentation, https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp/
--- local luasnip = require 'luasnip'
-local cmp = require 'cmp'
-cmp.setup{
-  -- snippet = {
-  --   expand = function(args)
-  --     luasnip.lsp_expand(args.body)
-  --   end,
-  -- },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      -- elseif luasnip.expand_or_jumpable() then
-      --   luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      -- elseif luasnip.jumpable(-1) then
-      --   luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  }),
-  sources = {
-    { name = 'path' },
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-    -- { name = 'luasnip' },
-  },
-  formatting = {
-  fields = {'menu', 'abbr', 'kind'},
-  format = function(entry, item)
-    local menu_icon = {
-      path = '🖫',
-      buffer = 'Ω',
-      nvim_lsp = 'λ',
-      -- luasnip = '⋗',
-    }
-
-    item.menu = menu_icon[entry.source.name]
-    return item
-  end,
-  },
-}
-
-local servers = {'pyright','texlab'} -- specify language servers here
--- texlab installation: zypper in texlab or from github and compile (Rust)
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
+-- -- ============================================================================
+-- -- Add additional capabilities supported by nvim-cmp
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+-- 
+-- -- === (Auto-)Completion ===
+-- vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+-- 
+-- -- NVIM-CMP autocompletion (with LuaSnip)
+-- -- See nvim-cmp documentation, https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp/
+-- -- local luasnip = require 'luasnip'
+-- local cmp = require 'cmp'
+-- cmp.setup{
+--   -- snippet = {
+--   --   expand = function(args)
+--   --     luasnip.lsp_expand(args.body)
+--   --   end,
+--   -- },
+--   mapping = cmp.mapping.preset.insert({
+--     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+--     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+--     ['<C-Space>'] = cmp.mapping.complete(),
+--     ['<CR>'] = cmp.mapping.confirm {
+--       behavior = cmp.ConfirmBehavior.Replace,
+--       select = true,
+--     },
+--     ['<Tab>'] = cmp.mapping(function(fallback)
+--       if cmp.visible() then
+--         cmp.select_next_item()
+--       -- elseif luasnip.expand_or_jumpable() then
+--       --   luasnip.expand_or_jump()
+--       else
+--         fallback()
+--       end
+--     end, { 'i', 's' }),
+--     ['<S-Tab>'] = cmp.mapping(function(fallback)
+--       if cmp.visible() then
+--         cmp.select_prev_item()
+--       -- elseif luasnip.jumpable(-1) then
+--       --   luasnip.jump(-1)
+--       else
+--         fallback()
+--       end
+--     end, { 'i', 's' }),
+--   }),
+--   sources = {
+--     { name = 'path' },
+--     { name = 'nvim_lsp' },
+--     { name = 'buffer' },
+--     -- { name = 'luasnip' },
+--   },
+--   formatting = {
+--   fields = {'menu', 'abbr', 'kind'},
+--   format = function(entry, item)
+--     local menu_icon = {
+--       path = '🖫',
+--       buffer = 'Ω',
+--       nvim_lsp = 'λ',
+--       -- luasnip = '⋗',
+--     }
+-- 
+--     item.menu = menu_icon[entry.source.name]
+--     return item
+--   end,
+--   },
+-- }
+-- 
+-- local servers = {'pyright','texlab'} -- specify language servers here
+-- -- texlab installation: zypper in texlab or from github and compile (Rust)
+-- for _, lsp in ipairs(servers) do
+--   nvim_lsp[lsp].setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--   }
+-- end
