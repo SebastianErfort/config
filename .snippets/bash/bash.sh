@@ -5,8 +5,6 @@
 ls -i
 # rm file(s) by inode
 find . -inum ... -exec rm {} +
-# Find sparse files
-find / -type f -printf "%S\t%p\n" | gawk '$1 < 1.0 {print}'
 
 # === VARIABLES
 # Variable expansion
@@ -21,4 +19,5 @@ declare -f function_name
 # === CONFIG
 set -v # Print shell input lines as they are read.
 set -x # Print commands and their arguments as they are executed.
-
+set -e # Exit immediately if a pipeline returns a non-zero status, same as -o errexit
+set -o errtrace # Functions and subshells inherit -e (errexit)
