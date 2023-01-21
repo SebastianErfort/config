@@ -52,6 +52,7 @@ filetype indent plugin on " Filetype detection
 au BufNewFile,BufRead *.{gpl,gpls,gplt,gnuplot,gnu,GNU} setf gnuplot
 au BufNewFile,BufRead *.{out,log,com,test}* setf fortran
 au BufNewFile,BufRead *.*{yml,yaml} setf yaml
+au BufNewFile,BufRead *.{service,target} setf systemd
 
 " indentation & folds
 set foldmethod=syntax

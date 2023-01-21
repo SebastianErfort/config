@@ -22,7 +22,7 @@ Sub-bullets can be done with 2+ spaces or 1 tab
   a. Lettered  <-- there is mixed support for this format
 4. Fourth
   i. using Roman numerals  <-- there is mixed support for this format
-  ii. more stuff 
+  ii. more stuff
 ## check list
 There is limited support for rendering check lists:
 - [ ] incomplete task
@@ -30,11 +30,14 @@ There is limited support for rendering check lists:
     - [x] complete sub-task
 - [x] complete task
 
-# blockquotes
+# blockquotes and citations
 > first level and paragraph
 >> second level and first paragraph
 >
 > first level and second paragraph
+In HTML
+> Only one thing is impossible for God: To find any sense in any copyright law on the planet.
+> <cite><a href="http://www.brainyquote.com/quotes/quotes/m/marktwain163473.html">Mark Twain</a></cite>
 
 # code
 ## in-line code
@@ -96,3 +99,29 @@ To create a collapsible section (collapsed by default) showing the text "Collaps
     <p>Collapsed content</p>
     <p>Other collapsed content.</p>
 </details>
+
+# Kramdown
+## Notice blocks
+Add the following to a paragraph to turn it into a notice block
+{: .notice}
+{: .notice--primary}
+{: .notice--info}
+{: .notice--warning}
+{: .notice--danger}
+{: .notice--success}
+
+Multiple paragraphs
+{% capture notice-2 %}
+#### New Site Features
+
+* You can now have cover images on blog pages
+* Drafts will now auto-save while writing
+{% endcapture %}{% endraw %}</div>
+
+<div class="notice">{% raw %}{{ notice-2 | markdownify }}</div>
+or in HTML
+<div class="notice">
+  <h4>Message</h4>
+  <p>A basic message.</p>
+</div>
+
