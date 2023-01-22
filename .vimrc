@@ -64,7 +64,7 @@ autocmd FileType * setlocal shiftwidth=4 softtabstop=-1 expandtab
 " Python: so far poor support of syntax fold
 autocmd FileType python setlocal foldmethod=indent tw=100
 " Fortran: so far poor support of syntax fold. Using 3 bc. of 'historic reasons'
-autocmd FileType fortran setlocal shiftwidth=3 softtabstop=-1 expandtab foldmethod=indent 
+autocmd FileType fortran setlocal shiftwidth=3 softtabstop=-1 expandtab foldmethod=indent
 " YAML: so far poor support of syntax fold
 autocmd FileType yaml setlocal foldmethod=indent
 " Markdown: so far poor support of syntax fold
