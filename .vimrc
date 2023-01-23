@@ -66,7 +66,7 @@ autocmd FileType python setlocal foldmethod=indent tw=100
 " Fortran: so far poor support of syntax fold. Using 3 bc. of 'historic reasons'
 autocmd FileType fortran setlocal shiftwidth=3 softtabstop=-1 expandtab foldmethod=indent 
 " YAML: so far poor support of syntax fold
-autocmd FileType yaml setlocal foldmethod=indent
+autocmd FileType yaml setlocal foldmethod=indent shiftwidth=2 softtabstop=-1 expandtab
 " Markdown: so far poor support of syntax fold
 autocmd FileType markdown setlocal foldmethod=indent
 
@@ -125,24 +125,39 @@ call plug#begin('~/.vim/plugged')
 " vim-latex: aka latex-suite
 Plug 'vim-latex/vim-latex'
 
-" Syntax highlighting
+" Language syntax highlighting and functionality
 " Plug 'vim-scripts/gnuplot-syntax-highlighting'
 if !has('nvim')
   Plug 'plasticboy/vim-markdown' " Causes problems (at least in nvim)
 endif
 Plug 'rodjek/vim-puppet'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " nerdcommenter: Commenting functionality
 Plug 'preservim/nerdcommenter'
-
+" delimitMate: auto-completion of paranthesis, etc.
+Plug 'Raimondi/delimitMate'
+" Star-search:
+Plug 'vim-scripts/star-search'
 " Matchit: extended matching for % operator (HTML, ...)
 " Plug 'adelarsq/vim-matchit'
+" Tabular: indent visual selection wrt. to characters that can be specified
+Plug 'godlygeek/tabular'
+
+" Indentline: display indentation lines
+Plug 'Yggdroot/indentLine'
+" vim-css-color: Preview colours in source code while editing
+Plug 'ap/vim-css-color'
+
+" vim-fugitive:
+Plug 'tpope/vim-fugitive'
+" vim-obsession: enhance vim sessions (auto-save, statusline, support directories)
+Plug 'tpope/vim-obsession'
 
 " Taglist: Source Code Browser plugin for Vim
 " Plug 'yegappan/taglist'
 " Tagbar: a class outline viewer vor VIM
 Plug 'preservim/tagbar'
-
 " Nerdtree: The NERDTree is a file system explorer for the Vim editor.
 Plug 'preservim/nerdtree'
 " Nerdtree tabs: This plugin aims at making NERDTree feel like a true panel, independent of tabs.
@@ -160,18 +175,9 @@ Plug 'ryanoasis/vim-devicons'
 " vim-ctags: Simple VIm plugin to manage ctags index.
 " Plug 'webastien/vim-ctags'
 
-" Star-search:
-Plug 'vim-scripts/star-search'
-
 " Airline: statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" vim-fugitive:
-Plug 'tpope/vim-fugitive'
-
-" vim-obsession: enhance vim sessions (auto-save, statusline, support directories)
-Plug 'tpope/vim-obsession'
 
 " CSApprox:
 " Plug 'godlygeek/CSApprox'
@@ -180,18 +186,6 @@ Plug 'tpope/vim-obsession'
 Plug 'sainnhe/gruvbox-material'
 " Plug 'sainnhe/everforest'
 Plug 'sainnhe/sonokai'
-
-" vim-css-color: Preview colours in source code while editing
-Plug 'ap/vim-css-color'
-
-" delimitMate: auto-completion of paranthesis, etc.
-Plug 'Raimondi/delimitMate'
-
-" Tabular: indent visual selection wrt. to characters that can be specified
-Plug 'godlygeek/tabular'
-
-" Indentline: display indentation lines
-Plug 'Yggdroot/indentLine'
 
 if has('nvim')
   " nvim-only settings
@@ -282,6 +276,33 @@ let g:airline_symbols.branch="\uE0A0" " requires font with powerline glyphs
 
 " Tagbar:
 nmap <F10> :TagbarToggle<CR>
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
 
 " Nerdtree:
 " Open Nerdtree when vim starts - comment out to prevent

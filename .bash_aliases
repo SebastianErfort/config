@@ -182,6 +182,7 @@ alias gcomm-am='git commit -am' # commit, automatically adding modified files, w
 
 ### KDE ###
 function kwin-restart() {
+  sed -i 's/lastScreen=[1-9]/lastScreen=0/g' ~/.config/plasma-org.kde.plasma.desktop-appletsrc
   nohup plasmashell --replace >/dev/null 2>&1 &
   nohup kwin --replace >/dev/null 2>&1 &
 }

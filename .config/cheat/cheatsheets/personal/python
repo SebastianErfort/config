@@ -8,9 +8,11 @@ l = sorted(set(l), key=lambda x: l.index(x))
 # from list
 r=[]
 [r.append(x) for x in l if x not in r]
+# Join a list of strings with given separator
+s = '-'.join(l)
 
 # === Special type files ===
-# Pretty print a json
+# Pretty print a JSON file
 python -m json.tool foo.json
 
 # === Web stuff ===

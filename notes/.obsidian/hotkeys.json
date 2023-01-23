@@ -12,5 +12,13 @@
       "modifiers": [],
       "key": "F10"
     }
+  ],
+  "editor:insert-tag": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "T"
+    }
   ]
 }
