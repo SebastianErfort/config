@@ -12,7 +12,7 @@
   "userIgnoreFilters": [
     "\"/*.jpeg/\""
   ],
-  "showFrontmatter": false,
+  "showFrontmatter": true,
   "newLinkFormat": "relative",
   "useMarkdownLinks": false,
   "defaultViewMode": "preview",

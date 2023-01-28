@@ -12,5 +12,22 @@
       "modifiers": [],
       "key": "F10"
     }
+  ],
+  "editor:insert-tag": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "T"
+    }
+  ],
+  "insert-template": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "T"
+    }
   ]
 }

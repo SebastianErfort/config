@@ -29,3 +29,7 @@ convert image.png -crop 1280x1024+20+100
 
 # overlay with text
 convert -font helvetica -fill blue -pointsize $(( height/fraction )) -gravity center -draw "text 0,$(( height/4 )) 'My message'" input.jpg output.jpg
+
+---
+# References
+- Command line options: https://imagemagick.org/script/command-line-options.php

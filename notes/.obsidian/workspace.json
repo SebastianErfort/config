@@ -4,11 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "5ba5469ee46b262f",
+        "id": "a2cc219128e84afa",
         "type": "tabs",
         "children": [
           {
-            "id": "686850775fe85b33",
+            "id": "83e1fb66b13d0774",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cit/journal/today.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "608c81e655d069e6",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,67 +32,19 @@
             }
           },
           {
-            "id": "bf5a7bfe1102bb95",
+            "id": "e0d2dc8a6106d1bc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/Network.md",
+                "file": "cit/notes/lwpwiki.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "4d4120bce91efd44",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/tech/security.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c6104495aecbebfc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/tech/linux.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f7a886b32b3f7601",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/science/rug.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4834181de2b50912",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cit/notes/LWP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ef430bbe82daed8f",
+            "id": "2dd03f6dfaceff89",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -92,78 +56,91 @@
             }
           },
           {
-            "id": "b731e6732d6b5dfd",
+            "id": "b6eef5c4f960aa9a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cit/notes/NoMachine.md",
+                "file": "life/tech/dev/Network.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "84817e42a369ba19",
+            "id": "45f92afb6159925f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/Hardware.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "bfab0d6658d3807c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/tech/linux.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c38d69dae7556200",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cit/notes/unattended.md",
+                "file": "life/tech/linux/bash.md",
                 "mode": "preview",
                 "source": false
               }
             }
           },
           {
-            "id": "6b8179f63922942a",
+            "id": "64ae620ee3ee136e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cit/notes/CIT.md",
+                "file": "life/tech/linux/linux.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "d728e319369317ce",
+            "id": "4b143b5770ffebb6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/linux.md",
+                "file": "life/tech/Software.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d0fa161e763fb3ae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/Obsidian.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f210a9fe2a893c61",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cit/notes/LWP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "08527eae2d3bbac6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/education/courses/LIL_LearningSCCM.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -192,7 +169,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "kerberos",
+                "query": "nmap",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -209,7 +186,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -229,7 +207,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "cit/journal.md",
+                "file": "cit/notes/Gitlab.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -257,7 +235,19 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "cit/journal.md"
+                "file": "cit/notes/Gitlab.md"
+              }
+            }
+          },
+          {
+            "id": "39f8c9a2de0ddbe2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "cit/notes/Gitlab.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
               }
             }
           }
@@ -268,17 +258,28 @@
     "direction": "horizontal",
     "width": 263.5
   },
-  "active": "686850775fe85b33",
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "command-palette:Open command palette": false,
+      "markdown-importer:Open format converter": false,
+      "workspaces:Manage workspace layouts": false,
+      "templates:Insert template": false
+    }
+  },
+  "active": "2dd03f6dfaceff89",
   "lastOpenFiles": [
-    "life/tech/linux.md",
-    "life/tech/security.md",
-    "cit/notes/security.md",
-    "life/tech/Network.md",
+    "life/education/courses/LIL_LearningSCCM.md",
+    "life/tech/dev/Network.md",
+    "cit/notes/Gitlab.md",
+    "life/tech/linux/bash.md",
+    "life/tech/Obsidian.md",
     "cit/journal/today.md",
-    "life/tech/vim.md",
-    "life/tech/Python.md",
-    "cit/notes/CIT.md",
-    "life/science/rug.md",
-    "cit/journal/2022 w8.md"
+    "cit/notes/LWP.md",
+    "life/education/courses/LIL_go-essential-training.md",
+    "life/tech/dev/Go.md",
+    "life/tech/Software.md"
   ]
 }
