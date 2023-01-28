@@ -72,7 +72,7 @@ autocmd FileType markdown setlocal foldmethod=indent
 
 " use system clipboard if the os implementation gods smile upon us
 if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
+    set clipboard=unnamed,unnamedplus
 endif
 
 " (c)tags file
@@ -111,9 +111,9 @@ map Y y$
 " ================================= PLUGINS ========================================================
 " vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
 endif
 
 " Specify a directory for plugins
@@ -124,13 +124,13 @@ call plug#begin('~/.vim/plugged')
 
 " vim-latex: aka latex-suite
 Plug 'vim-latex/vim-latex'
-
 " Language syntax highlighting and functionality
 " Plug 'vim-scripts/gnuplot-syntax-highlighting'
 if !has('nvim')
-  Plug 'plasticboy/vim-markdown' " Causes problems (at least in nvim)
+    Plug 'plasticboy/vim-markdown' " Causes problems (at least in nvim)
 endif
 Plug 'rodjek/vim-puppet'
+" Go: vim-go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " nerdcommenter: Commenting functionality
@@ -188,48 +188,48 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/sonokai'
 
 if has('nvim')
-  " nvim-only settings
-  " LSP config: collection of common configurations for Neovim's built-in language server client
-  Plug 'neovim/nvim-lspconfig'
-  " " === LSP and autocompletion ===
-  " Use release branch (recommended)
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'lervag/vimtex'
-  let g:tex_flavor='latex'
-  let g:vimtex_view_method='zathura'
-  let g:vimtex_quickfix_mode=0
-  set conceallevel=0
-  " let g:tex_conceal='abdmg'
-  let g:vimtex_compiler_latexmk = { 'options' : [ '-pdf', '-pdflatex="xelatex --shell-escape %O %S"', '-verbose', '-file-line-error', '-synctex=1', '-interaction=nonstopmode',  ] }
-  map <leader>mb :VimtexCompile<cr>
-  map <leader>mee :VimtexErrors<cr>
-  autocmd FileType tex setlocal ts=2 sw=2 sts=0 expandtab spell
-  let g:vimtex_complete_enabled = 1
-  let g:vimtex_complete_close_braces = 1
-  let g:vimtex_complete_ignore_case = 1
-  let g:vimtex_complete_smart_case = 1
-  let g:vimtex_compiler_progname='nvr'
-  " set spell spelllang=en_us
-  " set spellfile=$HOME/.config/nvim/spell/en.utf-8.add
-  inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-  autocmd FileType tex setlocal ts=2 sw=2 sts=0 expandtab spell
-  Plug 'honza/vim-snippets'
-  let g:UltiSnipsExpandTrigger='<c-h>'
-  let g:UltiSnipsJumpForwardTrigger='<c-h>'
-  let g:UltiSnipsJumpBackwardTrigger='<c-g>'
-  let g:UltiSnipsSnippetDirectories=['UltiSnips', '$HOME/.config/nvim/snippets/UltiSnips/']
-  " Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
-  " Plug 'hrsh7th/cmp-buffer'
-  " Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
-  " Snippet engines
-  " Plug 'L3MON4D3/LuaSnip'
-  " Plug 'saadparwaiz1/cmp_luasnip' " lua snippet completion source for nvim-cmp
-  " Plug 'latex-lsp/texlab' " LaTeX LSP server. Or install from OS repos
-  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " nvim-only settings
+    " LSP config: collection of common configurations for Neovim's built-in language server client
+    Plug 'neovim/nvim-lspconfig'
+    " " === LSP and autocompletion ===
+    " Use release branch (recommended)
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'lervag/vimtex'
+    let g:tex_flavor='latex'
+    let g:vimtex_view_method='zathura'
+    let g:vimtex_quickfix_mode=0
+    set conceallevel=0
+    " let g:tex_conceal='abdmg'
+    let g:vimtex_compiler_latexmk = { 'options' : [ '-pdf', '-pdflatex="xelatex --shell-escape %O %S"', '-verbose', '-file-line-error', '-synctex=1', '-interaction=nonstopmode',  ] }
+    map <leader>mb :VimtexCompile<cr>
+    map <leader>mee :VimtexErrors<cr>
+    autocmd FileType tex setlocal ts=2 sw=2 sts=0 expandtab spell
+    let g:vimtex_complete_enabled = 1
+    let g:vimtex_complete_close_braces = 1
+    let g:vimtex_complete_ignore_case = 1
+    let g:vimtex_complete_smart_case = 1
+    let g:vimtex_compiler_progname='nvr'
+    " set spell spelllang=en_us
+    " set spellfile=$HOME/.config/nvim/spell/en.utf-8.add
+    inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+    autocmd FileType tex setlocal ts=2 sw=2 sts=0 expandtab spell
+    Plug 'honza/vim-snippets'
+    let g:UltiSnipsExpandTrigger='<c-h>'
+    let g:UltiSnipsJumpForwardTrigger='<c-h>'
+    let g:UltiSnipsJumpBackwardTrigger='<c-g>'
+    let g:UltiSnipsSnippetDirectories=['UltiSnips', '$HOME/.config/nvim/snippets/UltiSnips/']
+    " Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+    " Plug 'hrsh7th/cmp-buffer'
+    " Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
+    " Snippet engines
+    " Plug 'L3MON4D3/LuaSnip'
+    " Plug 'saadparwaiz1/cmp_luasnip' " lua snippet completion source for nvim-cmp
+    " Plug 'latex-lsp/texlab' " LaTeX LSP server. Or install from OS repos
+    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 else
-  " YouCompleteMe: is a fast, as-you-type, fuzzy-search code completion engine for Vim.
-  " See: https://valloric.github.io/YouCompleteMe/
-  Plug 'Valloric/YouCompleteMe'
+    " YouCompleteMe: is a fast, as-you-type, fuzzy-search code completion engine for Vim.
+    " See: https://valloric.github.io/YouCompleteMe/
+    Plug 'Valloric/YouCompleteMe'
 endif
 
 " Vim-diagram: syntax highlighting for Mermaid Markdown-ish diagrams
@@ -243,7 +243,7 @@ call plug#end()
 " Colorscheme
 " Important!!
 if has('termguicolors')
-  set termguicolors
+    set termguicolors
 endif
 " For dark version.
 set background=dark
@@ -265,7 +265,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_left_sep="\uE0B0"
 let g:airline_right_sep="\uE0B2"
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 " let g:airline_symbols.linenr='¶'
 " let g:airline_symbols.paste='∥'
@@ -277,31 +277,31 @@ let g:airline_symbols.branch="\uE0A0" " requires font with powerline glyphs
 " Tagbar:
 nmap <F10> :TagbarToggle<CR>
 let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : 'gotags',
-	\ 'ctagsargs' : '-sort -silent'
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
 \ }
 
 " Nerdtree:
@@ -345,22 +345,22 @@ let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 
 if has('nvim')
-  " Use tab for trigger completion with characters ahead and navigate.
-  " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-  " other plugin before putting this into your config.
-  inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ CheckBackspace() ? "\<TAB>" :
-        \ coc#refresh()
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    " Use tab for trigger completion with characters ahead and navigate.
+    " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+    " other plugin before putting this into your config.
+    inoremap <silent><expr> <TAB>
+          \ pumvisible() ? "\<C-n>" :
+          \ CheckBackspace() ? "\<TAB>" :
+          \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-  function! CheckBackspace() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
+    function! CheckBackspace() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
 
-  " coc.source.vimtex.enable
-  hi default CocUnderline cterm=underline gui=undercurl
+    " coc.source.vimtex.enable
+    hi default CocUnderline cterm=underline gui=undercurl
 endif
 
 " ========================================= GVIM ===============================
@@ -376,14 +376,14 @@ set guioptions-=L     " remove left-hand scroll bar
 " TwiddleCase: Capitalize selection, cycling 'all lower case' -> 'first letter
 " upper case' -> 'all letters upper case'
 function! TwiddleCase(str)
-  if a:str ==# toupper(a:str)
-    let result = tolower(a:str)
-  elseif a:str ==# tolower(a:str)
-    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
-  else
-    let result = toupper(a:str)
-  endif
-  return result
+    if a:str ==# toupper(a:str)
+        let result = tolower(a:str)
+    elseif a:str ==# tolower(a:str)
+        let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+    else
+        let result = toupper(a:str)
+    endif
+    return result
 endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
@@ -417,7 +417,7 @@ autocmd Filetype tex setlocal textwidth=0 wrapmargin=0 formatoptions+=l
 autocmd Filetype tex setlocal spell spelllang=de,en
 " autocmd Filetype tex setlocal makeprg=make
 augroup tex
-  let g:indentLine_enabled=0 " IndentLine activates conceal which renders like shit
+    let g:indentLine_enabled=0 " IndentLine activates conceal which renders like shit
 augroup end
 
 
