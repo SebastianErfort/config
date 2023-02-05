@@ -5,7 +5,7 @@ vars:
   MYVAR2: schlerp
   MYVAR3: {sh: whoami} # (ba)sh command substitution
   MYVAR4: "He was just like '{{.MYVAR1}}'!" # Variable expansion
-  CURRENT_TIME: {{now | date "2006-01-02"}} # Use Go template functions
+  CURRENT_TIME: '{{now | date "2006-01-02"}}' # Use Go template functions
 
 tasks:
   noway: # Task name
@@ -17,8 +17,8 @@ tasks:
     cmds:
     - echo {{.MYVAR3}}
     silent: true # Silence output of task name and cmds
-  whattime:
-    desc: "Tell me the time!"
+  whatdate:
+    desc: "Tell me the date!"
     cmds:
-    - echo It is currently {{.CURRENT_TIME}}
+    - echo Today is the {{.CURRENT_TIME}}
     silent: true # Silence output of task name and cmds

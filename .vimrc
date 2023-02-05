@@ -49,7 +49,7 @@ set splitright
 " Syntax highlighting, filetype detection
 syntax on " Set syntax highlighting. Needs to be before filetype ... on to be working in split windows.
 filetype indent plugin on " Filetype detection
-au BufNewFile,BufRead *.{gpl,gpls,gplt,gnuplot,gnu,GNU} setf gnuplot
+au BufNewFile,BufRead *.{gpl,gpls,gplt,gnuplot,gnu,GNU,pal} setf gnuplot
 au BufNewFile,BufRead *.{out,log,com,test}* setf fortran
 au BufNewFile,BufRead *.*{yml,yaml} setf yaml
 au BufNewFile,BufRead *.{service,target} setf systemd
