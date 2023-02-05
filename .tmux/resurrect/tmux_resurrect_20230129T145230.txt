@@ -1,7 +1,0 @@
-pane	0	0	0	:	0	yoga	:/scratchy/phd/tex/thesis	1	bash	:xargs latexmk -pdf -pvc -silent
-pane	0	1	1	:*	0	yoga	:/scratchy/phd/tex/thesis	1	bash	:
-pane	0	2	0	:-	0	yoga	:/scratchy/phd/tex/thesis/figures/tikz	1	bash	:
-window	0	0	:bash	0	:	af3d,115x50,0,0,0	:
-window	0	1	:bash	1	:*	af3e,115x50,0,0,1	:
-window	0	2	:bash	0	:-	af3f,115x50,0,0,2	:
-state	0	
