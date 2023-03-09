@@ -49,7 +49,7 @@ set splitright
 " Syntax highlighting, filetype detection
 syntax on " Set syntax highlighting. Needs to be before filetype ... on to be working in split windows.
 filetype indent plugin on " Filetype detection
-au BufNewFile,BufRead *.{gpl,gpls,gplt,gnuplot,gnu,GNU} setf gnuplot
+au BufNewFile,BufRead *.{gpl,gpls,gplt,gnuplot,gnu,GNU,pal} setf gnuplot
 au BufNewFile,BufRead *.{out,log,com,test}* setf fortran
 au BufNewFile,BufRead *.*{yml,yaml} setf yaml
 au BufNewFile,BufRead *.{service,target} setf systemd
@@ -64,7 +64,7 @@ autocmd FileType * setlocal shiftwidth=4 softtabstop=-1 expandtab
 " Python: so far poor support of syntax fold
 autocmd FileType python setlocal foldmethod=indent tw=100
 " Fortran: so far poor support of syntax fold. Using 3 bc. of 'historic reasons'
-autocmd FileType fortran setlocal shiftwidth=3 softtabstop=-1 expandtab foldmethod=indent 
+autocmd FileType fortran setlocal shiftwidth=3 softtabstop=-1 expandtab foldmethod=indent
 " YAML: so far poor support of syntax fold
 autocmd FileType yaml setlocal foldmethod=indent shiftwidth=2 softtabstop=-1 expandtab
 " Markdown: so far poor support of syntax fold
