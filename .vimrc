@@ -132,6 +132,8 @@ endif
 Plug 'rodjek/vim-puppet'
 " Go: vim-go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" QML: vim-qml
+Plug 'peterhoeg/vim-qml'
 
 " nerdcommenter: Commenting functionality
 Plug 'preservim/nerdcommenter'

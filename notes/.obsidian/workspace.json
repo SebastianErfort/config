@@ -8,139 +8,65 @@
         "type": "tabs",
         "children": [
           {
-            "id": "83e1fb66b13d0774",
+            "id": "cd219360eeb8f9ad",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "release-notes",
               "state": {
-                "file": "cit/journal/today.md",
-                "mode": "source",
-                "source": false
+                "currentVersion": "1.1.16"
               }
             }
           },
           {
-            "id": "608c81e655d069e6",
+            "id": "6df334c20e73456d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cit/journal.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e0d2dc8a6106d1bc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cit/notes/lwpwiki.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "2dd03f6dfaceff89",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cit/notes/Gitlab.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "b6eef5c4f960aa9a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/tech/dev/Network.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "45f92afb6159925f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/tech/linux/bash.md",
+                "file": "cit/notes/LWP.md",
                 "mode": "preview",
                 "source": false
               }
             }
           },
           {
-            "id": "64ae620ee3ee136e",
+            "id": "8e2c3a298ed82aa7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/linux/linux.md",
+                "file": "life/tech/LDAP.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "4b143b5770ffebb6",
+            "id": "4ea96a7c8afd960e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/Software.md",
+                "file": "life/education/courses/LIL_LDAP_Kerberos.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "d0fa161e763fb3ae",
+            "id": "c8bfa30daedbe4c9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/Obsidian.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f210a9fe2a893c61",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cit/notes/LWP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "08527eae2d3bbac6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/education/courses/LIL_LearningSCCM.md",
+                "file": "cit/presentations/2023_Gitlab/presentation.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -169,7 +95,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "nmap",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -186,8 +112,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -202,30 +127,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f30c1357f1d4cf75",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "cit/notes/Gitlab.md",
-                "collapseAll": true,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
             "id": "6edb3236601cd3ee",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true
+                "sortOrder": "alphabetical",
+                "useHierarchy": false
               }
             }
           },
@@ -235,24 +143,53 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "cit/notes/Gitlab.md"
+                "file": "cit/presentations/2023_Gitlab/presentation.md"
               }
             }
-          },
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "072b7c59fd32e974",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f30c1357f1d4cf75",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "cit/presentations/2023_Gitlab/presentation.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "c5d9c22c5749d354",
+        "type": "tabs",
+        "children": [
           {
             "id": "39f8c9a2de0ddbe2",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "cit/notes/Gitlab.md",
+                "file": "cit/presentations/2023_Gitlab/presentation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -269,17 +206,34 @@
       "templates:Insert template": false
     }
   },
-  "active": "2dd03f6dfaceff89",
+  "active": "c8bfa30daedbe4c9",
   "lastOpenFiles": [
-    "life/education/courses/LIL_LearningSCCM.md",
-    "life/tech/dev/Network.md",
-    "cit/notes/Gitlab.md",
-    "life/tech/linux/bash.md",
+    "life/places/Utrecht.md",
+    "cit/presentations/2023_Gitlab/presentation.md",
+    "life/tech/software/Gitlab.md",
+    "life/Untitled.canvas",
+    "life/places/Untitled.md",
+    "life/entertainment/music.md",
+    "life/tech/web/HTML.md",
+    "life/templates/github-link.md",
     "life/tech/Obsidian.md",
-    "cit/journal/today.md",
+    "life/tech/web/CSS.md",
     "cit/notes/LWP.md",
-    "life/education/courses/LIL_go-essential-training.md",
-    "life/tech/dev/Go.md",
-    "life/tech/Software.md"
+    "cit/journal/today.md",
+    "life/art/painting.md",
+    "life/art",
+    "life/tech/dev/dev.md",
+    "life/tech/writing.md",
+    "life/knowledge/finance.md",
+    "cit/notes/CIT.md",
+    "cit/staff.md",
+    "life/education/courses/LIL_LDAP_Kerberos.md",
+    "life/tech/project management.md",
+    "life/glossary.md",
+    "cit/journal/2022 w11.md",
+    "life/tech/software/Github.md",
+    "life/tech/presenting.md",
+    "life/professional/management.md",
+    "life/tech/devops.md"
   ]
 }

@@ -23,7 +23,7 @@ fi
 PS1="\u@\h:\w>"
 # Test last command for error to switch color of displayed return code
 function error_test {
-  EXIT_STATUS=$?
+  export EXIT_STATUS=$?
   [[ $EXIT_STATUS -eq 0 ]] && ES_COLOUR=$BGreen || ES_COLOUR=$BRed
 }
 # Custom prompt
@@ -46,4 +46,4 @@ export HISTTIMEFORMAT="[%F %T] "
 export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+PROMPT_COMMAND="$PROMPT_COMMAND; history -a"

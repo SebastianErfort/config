@@ -1,0 +1,49 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+
+tasks:
+  default: # this is run if no task is specified
+    deps: [revealjs]
+
+  beamer:
+    desc: Build Beamer PDF slides with Pandoc
+    cmds:
+      - pandoc -t beamer *.md > body.tex
+      - sed -i '/\\tightlist/d' body.tex
+      - pdflatex --interaction=nonstodmode slides.tex
+    silent: true
+
+  revealjs:
+    desc: Build revealjs HTML slides with Pandoc
+    cmds:
+      - |
+        pandoc --from=markdown -t revealjs --slide-level 2 -s -o slides.html presentation_revealjs.md
+    sources:
+      - presentation_revealjs.md
+      - Taskfile.yaml
+    generates:
+      - slides.html
+    method: timestamp # instead of default checksum
+    silent: true
+
+  revealjs_features:
+    desc: Build revealjs features showcase slides
+    cmds:
+      - |
+        pandoc --from=markdown -t revealjs --slide-level 2 -s -o revealjs_features.html revealjs_features.md
+    sources:
+      - revealjs_features.md
+      - Taskfile.yaml
+    generates:
+      - slides.html
+    method: timestamp # instead of default checksum
+    silent: true
+
+  gotask:
+    desc: Set up Task (Taskfile/Go-Task, make alternative)
+    cmds:
+      - |
+        sudo snap install task

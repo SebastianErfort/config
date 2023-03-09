@@ -90,7 +90,7 @@ alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
 
 # SSH ControlMaster helpers
 function sshcm-status () {
-  ssh -S "$1" -O check bla
+  ssh -S "$1" -O check bla # bogus arguments required, not used
 }
 function sshcm () {
   [[ -z "$1" ]] && echo -e "Error. Usage: ${FUNCNAME[0]} ${Underline}command${Reset} [argument]" && return 2
@@ -114,7 +114,7 @@ function sshcm () {
     disconnect | close | kill)
       if [ -n "$2" ]; then
         s=$(ls ~/.ssh/cm_*${2}* 2>/dev/null)
-        [ -z "$s" ] && return
+        [ -z "$s" ] && echo "Nothing to do" && return
         echo "Disconnecting host $2 (socket $s)."
         ssh -S "$s" -O exit bla
       fi;;
@@ -181,10 +181,12 @@ alias gdiff-igws='git diff -b' # Ignore whitespace changes
 alias gcomm-am='git commit -am' # commit, automatically adding modified files, with inline message
 
 ### KDE ###
-function kwin-restart() {
+function kwin-reset() {
   sed -i 's/lastScreen=[1-9]/lastScreen=0/g' ~/.config/plasma-org.kde.plasma.desktop-appletsrc
-  nohup plasmashell --replace >/dev/null 2>&1 &
-  nohup kwin --replace >/dev/null 2>&1 &
+  plasmashell --replace >/dev/null 2>&1 &
+  disown
+  kwin --replace >/dev/null 2>&1 &
+  disown
 }
 alias zyppurge='sudo zypper rm -u'
 alias zypdup='sudo zypper dup -y --auto-agree-with-licenses'
