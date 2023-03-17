@@ -1,0 +1,34 @@
+tmux a[ttach]                     # restore tmux session
+tmux a[ttach] -d                  # detach already attached session (great if you are moving devices with different screen resolutions)
+tmux ls                           # display session
+<prefix> d                        # detach from tmux
+<prefix> $                        # rename session
+<prefix> s                        # switch session
+<prefix> ,                        # rename window
+<prefix> :swap-window -s \d -t \d # swap windows
+<prefix> :join-pane -s \d -t \d   # swap windows
+
+# help screen (Q quit)
+<prefix> ?
+
+# scroll in window
+<prefix> PageUp/PageDown
+
+# reload configuration file
+<prefix> : source-file /path/to/file
+
+<prefix> c # create a window
+<prefix> n # go next window
+<prefix> x # destroy a window
+
+# switch between windows
+<prefix> [0-9]
+<prefix> Arrows
+
+<prefix> %       # split windows horizontally
+<prefix> "       # split windows vertically
+<prefix> <Space> # cycle layouts
+
+# start a shared session
+tmux -S /tmp/your_shared_session
+chmod 777 /tmp/your_shared_session

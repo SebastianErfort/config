@@ -16,6 +16,10 @@ echo ${!fname} # returns thomas
 # show/print function definition
 declare -f function_name
 
+# === STDIN, STDOUT and exit codes
+# collect exit codes of commands using trap, then unset it
+trap 'exs+=($?)' DEBUG; cmd1; cmd2; cmd3; trap - DEBUG
+
 # === CONFIG
 set -v # Print shell input lines as they are read.
 set -x # Print commands and their arguments as they are executed.
