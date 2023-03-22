@@ -8,48 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b0484cd721c11a7e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "rug/cit/Puppet.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8e2c3a298ed82aa7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/tech/software/Gitlab.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4a884929c67a2c26",
+            "id": "b8b908e31bc83ee1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "rug/journal/today.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "b00aea8e3fc2808f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/tech/software/Software.md",
                 "mode": "source",
                 "source": false
               }
@@ -78,9 +42,69 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "06ffab90e4c050f1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "rug/cit/LWP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "71654a5b88041982",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/software/Gitlab.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5ca7552ab80c6760",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "rug/cit/Puppet.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "db32261903dc4ac0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "rug/cit/unattended.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1b2c3b28a0d70dbd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/Markdown.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -109,7 +133,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "kerberos",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -126,11 +150,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 212.5
+    "width": 213.5
   },
   "right": {
     "id": "39ac82a9d8bfcbff",
@@ -157,7 +182,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "life/tech/software/Software.md"
+                "file": "rug/cit/unattended.md"
               }
             }
           }
@@ -174,7 +199,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "life/tech/software/Software.md",
+                "file": "rug/cit/unattended.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -197,7 +222,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "life/tech/software/Software.md",
+                "file": "rug/cit/unattended.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -220,38 +245,40 @@
       "templates:Insert template": false
     }
   },
-  "active": "b00aea8e3fc2808f",
+  "active": "db32261903dc4ac0",
   "lastOpenFiles": [
-    "rug/journal/today.md",
-    "life/tech/software/Software.md",
-    "rug/cit/Software.md",
-    "life/tech/software/Gitlab.md",
-    "life/science/rug.md",
-    "life/tech/web/web-dev.md",
+    "rug/cit/LWP.md",
+    "life/tech/Security.md",
     "rug/cit/Puppet.md",
-    "life/tech/web/CSS.md",
-    "life/tech/web/HTML.md",
-    "rug/staff/Busman_Simon.md",
-    "life/tech/linux/bash.md",
-    "rug/staff/VanDerBeek_Niels.md",
-    "rug/staff.md",
-    "rug/cit/CIT.md",
-    "rug/staff/Oerdek_Hasan.md",
-    "rug/staff/Henstra_Kaije.md",
-    "rug/staff/Meijer_Arjan.md",
-    "rug/staff/Babai_Arja.md",
-    "life/gear/inventory/items/bike_cube_nuroad.md",
-    "rug/staff",
+    "life/tech/software/Gitlab.md",
+    "life/tech/Markdown.md",
+    "life/tech/visualisation.md",
     "rug/presentations/2023_Gitlab/presentation.md",
-    "life/tech/dev/dev.md",
-    "life/tech/LDAP.md",
-    "life/gear/inventory/items/shoes_fizik_powerstrapx4gravel.md",
-    "life/gear/inventory/items/helmet_giro 1.md",
+    "rug/cit/ServiceDesk.md",
+    "rug/cit/CIT.md",
+    "life/education/courses/LIL_LDAP_Kerberos.md",
+    "rug/journal/today.md",
+    "rug/staff.md",
+    "life/journal/journal.md",
+    "life/journal/Untitled.md",
+    "life/orphans.md",
+    "life/Untitled.md",
+    "life/tech/Obsidian.md",
+    "life/templates/callout_idea.md",
+    "life/templates/callout_note.md",
+    "rug/snippets.md",
+    "rug/cit/Gitlab.md",
+    "life/tech/dev/git.md",
+    "rug/staff/Gernaat_Bert.md",
+    "`=.md",
+    "rug/staff/VanDerBeek_Niels.md",
+    "rug/cit/unattended.md",
+    "life/entertainment/music",
+    "life/entertainment/Untitled",
+    "rug/staff",
     "life/gear/inventory/items/shoes_fizik_powerstrapx4gravel.jpeg",
     "life/gear/inventory/items/helmet_giro_syntax.jpeg",
-    "life/gear/inventory/items/helmet_poc_omneairspin.md",
     "life/gear/inventory/items/helmet_poc_omneairspin.png",
-    "rug/cit/LWP.md",
     "rug/cit/LWP.canvas",
     "rug/CIT.canvas",
     "cit/staff",
@@ -270,10 +297,8 @@
     "life/gear/inventory/climbing/carabiners",
     "life/gear/inventory/climbing/Untitled",
     "life/gear/inventory/climbing",
-    "life/gear/inventory/Untitled",
     "life/gear/inventory/climbing.canvas",
     "life/gear/inventory/inventory.canvas",
-    "life/gear/inventory",
     "life/gear/inventory.canvas",
     "life/gear/gear.canvas",
     "life/gear/Untitled.canvas",

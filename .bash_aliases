@@ -84,6 +84,26 @@ alias jpl='jupyter-lab'
 alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
 # add author: --SphinxTransformer.author="$1"
 
+# Extract various different archive formats
+function extract () {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar)            tar xf $@      ;;
+            *.tar.gz|*.tgz)   tar xzf $@     ;;
+            *.tar.bz2|*.tbz2) tar xjf $@     ;;
+            *.bz2)            bunzip2 $@     ;;
+            *.zip)            unzip $@       ;;
+            *.gz)             gunzip $@      ;;
+            *.Z)              uncompress $@  ;;
+            *.rar)            rar x $@       ;;
+            *.7z)             7z x $@        ;;
+            *)                echo "Unknown archive type (extension)" ;;
+        esac
+    else
+        echo "No such file: '$1'"
+    fi
+}
+
 # TODO Shortcuts to various things bundled in one place, so I don't have to remember it all
 # function portal() {
 #   if [ $# -eq 0 ]; then

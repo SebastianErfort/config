@@ -7,7 +7,8 @@
     "highlight_md_links",
     "image_center",
     "hide_non-markdown",
-    "idea"
+    "idea",
+    "callouts"
   ],
   "cssTheme": "Primary",
   "monospaceFontFamily": "JetBrainsMono Nerd Font Mono",
