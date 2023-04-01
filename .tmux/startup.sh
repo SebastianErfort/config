@@ -1,1 +1,1 @@
-XAUTHORITY=$(tmux show-enviroment XAUTHORITY)
+$(tmux show-enviroment XAUTHORITY)
