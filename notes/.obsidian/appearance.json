@@ -4,7 +4,11 @@
   "enabledCssSnippets": [
     "enlarge_image_hover",
     "hide_from_file_explorer",
-    "highlight_md_links"
+    "highlight_md_links",
+    "image_center",
+    "hide_non-markdown",
+    "idea",
+    "callouts"
   ],
   "cssTheme": "Primary",
   "monospaceFontFamily": "JetBrainsMono Nerd Font Mono",

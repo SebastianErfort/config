@@ -8,139 +8,103 @@
         "type": "tabs",
         "children": [
           {
-            "id": "83e1fb66b13d0774",
+            "id": "b8b908e31bc83ee1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cit/journal/today.md",
+                "file": "rug/journal/today.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "608c81e655d069e6",
+            "id": "4ea96a7c8afd960e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cit/journal.md",
+                "file": "life/education/courses/LIL_LDAP_Kerberos.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "e0d2dc8a6106d1bc",
+            "id": "c8bfa30daedbe4c9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cit/notes/lwpwiki.md",
+                "file": "rug/presentations/2023_Gitlab/presentation.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "2dd03f6dfaceff89",
+            "id": "06ffab90e4c050f1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cit/notes/Gitlab.md",
+                "file": "rug/cit/LWP.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "b6eef5c4f960aa9a",
+            "id": "71654a5b88041982",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/dev/Network.md",
+                "file": "life/tech/software/Gitlab.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "45f92afb6159925f",
+            "id": "5ca7552ab80c6760",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/linux/bash.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "64ae620ee3ee136e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/tech/linux/linux.md",
+                "file": "rug/cit/Puppet.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "4b143b5770ffebb6",
+            "id": "db32261903dc4ac0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/Software.md",
+                "file": "rug/cit/unattended.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "d0fa161e763fb3ae",
+            "id": "1b2c3b28a0d70dbd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/Obsidian.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f210a9fe2a893c61",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cit/notes/LWP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "08527eae2d3bbac6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/education/courses/LIL_LearningSCCM.md",
+                "file": "life/tech/Markdown.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -169,7 +133,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "nmap",
+                "query": "kerberos",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -191,7 +155,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 212.5
+    "width": 213.5
   },
   "right": {
     "id": "39ac82a9d8bfcbff",
@@ -202,30 +166,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f30c1357f1d4cf75",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "cit/notes/Gitlab.md",
-                "collapseAll": true,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
             "id": "6edb3236601cd3ee",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true
+                "sortOrder": "alphabetical",
+                "useHierarchy": false
               }
             }
           },
@@ -235,24 +182,53 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "cit/notes/Gitlab.md"
+                "file": "rug/cit/unattended.md"
               }
             }
-          },
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "072b7c59fd32e974",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f30c1357f1d4cf75",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "rug/cit/unattended.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "c5d9c22c5749d354",
+        "type": "tabs",
+        "children": [
           {
             "id": "39f8c9a2de0ddbe2",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "cit/notes/Gitlab.md",
+                "file": "rug/cit/unattended.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -269,17 +245,63 @@
       "templates:Insert template": false
     }
   },
-  "active": "2dd03f6dfaceff89",
+  "active": "db32261903dc4ac0",
   "lastOpenFiles": [
-    "life/education/courses/LIL_LearningSCCM.md",
-    "life/tech/dev/Network.md",
-    "cit/notes/Gitlab.md",
-    "life/tech/linux/bash.md",
+    "rug/cit/LWP.md",
+    "life/tech/Security.md",
+    "rug/cit/Puppet.md",
+    "life/tech/software/Gitlab.md",
+    "life/tech/Markdown.md",
+    "life/tech/visualisation.md",
+    "rug/presentations/2023_Gitlab/presentation.md",
+    "rug/cit/ServiceDesk.md",
+    "rug/cit/CIT.md",
+    "life/education/courses/LIL_LDAP_Kerberos.md",
+    "rug/journal/today.md",
+    "rug/staff.md",
+    "life/journal/journal.md",
+    "life/journal/Untitled.md",
+    "life/orphans.md",
+    "life/Untitled.md",
     "life/tech/Obsidian.md",
-    "cit/journal/today.md",
-    "cit/notes/LWP.md",
-    "life/education/courses/LIL_go-essential-training.md",
-    "life/tech/dev/Go.md",
-    "life/tech/Software.md"
+    "life/templates/callout_idea.md",
+    "life/templates/callout_note.md",
+    "rug/snippets.md",
+    "rug/cit/Gitlab.md",
+    "life/tech/dev/git.md",
+    "rug/staff/Gernaat_Bert.md",
+    "`=.md",
+    "rug/staff/VanDerBeek_Niels.md",
+    "rug/cit/unattended.md",
+    "life/entertainment/music",
+    "life/entertainment/Untitled",
+    "rug/staff",
+    "life/gear/inventory/items/shoes_fizik_powerstrapx4gravel.jpeg",
+    "life/gear/inventory/items/helmet_giro_syntax.jpeg",
+    "life/gear/inventory/items/helmet_poc_omneairspin.png",
+    "rug/cit/LWP.canvas",
+    "rug/CIT.canvas",
+    "cit/staff",
+    "life/gear/inventory/items/sling_edelrid_techweb_12mm_60cm.jpg",
+    "life/gear/inventory/items/glasses_bgclimbing_belayglasses.jpg",
+    "life/tech/dev/4913",
+    "life/gear/inventory/items/carabiner_petzl_caritool.jpg",
+    "life/gear/inventory/items/carabiner_salewa_belay_twistlock.jpg",
+    "life/gear/inventory/items/lanyard_petzl_connect.jpg",
+    "life/gear/inventory/climbing_shoes.canvas",
+    "life/gear/inventory/Untitled.canvas",
+    "life/gear/inventory/items/helmet_petzl_boreo.jpeg",
+    "life/gear/inventory/items/harness_edelrid_jay.jpeg",
+    "life/gear/inventory/items",
+    "life/gear/inventory/carabiners",
+    "life/gear/inventory/climbing/carabiners",
+    "life/gear/inventory/climbing/Untitled",
+    "life/gear/inventory/climbing",
+    "life/gear/inventory/climbing.canvas",
+    "life/gear/inventory/inventory.canvas",
+    "life/gear/inventory.canvas",
+    "life/gear/gear.canvas",
+    "life/gear/Untitled.canvas",
+    "life/Untitled.canvas"
   ]
 }

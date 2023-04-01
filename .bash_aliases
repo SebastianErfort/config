@@ -3,7 +3,9 @@ if [ -f ~/.bashtheme ]; then
         . ~/.bashtheme
 fi
 
+
 ### BASH COMMANDS ###
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -26,6 +28,7 @@ function lllt() {
   command ls --color=always -lhtr "$@" | tail
 }
 
+# cd shortcuts
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
@@ -34,6 +37,7 @@ alias .3='cd ../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
 
+# convenient behaviour of some commands
 alias mkdir='mkdir -pv' # let mkdir create parent folders if needed and report
 # Human-readable outputs
 alias df='df -H'
@@ -41,30 +45,64 @@ alias du='du -ch'
 
 alias lsblkl='lsblk -pb -o NAME,MAJ:MIN,TYPE,SIZE,FSSIZE,FSTYPE,MOUNTPOINTS,HOTPLUG,LABEL,PARTTYPENAME,PARTFLAGS'
 
-function os_version() {
-  echo $(sed -n '/\<NAME\>/p' /etc/os-release | awk -F'=' '{print $2}' | sed 's/"//g') $(sed -n '/\<VERSION\>/p' /etc/os-release | awk -F'=' '{print $2}' | sed 's/"//g')
-}
-
 
 ### UTILITY ###
 
 alias today='date +"%Y%m%d"' # Print yyyymmdd human-readable
 alias now='date +"%H:%M"' # Print time hh:mm:ss human-readable
 alias nows='date +"%H:%M:%S"' # Print time hh:mm:ss human-readable
-# Add an "alert" alias for long running commands. Use like so: sleep 10; alert
+# Add an "alert" alias for long running commands. Show notification pop-up and play sound when done.
+# Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" \
   && cvlc --no-video /usr/share/sounds/freedesktop/stereo/complete.oga >/dev/null 2>&1'
 
-alias gvimadd='gvim --servername GVIM --remote' # open file in existing instance
+# recursively find last edited files and print human-readable timestamp
+alias find-lastedited="find . -type f -printf '%TY-%Tm-%Td %TH:%TM %p\n'| sort -h"
 
+# print OS version
+function os_version() {
+  echo $(sed -n '/\<NAME\>/p' /etc/os-release | awk -F'=' '{print $2}' | \
+      sed 's/"//g') $(sed -n '/\<VERSION\>/p' /etc/os-release | \
+      awk -F'=' '{print $2}' | sed 's/"//g')
+}
+
+# pipe output of command to clipboard. use like mycmd | pipe2clip
 alias pipe2clip='xclip -r -selection clipboard'
+# create qr-code from clipboard content
 alias clip2qr='xclip -o | qrencode -o -'
+# create qr-code from command output. use like mycmd | pipe2qr
 alias pipe2qr='qrencode -o'
+# create qr-code from command output and show on screen. use like mycmd | qr2screen
 alias qr2screen='qrencode -o - | feh --force-aliasing -ZF -'
+# show command output as image on screen. use like mycmd | img2screen
 alias img2screen='feh --force-aliasing -ZF -'
+
+# open file in existing instance
+alias gvimadd='gvim --servername GVIM --remote'
+
 alias jpl='jupyter-lab'
 alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
 # add author: --SphinxTransformer.author="$1"
+
+# Extract various different archive formats
+function extract () {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar)            tar xf $@      ;;
+            *.tar.gz|*.tgz)   tar xzf $@     ;;
+            *.tar.bz2|*.tbz2) tar xjf $@     ;;
+            *.bz2)            bunzip2 $@     ;;
+            *.zip)            unzip $@       ;;
+            *.gz)             gunzip $@      ;;
+            *.Z)              uncompress $@  ;;
+            *.rar)            rar x $@       ;;
+            *.7z)             7z x $@        ;;
+            *)                echo "Unknown archive type (extension)" ;;
+        esac
+    else
+        echo "No such file: '$1'"
+    fi
+}
 
 # TODO Shortcuts to various things bundled in one place, so I don't have to remember it all
 # function portal() {
@@ -90,7 +128,7 @@ alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
 
 # SSH ControlMaster helpers
 function sshcm-status () {
-  ssh -S "$1" -O check bla
+  ssh -S "$1" -O check bla # bogus arguments required, not used
 }
 function sshcm () {
   [[ -z "$1" ]] && echo -e "Error. Usage: ${FUNCNAME[0]} ${Underline}command${Reset} [argument]" && return 2
@@ -101,7 +139,7 @@ function sshcm () {
       done;;
     status)
       control_masters=$(ls ~/.ssh/cm_* 2>/dev/null)
-      if [ -n $control_masters ]; then
+      if [[ -n $control_masters ]]; then
         for s in $control_masters; do
           echo "$s"
           sshcm-status "$s"
@@ -112,9 +150,9 @@ function sshcm () {
     connect | open)
       [[ ! -z "$2" ]] && ssh "$2" ;;
     disconnect | close | kill)
-      if [ -n "$2" ]; then
+      if [[ -n "$2" ]]; then
         s=$(ls ~/.ssh/cm_*${2}* 2>/dev/null)
-        [ -z "$s" ] && return
+        [ -z "$s" ] && echo "Nothing to do" && return
         echo "Disconnecting host $2 (socket $s)."
         ssh -S "$s" -O exit bla
       fi;;
@@ -124,11 +162,11 @@ function sshcm () {
   esac
 }
 
-# Get data usage by file type
+# Get disk usage by file type
 function filesizebytype() {
   find . -type f -iname "*.$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
 }
-# Get data usage by file name
+# Get disk usage by file name
 function filesizebyname() {
   find . -type f -iname "$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
 }
@@ -181,10 +219,12 @@ alias gdiff-igws='git diff -b' # Ignore whitespace changes
 alias gcomm-am='git commit -am' # commit, automatically adding modified files, with inline message
 
 ### KDE ###
-function kwin-restart() {
+function kwin-reset() {
   sed -i 's/lastScreen=[1-9]/lastScreen=0/g' ~/.config/plasma-org.kde.plasma.desktop-appletsrc
-  nohup plasmashell --replace >/dev/null 2>&1 &
-  nohup kwin --replace >/dev/null 2>&1 &
+  plasmashell --replace >/dev/null 2>&1 &
+  disown
+  kwin --replace >/dev/null 2>&1 &
+  disown
 }
 alias zyppurge='sudo zypper rm -u'
 alias zypdup='sudo zypper dup -y --auto-agree-with-licenses'

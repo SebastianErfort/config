@@ -60,6 +60,9 @@ find . -type f -samefile MY_FILE_HERE 2>/dev/null
 # To find all files in the current directory and modify their permissions:
 find . -type f -exec chmod 644 {} \;
 
+# To recursively find last edited files and print human-readable timestamp:
+find . -type f -printf '%TY-%Tm-%Td %TH:%TM %p\n'| sort -h
+
 # To find all files changed in last 2 days:
 find . -type f -ctime -48h
 find . -type f -ctime -2
