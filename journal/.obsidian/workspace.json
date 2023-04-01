@@ -8,55 +8,55 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b8b908e31bc83ee1",
+            "id": "dbcbbb7bd8464da2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rug/journal/today.md",
+                "file": "rug/journal/journal.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "4ea96a7c8afd960e",
+            "id": "619dc8c91912d504",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/education/courses/LIL_LDAP_Kerberos.md",
+                "file": "life/tech/Obsidian.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "c8bfa30daedbe4c9",
+            "id": "3d6b71814b65e527",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rug/presentations/2023_Gitlab/presentation.md",
+                "file": "life/tech/linux/security.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "06ffab90e4c050f1",
+            "id": "2c46253ca575efe3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rug/cit/LWP.md",
-                "mode": "source",
+                "file": "life/tech/dev/git.md",
+                "mode": "preview",
                 "source": false
               }
             }
           },
           {
-            "id": "71654a5b88041982",
+            "id": "f29c75a869e4d629",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -66,45 +66,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "5ca7552ab80c6760",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "rug/cit/Puppet.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "db32261903dc4ac0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "rug/cit/unattended.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "1b2c3b28a0d70dbd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "life/tech/Markdown.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -133,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "kerberos",
+                "query": "pam",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -182,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "rug/cit/unattended.md"
+                "file": "life/tech/linux/security.md"
               }
             }
           }
@@ -199,7 +163,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "rug/cit/unattended.md",
+                "file": "life/tech/linux/security.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -222,7 +186,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "rug/cit/unattended.md",
+                "file": "life/tech/linux/security.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -245,34 +209,39 @@
       "templates:Insert template": false
     }
   },
-  "active": "db32261903dc4ac0",
+  "active": "3d6b71814b65e527",
   "lastOpenFiles": [
-    "rug/cit/LWP.md",
-    "life/tech/Security.md",
-    "rug/cit/Puppet.md",
-    "life/tech/software/Gitlab.md",
-    "life/tech/Markdown.md",
-    "life/tech/visualisation.md",
-    "rug/presentations/2023_Gitlab/presentation.md",
-    "rug/cit/ServiceDesk.md",
-    "rug/cit/CIT.md",
-    "life/education/courses/LIL_LDAP_Kerberos.md",
-    "rug/journal/today.md",
-    "rug/staff.md",
-    "life/journal/journal.md",
-    "life/journal/Untitled.md",
-    "life/orphans.md",
-    "life/Untitled.md",
+    "life/gear/inventory/sports.canvas",
+    "life/gear/inventory/items/bike_peugeot.jpeg",
+    "life/gear/inventory/items/bike_cube_nuroad.webp",
     "life/tech/Obsidian.md",
-    "life/templates/callout_idea.md",
-    "life/templates/callout_note.md",
-    "rug/snippets.md",
-    "rug/cit/Gitlab.md",
     "life/tech/dev/git.md",
-    "rug/staff/Gernaat_Bert.md",
-    "`=.md",
-    "rug/staff/VanDerBeek_Niels.md",
-    "rug/cit/unattended.md",
+    "rug/journal/journal.md",
+    "rug/Obsidian.md",
+    "[.md",
+    "life/tech/dev/design.md",
+    "life/tech/dev/dev.md",
+    "life/tech/software/Gitlab.md",
+    "rug/cit/Gitlab.md",
+    "life/tech/dev/Podman.md",
+    "life/tech/dev/VirtualBox.md",
+    "life/tech/dev/VMWare.md",
+    "life/tech/dev/Docker.md",
+    "life/tech/dev/Kubernetes.md",
+    "rug/machines/habrok.md",
+    "rug/journal/2023-03-30.md",
+    "rug/machines/peregrine.md",
+    "life/tech/dev/Terraform.md",
+    "life/tech/dev/Ansible.md",
+    "life/gear/inventory/inventory.md",
+    "life/gear/inventory/items/carabiner_petzl_william_ballock.md",
+    "life/gear/inventory/items/bike_cube_nuroad.md",
+    "life/gear/inventory/items/shoes_lasportiva_katana_redblue.md",
+    "life/tech/Markdown.md",
+    "life/tech/software/Software.md",
+    "rug/journal/20230329_fim_installerfinished.png",
+    "dev",
+    "rug/cit/journal",
     "life/entertainment/music",
     "life/entertainment/Untitled",
     "rug/staff",
@@ -287,16 +256,11 @@
     "life/tech/dev/4913",
     "life/gear/inventory/items/carabiner_petzl_caritool.jpg",
     "life/gear/inventory/items/carabiner_salewa_belay_twistlock.jpg",
-    "life/gear/inventory/items/lanyard_petzl_connect.jpg",
     "life/gear/inventory/climbing_shoes.canvas",
     "life/gear/inventory/Untitled.canvas",
-    "life/gear/inventory/items/helmet_petzl_boreo.jpeg",
-    "life/gear/inventory/items/harness_edelrid_jay.jpeg",
     "life/gear/inventory/items",
     "life/gear/inventory/carabiners",
     "life/gear/inventory/climbing/carabiners",
-    "life/gear/inventory/climbing/Untitled",
-    "life/gear/inventory/climbing",
     "life/gear/inventory/climbing.canvas",
     "life/gear/inventory/inventory.canvas",
     "life/gear/inventory.canvas",

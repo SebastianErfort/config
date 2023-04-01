@@ -66,7 +66,7 @@ autocmd FileType python setlocal foldmethod=indent tw=100
 " Fortran: so far poor support of syntax fold. Using 3 bc. of 'historic reasons'
 autocmd FileType fortran setlocal shiftwidth=3 softtabstop=-1 expandtab foldmethod=indent
 " YAML: so far poor support of syntax fold
-autocmd FileType yaml setlocal foldmethod=indent shiftwidth=2 softtabstop=-1 expandtab
+autocmd FileType yaml setlocal foldmethod=indent shiftwidth=2 softtabstop=-1 expandtab foldmethod=indent
 " Markdown: so far poor support of syntax fold
 autocmd FileType markdown setlocal foldmethod=indent
 
@@ -134,6 +134,9 @@ Plug 'rodjek/vim-puppet'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " QML: vim-qml
 Plug 'peterhoeg/vim-qml'
+" Pandoc
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " nerdcommenter: Commenting functionality
 Plug 'preservim/nerdcommenter'
