@@ -3,11 +3,15 @@
 
 import argparse
 
-argparser = argparse.ArgumentParser(description='Select a disk and perform partitioning for the LWP autoinstaller (unattended installer)')
-argparser.add_argument('-v', dest='verbose', default=False, help='Verbose mode, extended output.', action='store_true')
-argparser.add_argument('-t', dest='test'   , default=False, help='Test script (locally), no actual changes.', action='store_true')
-args = argparser.parse_args()
-VERBOSE = args.verbose
-TEST    = args.test
+# Generic argument parser. Can be used as a blueprint for more specific parsers using the `parents`
+# option, specific_parser = argparse.ArgumentParser(parents=[generic_parser])
+generic_parser = argparse.ArgumentParser(description='This is a program')
+generic_parser.add_argument('-v', '--verbose', dest='verbose', default=False, help='Verbose mode, extended output', action='store_true')
+generic_parser.add_argument('-t', '--test', dest='test'   , default=False, help='Test specified component, no actual changes', action='store_true')
+generic_parser.add_argument('-n', '--dry', dest='dry'   , default=False, help='Dry run simulating program
+                       behavior, no actual changes', action='store_true')
+args = generic_parser.parse_args()
 
-print(VERBOSE,TEST)
+if __name__=='__main__':
+    generic_parser.print_help()
+    print('Arguments:\n',args)
