@@ -8,7 +8,8 @@
     "image_center",
     "hide_non-markdown",
     "idea",
-    "callouts"
+    "callouts",
+    "blockquote"
   ],
   "cssTheme": "Primary",
   "monospaceFontFamily": "JetBrainsMono Nerd Font Mono",
