@@ -20,31 +20,67 @@
             }
           },
           {
-            "id": "f733d1e3cf57271b",
+            "id": "07b8d7d135d98d19",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rug/staff/staff.md",
+                "file": "life/tech/linux/linux.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "9015dd35ece14534",
+            "id": "6228c1167e0a3cf5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rug/staff/Babai_Arja.md",
+                "file": "life/tech/linux/linux.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "d3062fb4f863821a",
+            "id": "f8d13f8e54ffd712",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/linux/Autoinstall.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "80a259c59b244b9a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/Obsidian/Obsidian.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "36a7030ff89156dd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "life/tech/dev/multipass.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "aae0f74a8c24ba5e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -56,43 +92,43 @@
             }
           },
           {
-            "id": "4cb9b8a09edf0314",
+            "id": "fced3c9370ee2150",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "life/tech/Obsidian.md",
+                "file": "life/tech/software/labplot.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "ce233c964644baa9",
+            "id": "f241be16abb19ea3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rug/machines/178.160.md",
-                "mode": "preview",
+                "file": "life/tech/software/stata.md",
+                "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "831c4006b1b78eb0",
+            "id": "b47d5a658681e7f8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rug/machines/45.38.md",
+                "file": "life/tech/Security.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -121,7 +157,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "zulip",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -151,6 +187,7 @@
       {
         "id": "e56654ed455d161e",
         "type": "tabs",
+        "dimension": 48.8235294117647,
         "children": [
           {
             "id": "6edb3236601cd3ee",
@@ -169,7 +206,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "rug/machines/45.38.md"
+                "file": "life/tech/software/stata.md"
               }
             }
           }
@@ -179,6 +216,7 @@
       {
         "id": "072b7c59fd32e974",
         "type": "tabs",
+        "dimension": 24.31372549019607,
         "children": [
           {
             "id": "f30c1357f1d4cf75",
@@ -186,7 +224,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "rug/machines/45.38.md",
+                "file": "life/tech/software/stata.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -202,6 +240,7 @@
       {
         "id": "c5d9c22c5749d354",
         "type": "tabs",
+        "dimension": 26.86274509803922,
         "children": [
           {
             "id": "39f8c9a2de0ddbe2",
@@ -209,7 +248,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "rug/machines/45.38.md",
+                "file": "life/tech/software/stata.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -232,57 +271,57 @@
       "templates:Insert template": false
     }
   },
-  "active": "831c4006b1b78eb0",
+  "active": "f241be16abb19ea3",
   "lastOpenFiles": [
-    "rug/lwp/unattended/unattended_errorscreen_example.png",
-    "rug/lwp/unattended",
-    "rug/lwp",
-    "rug/machines/178.160.md",
-    "rug/machines/45.38.md",
-    "life/tech/Obsidian.md",
-    "rug/staff/Babai_Arja.md",
-    "rug/journal/journal.md",
-    "rug/staff/staff.md",
-    "rug/machines/colossus.md",
-    "rug/machines/haytabo.md",
-    "rug/staff/cranenburg.md",
-    "rug/staff/gjvannoord.md",
-    "rug/staff/kleiweg.md",
-    "rug/machines/Untitled.md",
-    "rug/journal/2022-09-13.md",
-    "rug/journal/today.md",
-    "rug/journal/2022-09-08.md",
-    "rug/journal/2022-07-11.md",
+    "life/tech/software/labplot.md",
+    "life/tech/software/stata.md",
+    "life/tech/software/Untitled",
     "rug/cit/LWP.md",
-    "life/tech/linux/audio.md",
-    "life/science/OSCG.md",
-    "life/journal/today.md",
-    "life/science/openscience.md",
-    "rug/cit/CIT.md",
-    "life/tech/communication/zulip.md",
-    "life/tech/software/Software.md",
-    "life/tech/communication/signal.md",
-    "life/tech/communication",
-    "rug/cit/4913",
-    "life/gear/inventory/sports.canvas",
-    "life/gear/inventory/items/bike_peugeot.jpeg",
-    "life/gear/inventory/items/bike_cube_nuroad.webp",
-    "rug/journal/20230329_fim_installerfinished.png",
-    "dev",
-    "rug/cit/journal",
-    "life/entertainment/music",
+    "life/tech/Security.md",
+    "EESSI.md",
+    "life/tech/dev/multipass.md",
+    "rug/journal/journal.md",
+    "rug/journal/2023-03-30.md",
+    "life/tech/Obsidian/Obsidian.md",
+    "life/tech/linux/Autoinstall.md",
+    "life/tech/linux/linux.md",
+    "life/tech/UbuntuServerCLI_cheatsheet.pdf",
+    "rug/staff/staff.md",
+    "rug/staff/VanDerBeek_Niels.md",
+    "rug/staff/PDeVries.md",
+    "rug/staff/Oerdek_Hasan.md",
+    "rug/staff/Meijer_Arjan.md",
+    "rug/staff/kleiweg.md",
+    "rug/staff/Henstra_Kaije.md",
+    "rug/staff/gjvannoord.md",
+    "rug/staff/Gernaat_Bert.md",
+    "rug/staff/deHaan_Imro.md",
+    "rug/staff/cranenburg.md",
+    "rug/staff/Busman_Simon.md",
+    "rug/staff/Babai_Arja.md",
+    "life/tech/software/Gitlab.md",
+    "rug/cit/teams/IAM.md",
+    "rug/cit/teams/Untitled",
+    "rug/cit/teams",
+    "rug/lwp/lwp_software_installation.txt",
+    "life/entertainment/comics",
+    "life/entertainment/comcis",
     "life/entertainment/Untitled",
-    "rug/staff",
-    "life/gear/inventory/items/shoes_fizik_powerstrapx4gravel.jpeg",
-    "life/gear/inventory/items/helmet_giro_syntax.jpeg",
-    "life/gear/inventory/items/helmet_poc_omneairspin.png",
+    "life/entertainment/film/actors",
+    "life/entertainment/film/Untitled",
+    "src/icons/GitLab/work.svg",
+    "src/icons/GitLab/weight.svg",
+    "src/icons/GitLab/warning.svg",
+    "src/icons/GitLab/warning-solid.svg",
+    "src/icons/GitLab/volume-up.svg",
+    "src/icons/GitLab/users.svg",
+    "src/icons/GitLab/user.svg",
+    "src/icons/GitLab/upload.svg",
+    "src/icons/GitLab/upgrade.svg",
+    "src/icons/GitLab/unstage-all.svg",
+    "life/gear/inventory/sports.canvas",
     "rug/cit/LWP.canvas",
     "rug/CIT.canvas",
-    "cit/staff",
-    "life/gear/inventory/items/sling_edelrid_techweb_12mm_60cm.jpg",
-    "life/gear/inventory/items/glasses_bgclimbing_belayglasses.jpg",
-    "life/gear/inventory/items/carabiner_petzl_caritool.jpg",
-    "life/gear/inventory/items/carabiner_salewa_belay_twistlock.jpg",
     "life/gear/inventory/climbing_shoes.canvas",
     "life/gear/inventory/Untitled.canvas",
     "life/gear/inventory/climbing.canvas",

@@ -15,7 +15,7 @@
   "showFrontmatter": true,
   "newLinkFormat": "relative",
   "useMarkdownLinks": false,
-  "defaultViewMode": "preview",
+  "defaultViewMode": "source",
   "pdfExportSettings": {
     "pageSize": "A4",
     "landscape": false,

@@ -4,6 +4,7 @@ export BROWSER=firefox
 # export PATH=$PATH:/sbin/
 PATH="$PATH:$HOME/.local/bin"
 PATH="$PATH:$HOME/.gem/ruby/3.1.0/bin"
+PATH="$PATH:$HOME/go/bin"
 export PATH
 [[ $TERM =~ screen ]] && export TERM='screen-256color' # force 256 colour
 

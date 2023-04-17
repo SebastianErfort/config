@@ -212,11 +212,16 @@ function gwenview() {
 
 ### GIT ###
 alias gstatus='git status'
-alias glog='GIT_PAGER=cat git log' # git log cat'ed
 alias gtree='git ls-tree --full-tree -r --name-only HEAD'
 alias gdiff='git diff'
-alias gdiff-igws='git diff -b' # Ignore whitespace changes
-alias gcomm-am='git commit -am' # commit, automatically adding modified files, with inline message
+# Ignore whitespace changes
+alias gdiff-igws='git diff -b'
+# commit, automatically adding modified files, with inline message
+alias gcomm-am='git commit -am'
+# git log cat'ed
+alias glog='GIT_PAGER=cat git log'
+# short ID, author name and 1st line
+alias glog-short='git log --pretty="tformat:%C(auto) %h %Cgreen%aN%Creset %s"'
 
 ### KDE ###
 function kwin-reset() {
