@@ -6,7 +6,9 @@ vars:
 
 tasks:
   default: # this is run if no task is specified
-    deps: [revealjs]
+    cmds:
+      - task: revealjs_build
+      - task: revealjs_reload
 
   beamer:
     desc: Build Beamer PDF slides with Pandoc
@@ -16,31 +18,31 @@ tasks:
       - pdflatex --interaction=nonstodmode slides.tex
     silent: true
 
-  revealjs:
+  revealjs_build:
     desc: Build revealjs HTML slides with Pandoc
     cmds:
       - |
-        pandoc --from=markdown -t revealjs --slide-level 2 -s -o slides.html presentation_revealjs.md
+        pandoc --from=markdown -t revealjs --slide-level 2 -s -o slides.html presentation.md \
+        --verbose \
+        -F mermaid-filter \
+        -L revealjs-codeblock.lua \
+        --css rug.css
+        [[ -f mermaid-filter.err ]] && rm mermaid-filter.err
     sources:
-      - presentation_revealjs.md
-      - Taskfile.yaml
+      - '*.md'
+      - '*.css'
+      - Taskfile.yml
     generates:
       - slides.html
     method: timestamp # instead of default checksum
     silent: true
 
-  revealjs_features:
-    desc: Build revealjs features showcase slides
+  revealjs_reload:
+    desc: Reload browser windows with revealjs presentation
     cmds:
-      - |
-        pandoc --from=markdown -t revealjs --slide-level 2 -s -o revealjs_features.html revealjs_features.md
-    sources:
-      - revealjs_features.md
-      - Taskfile.yaml
-    generates:
-      - slides.html
-    method: timestamp # instead of default checksum
-    silent: true
+      - ./reload_browser.sh "Gitlab - Issues, Boards, Kanban"
+    silent:
+      true
 
   gotask:
     desc: Set up Task (Taskfile/Go-Task, make alternative)
