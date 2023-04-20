@@ -19,3 +19,6 @@
 [submodule ".tmux/plugins/tmux-yank"]
 	path = .tmux/plugins/tmux-yank
 	url = https://git::@github.com/tmux-plugins/tmux-yank
+[submodule ".icons/gitlab-svgs"]
+	path = .icons/gitlab-svgs
+	url = https://gitlab.com/gitlab-org/gitlab-svgs.git
