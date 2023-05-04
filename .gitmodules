@@ -26,7 +26,7 @@
 	path = rsrc/revealjs/revealjs_markdown_template
 	url = git@github.com:SebastianErfort/revealjs_markdown_template.git
 [submodule "rsrc/revealjs/revealjs_template_markdown_RUG"]
-	path = rsrc/revealjs/revealjs_template_markdown_RUG
+	path = rsrc/revealjs/revealjs_markdown_template_RUG
 	url = git@github.com:SebastianErfort/revealjs_template_markdown_RUG.git
 [submodule ".config/cheat/cheatsheets/community"]
 	path = .config/cheat/cheatsheets/community
