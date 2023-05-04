@@ -2,6 +2,9 @@
 tags: [ vim ]
 ---
 
+# Command line
+vim file +ln    open file at specific line number
+
 # File management
 :e              reload file
 :q              quit
@@ -73,6 +76,7 @@ gv              select previous selection again
 # Search
 /\%>80v.\+       find lines longer than n characters
 ctrl-p           super search
+/[^\x00-\x7F]    find non-ASCII characters
 
 # To sort a visual range on column 1 as a number:
 :'<,'>!sort -gk 1 -t ,
