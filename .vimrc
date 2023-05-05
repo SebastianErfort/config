@@ -128,6 +128,9 @@ Plug 'vim-latex/vim-latex'
 " Plug 'vim-scripts/gnuplot-syntax-highlighting'
 if !has('nvim')
     Plug 'plasticboy/vim-markdown' " Causes problems (at least in nvim)
+else
+    let g:vim_markdown_frontmatter = 1
+    Plug 'ixru/nvim-markdown'
 endif
 Plug 'rodjek/vim-puppet'
 " Go: vim-go
@@ -169,8 +172,6 @@ Plug 'preservim/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 " VIM Nerdtree Syntax Highlighting: does what the name implies. TODO It's slow!
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" VIM DevIcons: Icons/glyphs for filetypes, folders etc.
-Plug 'ryanoasis/vim-devicons'
 " Nerd Fonts: project patching developer targeted fonts with a high number of glyphs (icons)
 " Plug 'ryanoasis/nerd-fonts'
 
@@ -192,7 +193,13 @@ Plug 'sainnhe/gruvbox-material'
 " Plug 'sainnhe/everforest'
 Plug 'sainnhe/sonokai'
 
+" VIM DevIcons: Icons/glyphs for filetypes, folders etc.
+Plug 'ryanoasis/vim-devicons'
+
 if has('nvim')
+    " nvim-web-devicons: lua fork of vim-devicons
+    Plug 'nvim-tree/nvim-web-devicons'
+
     " nvim-only settings
     " LSP config: collection of common configurations for Neovim's built-in language server client
     Plug 'neovim/nvim-lspconfig'
