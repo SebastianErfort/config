@@ -7,6 +7,16 @@
 ---
 ___
 
+# formatting
+## Italic
+*em* _em_
+## Bold
+**strong** __strong__
+## Strikethrough/cancel
+~~old~~ new
+## Highlighting
+==Important text==
+
 # lists
 Sub-bullets can be done with 2+ spaces or 1 tab
 ## unordered: use *, +, or -
@@ -54,7 +64,7 @@ regular text
 
         code code code
 ## key bindings
-<kbd>⌘F</kbd>
+<kbd>ctrl+f</kbd>
 
 # links
 The "Title" is optional
@@ -67,14 +77,6 @@ Assuming you have a heading called `# My First Heading` then link is the case-in
 ![Alt Text](/path/to/image.png)
 ![Depending on implementation specifying the size is possible|100](/path/to/image.png)
 <img src="/path/to/image.png" width="30" alt="Or use HTML">
-
-# formatting
-## Italic
-*em* _em_
-## Bold
-**strong** __strong__
-## Strikethrough/cancel
-~~old~~ new
 
 # Tables
 ## Table Alignment
