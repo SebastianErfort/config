@@ -15,10 +15,11 @@
     "*.jpg"
   ],
   "showFrontmatter": true,
-  "newLinkFormat": "shortest",
+  "newLinkFormat": "relative",
   "useMarkdownLinks": false,
   "defaultViewMode": "source",
   "pdfExportSettings": {
+    "includeName": true,
     "pageSize": "A4",
     "landscape": false,
     "margin": "0",

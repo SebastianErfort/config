@@ -137,7 +137,11 @@ Plug 'peterhoeg/vim-qml'
 " Pandoc
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+" Ruby
+Plug 'vim-ruby/vim-ruby'
 
+" Editorconfig: use editorconfig.org files
+Plug 'editorconfig/editorconfig-vim'
 " nerdcommenter: Commenting functionality
 Plug 'preservim/nerdcommenter'
 " delimitMate: auto-completion of paranthesis, etc.

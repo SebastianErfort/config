@@ -173,9 +173,17 @@ function filesizebyname() {
 
 # Generate password within pass command, with characters defined by $PASSWORD_STORE_CHARACTER_SET
 # This set of special characters should be a bit safer with services that don't allow everything.
-function pass-gen () {
-  [ $# -ne 2 ] && echo "Error. Usage: ${FUNCNAME[0]} name length" && return 2
+. /usr/share/bash-completion/completions/pass
+complete -o default -F _pass_complete_entries passg
+function passg () {
+  [[ $# -ne 2 ]] && echo "Error. Usage: ${FUNCNAME[0]} name length" && return 2
   PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate "$1" "$2"
+}
+complete -o default -F _pass_complete_entries passc
+function passc () {
+  local PASS_LINE="1" PASS_ENTRY
+  [[ $1 =~ '-c' ]] && PASS_LINE=${1#-c} && PASS_ENTRY="$2" || PASS_ENTRY="$1"
+  pass $PASS_ENTRY | awk "NR == ${PASS_LINE} {print}" | sed 's/^[ ]*[a-z]\+:[ ]*//' | xclip -r -selection clipboard
 }
 
 # System commands

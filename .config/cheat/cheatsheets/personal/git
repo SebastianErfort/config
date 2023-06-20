@@ -11,7 +11,7 @@ git config --global commit.gpgsign true # set signing of commits globally
 git config user.signingkey [KEYID] # GPG key used for signing commits
 
 
-# STAGING and
+# STAGING and INDEX
 # To stage all changes for commit:
 git add --all
 git blame <file> # see who commited which line in a file
@@ -39,6 +39,7 @@ git filter-branch --env-filter \
          export GIT_COMMITTER_DATE="Sat May 19 01:01:01 2007 -0700"
      fi'
 git commit -a -S -m 'Signed commit' #  sign commit
+git diff --name-status --diff-filter=U # show unmerged files only in case of conflicts
 
 ## EDIT
 git commit --amend # edit commit - WARNING: don't touch pushed commits!
@@ -136,5 +137,9 @@ git show :/cool
 
 
 # SUBMODULES
-# To update all submodules:
-git submodule update --init --recursive
+# To update all submodules for the first time:
+git submodule update --init --recursive --remote
+# To update already initialised submodules
+git submodule update --recursive --remote
+# *or*
+git pull --recurse-submodules
