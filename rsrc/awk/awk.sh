@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
+# tags: awk, bash
+
 # print last column of file
 awk '{print $(NF)}' file
+
+# Filter out empty lines
+awk '!/^$/{print $0}' myfile
+
+# Print specific line
+awk 'NR == line_number {print}'
+
+# Substitute a string/pattern by another
+awk 'gsub(/pat/,"repl")'
 
 # Sum column in file where another column matches a regular expression
 [[ $# -ne "4" ]] && echo "Error. Usage: $0 col_to_match regex col_to_sum file" && exit 2
@@ -14,12 +25,3 @@ info=$(sudo blkid "/dev/$dev" | awk '{
         split($i,arr,/=/); print arr[2]}
       }
  awk '!/^$/{print $0}' myfile }' | tr -d '"')
-
-# Filter out empty lines
-awk '!/^$/{print $0}' myfile
-
-# Print specific line
-awk 'NR == line_number {print}'
-
-# Substitute a string/pattern by another
-awk 'gsub(/pat/,"repl")'
