@@ -9,10 +9,9 @@ BEGIN {
 # Skip front matter and code blocks
 {
     if ( !fm && ( cb % 2 == 0 ) ) {
-        l=$0
-        sub(/^\s*/,"",l)
-        indc=length($0)-length(l) # indentation
-        indd=indc - indp
+        l=$0; sub(/^\s*/,"",l) # line without indentation
+        indc=length($0)-length(l) # current indentation
+        indd=indc - indp # indentation difference
         if ( indd > 0 ) {
             if ( indd != indent ) {
                 print FILENAME
