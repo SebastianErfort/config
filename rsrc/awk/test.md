@@ -29,10 +29,12 @@ We're using Markdown extension `mdx_truly_sane_lists` to use an indentation of 2
 
 - this
   - should not be touched
+  - and this
+    - this too
+    - just like this
 - but
     - this needs to be fixed #fix
     - as well as this #fix
-  - this is incorrect syntax, let's see what happens
-- finally
-  - some mixing
-     - of problems #fix
+  - this is incorrect syntax, let's see what happens #fix
+ - this too, indentation is wrong as well #fix
+
