@@ -1,3 +1,7 @@
+# TODO
+# - code blocks: don't touch content
+# - tabs
+# - inconsistently less indented (e.g. 1 space)
 BEGIN {
     if ( !indent ) { indent=2 }
     indp=0
@@ -12,8 +16,10 @@ BEGIN {
         indd=indc - indp # indentation difference
         if ( indd > 0 ) {
             if ( indd != indent ) {
-                $0 = sprintf("%" indp+indent+length(l) "s", l)
-            } else { indp=indc }
+                indc=indp+indent
+                $0 = sprintf("%" indc+length(l) "s", l)
+            }
+            indp=indc
         } else { indp=indc }
     }
     { print }
