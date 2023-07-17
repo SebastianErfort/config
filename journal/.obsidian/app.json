@@ -1,31 +1,7 @@
 {
-  "legacyEditor": false,
-  "livePreview": true,
-  "foldHeading": true,
-  "foldIndent": true,
-  "showLineNumber": true,
   "vimMode": true,
-  "alwaysUpdateLinks": true,
-  "promptDelete": false,
   "useTab": false,
-  "tabSize": 2,
-  "userIgnoreFilters": [
-    "\"/*.jpeg/\"",
-    "*.png",
-    "*.jpg"
-  ],
   "showFrontmatter": true,
-  "newLinkFormat": "relative",
-  "useMarkdownLinks": false,
-  "defaultViewMode": "source",
-  "pdfExportSettings": {
-    "includeName": true,
-    "pageSize": "A4",
-    "landscape": false,
-    "margin": "0",
-    "downscalePercent": 100
-  },
-  "showInlineTitle": false,
-  "spellcheck": true,
-  "newFileLocation": "current"
+  "alwaysUpdateLinks": true,
+  "promptDelete": false
 }

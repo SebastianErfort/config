@@ -3,15 +3,16 @@ title: Awk
 date: 2020-12-31 15:18:34
 background: bg-slate-600
 tags:
-    - bash
-    - text
-    - script
+  - bash
+  - text
+  - script
 categories:
-    - Linux Command
+  - Linux Command
 intro: |
-    This is a one page quick reference cheat sheet to the [GNU awk](https://www.gnu.org/software/gawk/manual/gawk.html), which covers commonly used awk expressions and commands.
+  This is a one page quick reference cheat sheet to the [GNU awk](https://www.gnu.org/software/gawk/manual/gawk.html), which covers commonly used awk expressions and commands.
 plugins:
-    - copyCode
+  - copyCode
+visibility: public
 ---
 
 Getting Started

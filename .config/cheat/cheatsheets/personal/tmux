@@ -17,17 +17,18 @@ tmux ls                           # display session
 # reload configuration file
 <prefix> : source-file /path/to/file
 
+# windows
 <prefix> c # create a window
 <prefix> n # go next window
 <prefix> x # destroy a window
+<prefix> [0-9] # switch to window n
+<prefix> Arrows # switch window in direction
 
-# switch between windows
-<prefix> [0-9]
-<prefix> Arrows
-
+# panes
 <prefix> %       # split windows horizontally
 <prefix> "       # split windows vertically
 <prefix> <Space> # cycle layouts
+resize-pane -x 50% -y 50% # resize absolute
 
 # start a shared session
 tmux -S /tmp/your_shared_session

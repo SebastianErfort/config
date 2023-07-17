@@ -40,6 +40,8 @@ git filter-branch --env-filter \
      fi'
 git commit -a -S -m 'Signed commit' #  sign commit
 git diff --name-status --diff-filter=U # show unmerged files only in case of conflicts
+git diff --name-only <id1> <id2> # show only names of files changed between two commits
+git diff --color-moved-ws=ignore-space-at-eol # ignore trailing whitespace (e.g. Markdown)
 
 ## EDIT
 git commit --amend # edit commit - WARNING: don't touch pushed commits!

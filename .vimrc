@@ -55,11 +55,11 @@ au BufNewFile,BufRead *.*{yml,yaml} setf yaml
 au BufNewFile,BufRead *.{service,target} setf systemd
 
 " indentation & folds
-set foldmethod=syntax
-set smarttab
 set autoindent
 set smartindent
-" General: force indentation for all buffers, all file types
+set smarttab
+set foldmethod=syntax
+" General: set indentation for all buffers, all file types
 autocmd FileType * setlocal shiftwidth=4 softtabstop=-1 expandtab
 " Python: so far poor support of syntax fold
 autocmd FileType python setlocal foldmethod=indent tw=100

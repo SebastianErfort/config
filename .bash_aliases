@@ -80,6 +80,8 @@ alias img2screen='feh --force-aliasing -ZF -'
 # open file in existing instance
 alias gvimadd='gvim --servername GVIM --remote'
 
+# Python
+alias python='python3.10' # since openSUSE still uses 2 by default ...
 alias jpl='jupyter-lab'
 alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
 # add author: --SphinxTransformer.author="$1"

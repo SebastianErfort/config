@@ -6,24 +6,33 @@ tags:
   - schlerp
 ---
 
+## TODO
+
+- [ ] shorten this test file to a minimum
+
+## Test
+
 MkDocs markdown renderer
-- needs empty line before Markdown list, #fix
-  also in
-  - nested lists #fix
+- needs empty line before Markdown list, fix
+  - also
+    in #fix
+    - nested lists
 
 This
 
 - is fine
   - this also
+    ```yaml
+    Also
+    - don't
+      touch
+          - fenced
+    - code blocks
+    ```
 
-<!-- Also don't touch (fenced) code blocks -->
-```yaml
-Twerk
-- yerp
-  a nerp
-  - wazerp
-- merp
-```
+or | tables
+-|-
+ | even with empty 1st fields
 
 We're using Markdown extension `mdx_truly_sane_lists` to use an indentation of 2 spaces for lists, compatible with a lot of other Markdown specifications/flavours (CommonMark, GitHub, ...)
 
@@ -35,9 +44,11 @@ We're using Markdown extension `mdx_truly_sane_lists` to use an indentation of 2
 - but
     - this needs to be fixed #fix
     - as well as this #fix
-  - this is incorrect syntax, let's see what happens #fix
+   - this is incorrect syntax, let's see what happens #fix
  - this too, indentation is wrong as well #fix
 
 - derp
-    - schlerp
-        - yerp
+    + schlerp
+    + yerp
+        * merp
+        * nerp
