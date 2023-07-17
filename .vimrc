@@ -421,19 +421,19 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
 
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
-" to 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_SmartKeyQuote=0
-" disable conceal to prevent rendering of symbols
-let g:tex_conceal = ""
 autocmd Filetype tex setlocal nofoldenable wrap linebreak nolist
 autocmd Filetype tex setlocal textwidth=0 wrapmargin=0 formatoptions+=l
 autocmd Filetype tex setlocal spell spelllang=de,en
-" autocmd Filetype tex setlocal makeprg=make
 augroup tex
+    " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
+    " to 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+    " The following changes the default filetype back to 'tex':
+    let g:tex_flavor='latex'
+    let g:Tex_SmartKeyQuote=0
+    " disable conceal to prevent rendering of symbols
+    let g:tex_conceal = ""
     let g:indentLine_enabled=0 " IndentLine activates conceal which renders like shit
+    " autocmd Filetype tex setlocal makeprg=make
 augroup end
 
 
