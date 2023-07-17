@@ -1,27 +1,20 @@
-# To replace all occurrences of "day" with "night" and write to stdout:
-sed 's/day/night/g' <file>
+sed 's/day/night/g' <file> # replace all occurrences of  with "night" and write to stdout:
 
-# To replace all occurrences of "day" with "night" within <file>:
-sed -i 's/day/night/g' <file>
+sed -i 's/day/night/g' <file> # replace all occurrences of "day" with "night" within <file>:
 
-# To replace all occurrences of "day" with "night" on stdin:
-echo 'It is daytime' | sed 's/day/night/g'
+echo 'It is daytime' | sed 's/day/night/g' # replace all occurrences of "day" with "night" on stdin:
 
-# To remove leading spaces:
-sed -i -r 's/^\s+//g' <file>
+sed -i -r 's/^\s+//g' <file> # remove leading spaces:
 
-# To remove empty lines and print results to stdout:
-sed '/^$/d' <file>
+sed '/^$/d' <file> # remove empty lines and print results to stdout:
 
-# To replace newlines in multiple lines:
-sed ':a;N;$!ba;s/\n//g' <file>
+sed ':a;N;$!ba;s/\n//g' <file> # replace newlines in multiple lines:
 
-# To insert a line before a matching pattern:
-sed '/Once upon a time/i\Chapter 1'
+sed '/Once upon a time/i\Chapter 1' # insert before match on new line
+sed '/pattern/s/./insert &/' # on matching line, insert before match
 
-# To add a line after a matching pattern:
-sed '/happily ever after/a\The end.'
-#
+sed '/happily ever after/a\The end.' # add a line after a matching 
+
 # search for line and replace with new (multi-) line, preserving indentation,
 # create backup file with suffix .bak
 sed -i".bak" 's/^\(\s*\)#*.*KEY=\S\+/\1KEY=true\n\1KEY=true/'
