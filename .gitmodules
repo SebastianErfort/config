@@ -32,3 +32,7 @@
 	path = .config/cheat/cheatsheets/community
 	url = https://github.com/cheat/cheatsheets.git
 	branch = master
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/nvim-lua/kickstart.nvim.git
+	branch = personal

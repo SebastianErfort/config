@@ -1,1 +1,0 @@
-../../journal/life/tech/dev/neovim.md
