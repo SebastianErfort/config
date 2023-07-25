@@ -7,6 +7,9 @@ while getopts n:v: option; do
     v)
       VERBOSE=true;;
     *)
-      echo "Unknown option $arg."
+      echo "Unknown option $option."
   esac
 done
+
+$DRY && echo "Simulating.." || echo "Executing.."
+$VERBOSE && { echo "Verbose output:"; env; }

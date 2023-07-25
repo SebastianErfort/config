@@ -26,3 +26,7 @@ yq -i '
 
 # Convert JSON to YAML
 yq -Poy sample.json
+
+# select entries of certain type and matching regex
+# here beginning with space => use double quotes
+yq '(.[] | select(tag == "!!str" and test("\s"))) style="double"' <file>

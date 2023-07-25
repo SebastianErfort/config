@@ -56,6 +56,9 @@ Plug 'tpope/vim-obsession' " nvim
 " vim-fugitive:
 Plug 'tpope/vim-fugitive' " nvim
 
+" ~~~ FILETYPES ~~~
+Plug 'rodjek/vim-puppet'
+
 " Initialize plugin system
 call plug#end() " -->
 
