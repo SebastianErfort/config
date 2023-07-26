@@ -1,4 +1,6 @@
 #!/bin/bash
+# TODO is there a way to partially reset, e.g. only color, not bold/italic?
+
 bold=$(tput bold)
 underline=$(tput smul)
 italic=$(tput sitm)

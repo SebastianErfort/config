@@ -1,0 +1,6 @@
+---
+tags: [git]
+syntax: markdown
+---
+# download part of GitHub repo
+svn export https://github.com/<user>/<project>/<path>
