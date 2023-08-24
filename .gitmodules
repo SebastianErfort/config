@@ -12,3 +12,6 @@
 [submodule "rsrc"]
 	path = rsrc
 	url = git@github.com:SebastianErfort/rsrc.git
+[submodule ".tmux"]
+	path = .tmux
+	url = git@github.com:SebastianErfort/tmux.git
