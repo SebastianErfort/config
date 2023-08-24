@@ -100,7 +100,8 @@ git stash apply stash@{6} # apply specific stash without removing it from stack
 git ls-files --others --exclude-standard # list unstracked files
 git clean -f -d # remove untracked files
 git clean -f -d -x # remove untracked and ignored files
-#
+git check-ignore [-v] <file> # test whether file
+
 # sync a fork with the master repo:
 git remote add upstream git@github.com:<username>/<repo>.git # Set a new repo
 git remote -v                                                # Confirm new remote repo

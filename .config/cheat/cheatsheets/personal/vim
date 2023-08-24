@@ -115,6 +115,12 @@ ctrl-w=          make all equal size
 :bunload         removes buffer from window
 :taball          open a tab for all buffers
 
+# Remote Editing (requires netrw, VIM >= 7.2)
+vim <protocoll>://[user@]host/relative/path
+vim <protocoll>://[user@]host//absolute/path
+# supported protocolls are: scp, rsync (ftp, http, rcp, sftp)
+vim rsync://[user@]host:~/path/to/dir/ # rsync requires colon, directory requires trailing slash
+
 # Key Maps
 #   Map (normal mode) F2 to bash call `uuidgen`, trim `\n`, yank to register `"=`, put result
 #   before cursor:
