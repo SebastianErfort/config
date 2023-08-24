@@ -1,5 +1,7 @@
-#!/usr/bin/env bash
-# tags: awk, bash
+---
+tags: [awk, bash]
+refs: ["https://pement.org/awk/awk1line.txt"]
+---
 
 # print last column of file
 awk '{print $(NF)}' file

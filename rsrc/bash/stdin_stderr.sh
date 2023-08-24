@@ -1,3 +1,7 @@
+my_cmd >/dev/null 2>&1 # re-direct STDOUT and STDERR (bashism)
+my_cmd >/dev/null >&2 # re-direct STDERR (bashism)
+my_cmd &>/dev/null # shorthand (bashism)
+
 function get_message () {
     [[ -f ${1} ]] && cat ${1} || echo "$@"
 }

@@ -112,17 +112,28 @@ function fm_fix_unquoted () {
     # quoted. Use yq with --style=double to quote these strings
     # Tags: #markdown #markdown/frontmatter
     local -a allfiles
-    mapfile -t allfiles < <(find . -name 'DataView.md')
+    mapfile -t allfiles < <(find . -name '*.md')
     for (( i=0; i<${#allfiles[@]} ; i++ )); do
+        fixing=false
         f=${allfiles[$i]}
+        # Only files with front matter
+        { skipfile "$f" || [[ $(grep -c '^---$' "$f") -lt 2 ]]; } && continue
+
         # offending string: colon
         # TODO skip YAML block strings `- |` etc.
-        # yq -f extract "$f" | grep -q ': .*:' && \
-        #     echo "Fixing file $f" && \
-        #     yq -f process -i '(.[] | select(type=="!!str" and test(".*:.*"))) style="double"' "$f"
+        yq -f extract "$f" | grep -q ': .*:' && \
+            fixing=true && \
+            yq -f process -i '(.[] | select(type=="!!str" and test(".*:.*"))) style="double"' "$f"
         # offending empty key
         yq -f extract "$f" | grep -q ':\s*$' && \
-            echo "Fixing file $f" && \
-            yq -f process -i '.[] | select(tag == "!!null") // ""' "$f"
+            fixing=true && \
+            yq -f process -i '(.[] | select(tag == "!!null")) style="double"' "$f"
+        # NOTE See https://mikefarah.gitbook.io/yq/how-it-works#complex-assignment-operator-precedence-rules
+        # for an explanation of the yq command used here
+        $fixing && echo "Fixed file $f"
     done
+}
+
+function skipfile () {
+    false
 }

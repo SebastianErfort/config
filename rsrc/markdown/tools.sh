@@ -48,7 +48,7 @@ function push_fmmatch () {
     # TODO duplicates
 
     echo "Copying ${#syncfiles[@]} files to $3 ..."
-    rsync -aLRu "${syncfiles[@]}" "$3"
+    rsync -aLR "${syncfiles[@]}" "$3"
 
     unset syncfiles
     echo "Done."
@@ -57,8 +57,9 @@ function push_fmmatch () {
 function pull_fmmatch () {
     [[ $# != 1 ]] && echo "Usage: <source dir>" && return 2
 
-    echo "Copying files from $3 ..."
-    rsync -aLR "$3/*" .
+    echo "Copying files from $1 ..."
+    cp -ar "$1"/* .
+    # rsync -aLR "$3/*" .
 
     echo "Done."
 }

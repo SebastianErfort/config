@@ -1,4 +1,12 @@
-# Example markdownlint configuration with all properties set to their default value
+# Custom markdownlint configuration for use with Obsidian (mostly CommonMark) and MkDocs (mostly Python-Markdown)
+# Notable changes from defaults are
+# - MkDocs compatibility
+#   - 4 spaces indent instead of 2
+#   - empty lines before lists and around code blocks
+# - Personal taste
+#   - ignore line length warnings
+#   - ignore first heading not h1
+#   - allow 2 consecutive blank lines
 
 # Default state for all rules
 default: true
@@ -10,9 +18,9 @@ extends: null
 MD001: true
 
 # MD002/first-heading-h1/first-header-h1 - First heading should be a top-level heading
-MD002:
-  # Heading level
-  level: 2
+MD002: false
+  # # Heading level
+  # level: 2
 
 # MD003/heading-style/header-style - Heading style
 MD003:
@@ -33,11 +41,11 @@ MD006: true
 # MD007/ul-indent - Unordered list indentation
 MD007:
   # Spaces for indent
-  indent: 2
-  # Whether to indent the first level of the list
-  start_indented: false
-  # Spaces for first level indent (when start_indented is set)
-  start_indent: 2
+  indent: 4
+  # # Whether to indent the first level of the list
+  # start_indented: false
+  # # Spaces for first level indent (when start_indented is set)
+  # start_indent: 2
 
 # MD009/no-trailing-spaces - Trailing spaces
 MD009:
@@ -55,7 +63,7 @@ MD010:
   # Fenced code languages to ignore
   ignore_code_languages: []
   # Number of spaces for each hard tab
-  spaces_per_tab: 1
+  spaces_per_tab: 2
 
 # MD011/no-reversed-links - Reversed link syntax
 MD011: true
@@ -63,28 +71,28 @@ MD011: true
 # MD012/no-multiple-blanks - Multiple consecutive blank lines
 MD012:
   # Consecutive blank lines
-  maximum: 1
+  maximum: 2
 
 # MD013/line-length - Line length
-MD013:
-  # Number of characters
-  line_length: 80
-  # Number of characters for headings
-  heading_line_length: 80
-  # Number of characters for code blocks
-  code_block_line_length: 80
-  # Include code blocks
-  code_blocks: true
-  # Include tables
-  tables: true
-  # Include headings
-  headings: true
-  # Include headings
-  headers: true
-  # Strict length checking
-  strict: false
-  # Stern length checking
-  stern: false
+MD013: false
+  # # Number of characters
+  # line_length: 80
+  # # Number of characters for headings
+  # heading_line_length: 80
+  # # Number of characters for code blocks
+  # code_block_line_length: 80
+  # # Include code blocks
+  # code_blocks: true
+  # # Include tables
+  # tables: true
+  # # Include headings
+  # headings: true
+  # # Include headings
+  # headers: true
+  # # Strict length checking
+  # strict: false
+  # # Stern length checking
+  # stern: false
 
 # MD014/commands-show-output - Dollar signs used before commands without showing output
 MD014: true
@@ -119,11 +127,11 @@ MD024:
   siblings_only: false
 
 # MD025/single-title/single-h1 - Multiple top-level headings in the same document
-MD025:
-  # Heading level
-  level: 1
-  # RegExp for matching title in front matter
-  front_matter_title: "^\\s*title\\s*[:=]"
+MD025: false
+  # # Heading level
+  # level: 1
+  # # RegExp for matching title in front matter
+  # front_matter_title: "^\\s*title\\s*[:=]"
 
 # MD026/no-trailing-punctuation - Trailing punctuation in heading
 MD026:
@@ -161,9 +169,9 @@ MD031:
 MD032: true
 
 # MD033/no-inline-html - Inline HTML
-MD033:
-  # Allowed elements
-  allowed_elements: []
+MD033: false
+  # # Allowed elements
+  # allowed_elements: []
 
 # MD034/no-bare-urls - Bare URL used
 MD034: true
@@ -182,24 +190,25 @@ MD036:
 MD037: true
 
 # MD038/no-space-in-code - Spaces inside code span elements
-MD038: true
+# deactivated because of bug/error
+MD038: false
 
 # MD039/no-space-in-links - Spaces inside link text
-MD039: true
+MD039: false
 
 # MD040/fenced-code-language - Fenced code blocks should have a language specified
-MD040:
-  # List of languages
-  allowed_languages: []
-  # Require language only
-  language_only: false
+MD040: false
+  # # List of languages
+  # allowed_languages: []
+  # # Require language only
+  # language_only: false
 
 # MD041/first-line-heading/first-line-h1 - First line in a file should be a top-level heading
-MD041:
-  # Heading level
-  level: 1
-  # RegExp for matching title in front matter
-  front_matter_title: "^\\s*title\\s*[:=]"
+MD041: false
+  #  # Heading level
+  #  level: 1
+  #  # RegExp for matching title in front matter
+  #  front_matter_title: "^\\s*title\\s*[:=]"
 
 # MD042/no-empty-links - No empty links
 MD042: true
