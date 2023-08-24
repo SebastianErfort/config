@@ -22,12 +22,6 @@
 [submodule ".icons/gitlab-svgs"]
 	path = .icons/gitlab-svgs
 	url = https://gitlab.com/gitlab-org/gitlab-svgs.git
-[submodule "rsrc/revealjs/revealjs_markdown_template"]
-	path = _rsrc/revealjs/revealjs_markdown_template
-	url = git@github.com:SebastianErfort/revealjs_markdown_template.git
-[submodule "rsrc/revealjs/revealjs_template_markdown_RUG"]
-	path = _rsrc/revealjs/revealjs_markdown_template_RUG
-	url = git@github.com:SebastianErfort/revealjs_template_markdown_RUG.git
 [submodule ".config/cheat/cheatsheets/community"]
 	path = .config/cheat/cheatsheets/community
 	url = https://github.com/cheat/cheatsheets.git
