@@ -1,0 +1,9 @@
+---
+syntax: bash
+tags: [passwd, password, hash]
+---
+
+# To specify an encryption method
+mkpasswd -m <method>
+# To show available methods
+mkpasswd -m help
