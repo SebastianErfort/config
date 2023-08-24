@@ -1,6 +1,6 @@
-  # Personal theme: colours, etc.
+# Personal theme: colours, etc.
 if [ -f ~/.bashtheme ]; then
-        . ~/.bashtheme
+    . "$HOME/.bashtheme"
 fi
 
 
@@ -8,14 +8,14 @@ fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  #alias dir='dir --color=auto'
-  #alias vdir='vdir --color=auto'
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
 
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # alias ll='ls -alhF'
@@ -25,7 +25,7 @@ alias ll='ls -lh'
 alias lll='ls -lhtr'
 # Doesn't sem to work as an alias
 function lllt() {
-  command ls --color=always -lhtr "$@" | tail
+    command ls --color=always -lhtr "$@" | tail
 }
 
 # cd shortcuts
@@ -54,17 +54,17 @@ alias nows='date +"%H:%M:%S"' # Print time hh:mm:ss human-readable
 # Add an "alert" alias for long running commands. Show notification pop-up and play sound when done.
 # Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" \
-  && cvlc --no-video /usr/share/sounds/freedesktop/stereo/complete.oga >/dev/null 2>&1'
+    && cvlc --no-video /usr/share/sounds/freedesktop/stereo/complete.oga >/dev/null 2>&1'
 
 # recursively find last edited files and print human-readable timestamp
 alias find-lastedited="find . -type f -printf '%TY-%Tm-%Td %TH:%TM %p\n'| sort -h"
 
 # print OS version
 function os_version() {
-  echo $(sed -n '/\<NAME\>/p' /etc/os-release | awk -F'=' '{print $2}' | \
-      sed 's/"//g') $(sed -n '/\<VERSION\>/p' /etc/os-release | \
-      awk -F'=' '{print $2}' | sed 's/"//g')
-}
+    echo $(sed -n '/\<NAME\>/p' /etc/os-release | awk -F'=' '{print $2}' | \
+        sed 's/"//g') $(sed -n '/\<VERSION\>/p' /etc/os-release | \
+        awk -F'=' '{print $2}' | sed 's/"//g')
+    }
 
 # pipe output of command to clipboard. use like mycmd | pipe2clip
 alias pipe2clip='xclip -r -selection clipboard'
@@ -130,67 +130,100 @@ function extract () {
 
 # SSH ControlMaster helpers
 function sshcm-status () {
-  ssh -S "$1" -O check bla # bogus arguments required, not used
+ssh -S "$1" -O check bla # bogus arguments required, not used
 }
 function sshcm () {
-  [[ -z "$1" ]] && echo -e "Error. Usage: ${FUNCNAME[0]} ${Underline}command${Reset} [argument]" && return 2
-  case "$1" in
-    list)
-      for s in $(ls ~/.ssh/cm_* 2>/dev/null || echo 'None'); do
-        echo "$s"
-      done;;
-    status)
-      control_masters=$(ls ~/.ssh/cm_* 2>/dev/null)
-      if [[ -n $control_masters ]]; then
-        for s in $control_masters; do
-          echo "$s"
-          sshcm-status "$s"
-        done
-      else
-        echo 'No control masters active.'
-      fi;;
-    connect | open)
-      [[ ! -z "$2" ]] && ssh "$2" ;;
-    disconnect | close | kill)
-      if [[ -n "$2" ]]; then
-        s=$(ls ~/.ssh/cm_*${2}* 2>/dev/null)
-        [ -z "$s" ] && echo "Nothing to do" && return
-        echo "Disconnecting host $2 (socket $s)."
-        ssh -S "$s" -O exit bla
-      fi;;
-    *)
-      echo "Unknown command for function ${FUNCNAME[0]}: $1"
-      return 2;;
-  esac
-}
+    [[ -z "$1" ]] && echo -e "Error. Usage: ${FUNCNAME[0]} ${Underline}command${Reset} [argument]" && return 2
+    case "$1" in
+        list)
+            for s in $(ls ~/.ssh/cm_* 2>/dev/null || echo 'None'); do
+                echo "$s"
+            done;;
+        status)
+            control_masters=$(ls ~/.ssh/cm_* 2>/dev/null)
+            if [[ -n $control_masters ]]; then
+                for s in $control_masters; do
+                    echo "$s"
+                    sshcm-status "$s"
+                done
+            else
+                echo 'No control masters active.'
+                fi;;
+            connect | open)
+                [[ ! -z "$2" ]] && ssh "$2" ;;
+            disconnect | close | kill)
+                if [[ -n "$2" ]]; then
+                    s=$(ls ~/.ssh/cm_*${2}* 2>/dev/null)
+                    [ -z "$s" ] && echo "Nothing to do" && return
+                    echo "Disconnecting host $2 (socket $s)."
+                    ssh -S "$s" -O exit bla
+                    fi;;
+                *)
+                    echo "Unknown command for function ${FUNCNAME[0]}: $1"
+                    return 2;;
+            esac
+        }
 
 # Get disk usage by file type
 function filesizebytype() {
-  find . -type f -iname "*.$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
+    find . -type f -iname "*.$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
 }
+alias fsbt='filesizebytype'
 # Get disk usage by file name
 function filesizebyname() {
-  find . -type f -iname "$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
+    find . -type f -iname "$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
 }
+alias fsbn='filesizebyname'
 
 # Generate password within pass command, with characters defined by $PASSWORD_STORE_CHARACTER_SET
 # This set of special characters should be a bit safer with services that don't allow everything.
 . /usr/share/bash-completion/completions/pass
+ 
 complete -o default -F _pass_complete_entries passg
 function passg () {
-  [[ $# -ne 2 ]] && echo "Error. Usage: ${FUNCNAME[0]} name length" && return 2
-  PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate "$1" "$2"
+    [[ $# -ne 2 ]] && echo "Error. Usage: ${FUNCNAME[0]} <name> <length>" && return 2
+    PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate "$1" "$2"
 }
+ 
 complete -o default -F _pass_complete_entries passc
 function passc () {
-  local PASS_LINE="1" PASS_ENTRY
-  [[ $1 =~ '-c' ]] && PASS_LINE=${1#-c} && PASS_ENTRY="$2" || PASS_ENTRY="$1"
-  pass $PASS_ENTRY | awk "NR == ${PASS_LINE} {print}" | sed 's/^[ ]*[a-z]\+:[ ]*//' | xclip -r -selection clipboard
+    local PASS_LINE="1" PASS_ENTRY
+    [[ $1 =~ '-c' ]] && PASS_LINE=${1#-c} && PASS_ENTRY="$2" || PASS_ENTRY="$1"
+    pass "$PASS_ENTRY" | awk "NR == ${PASS_LINE} {print}" | sed 's/^[ ]*[a-z]\+:[ ]*//' | xclip -r -selection clipboard
 }
+ 
+complete -o default -F _pass_complete_entries passy
+# Parse YAML format pass entries
+function passy () {
+    msg_usage="Usage: ${FUNCNAME[0]} [options] <entry> [YAML key (default pw)]"
+    msg_info="Parse YAML format pass entries"
+    msg_options=$(cat << EOM
+Options:
+\t-h, --help\t\tdisplay this help and exit
+\t-c, --copy\t\tcopy result to clipboard"
+EOM
+)
+    [[ $# -lt 1 ]] && \
+        { echo -e "ERROR. $msg_usage\nTry '${FUNCNAME[0]} -h' for more information." >&2; return 2; }
+    [[ "$1" == "-h" || "$1" == "--help" ]] && { echo -e "$msg_usage\n$msg_info\n\n$msg_options\n"; return; }
+
+    COPY=false
+    [[ "$1" == "-c" || "$1" == "--copy" ]] && { COPY=true; shift; }
+
+    if [[ $# -ge 2 ]]; then
+        { pass_entry="$1"; yaml_key="$2"; }
+    elif [[ $# -eq 1 ]]; then 
+        { pass_entry="$1"; yaml_key="pw"; }
+    fi
+
+    $COPY && pass "$pass_entry" | yq '.'$yaml_key | xclip -r -selection clipboard \
+        || pass "$pass_entry" | yq '.'$yaml_key
+}
+alias yp='passy'
 
 # System commands
 function nwrestart() {
-  command systemctl restart NetworkManager
+    command systemctl restart NetworkManager
 }
 
 # re-define commands without output spam and as background process
@@ -201,22 +234,22 @@ function nwrestart() {
 #   command qpdfview "$@" > /dev/null 2>&1 &
 # }
 function subm() {
-  command /usr/local/bin/sublime_merge/sublime_merge "$@" > /dev/null 2>&1 &
+    command /usr/local/bin/sublime_merge/sublime_merge "$@" > /dev/null 2>&1 &
 }
 function okular() {
-  command okular "$@" > /dev/null 2>&1 &
+    command okular "$@" > /dev/null 2>&1 &
 }
 function libreoffice() {
-  command libreoffice "$@" > /dev/null 2>&1 &
+    command libreoffice "$@" > /dev/null 2>&1 &
 }
 function dolphin() {
-  command dolphin "$@" > /dev/null 2>&1 &
+    command dolphin "$@" > /dev/null 2>&1 &
 }
 function obsidian() {
-  command obsidian ${@} > /dev/null 2>&1 &
+    command obsidian ${@} > /dev/null 2>&1 &
 }
 function gwenview() {
-  command gwenview "$@" > /dev/null 2>&1 &
+    command gwenview "$@" > /dev/null 2>&1 &
 }
 
 
@@ -235,11 +268,11 @@ alias glog-short='git log --pretty="tformat:%C(auto) %h %Cgreen%aN%Creset %s"'
 
 ### KDE ###
 function kwin-reset() {
-  sed -i 's/lastScreen=[1-9]/lastScreen=0/g' ~/.config/plasma-org.kde.plasma.desktop-appletsrc
-  plasmashell --replace >/dev/null 2>&1 &
-  disown
-  kwin --replace >/dev/null 2>&1 &
-  disown
+sed -i 's/lastScreen=[1-9]/lastScreen=0/g' ~/.config/plasma-org.kde.plasma.desktop-appletsrc
+plasmashell --replace >/dev/null 2>&1 &
+disown
+kwin --replace >/dev/null 2>&1 &
+disown
 }
 alias zyppurge='sudo zypper rm -u'
 alias zypdup='sudo zypper dup -y --auto-agree-with-licenses'
@@ -249,35 +282,35 @@ alias zypdup='sudo zypper dup -y --auto-agree-with-licenses'
 
 # Open and mount encrypted USB device
 function crypt_mount() {
-  case $# in
-    1)
-      dev_map=cr_usb;;
-    2)
-      dev_map="$2";;
-    *)
-      echo "Error. Usage: ${FUNCNAME[0]} block_device [device_mapper]"; return 1;;
-  esac
-  dev=/dev/$(basename "$1")
-  dev_map=/dev/mapper/$(basename "$dev_map")
-  sudo cryptsetup luksOpen "$dev" $(basename "$dev_map")
-  udisksctl mount -b "$dev_map"
-  echo "Opened and mounted device $dev (mapper $dev_map)"
+    case $# in
+        1)
+            dev_map=cr_usb;;
+        2)
+            dev_map="$2";;
+        *)
+            echo "Error. Usage: ${FUNCNAME[0]} block_device [device_mapper]"; return 1;;
+    esac
+    dev=/dev/$(basename "$1")
+    dev_map=/dev/mapper/$(basename "$dev_map")
+    sudo cryptsetup luksOpen "$dev" $(basename "$dev_map")
+    udisksctl mount -b "$dev_map"
+    echo "Opened and mounted device $dev (mapper $dev_map)"
 }
 # Unmount and close encrypted USB device
 function crypt_unmount() {
-  if [ $# -eq 0 ]; then
-    dev_map=cr_usb
-  fi
-  dev=$(lsblk | grep "$dev_map" | awk '{print $7}')
-  udisksctl unmount -b "/dev/mapper/$dev_map" >/dev/null 2>&1
-  sudo cryptsetup luksClose "$dev_map"
-  echo "Unmounted and closed device $dev (mapper $dev_map)"
+    if [ $# -eq 0 ]; then
+        dev_map=cr_usb
+    fi
+    dev=$(lsblk | grep "$dev_map" | awk '{print $7}')
+    udisksctl unmount -b "/dev/mapper/$dev_map" >/dev/null 2>&1
+    sudo cryptsetup luksClose "$dev_map"
+    echo "Unmounted and closed device $dev (mapper $dev_map)"
 }
 
 # Work-around to filter Logitech bluetooth device errors from log, otherwise unreadable
 # TODO prevent this from actually ending up in the log
 function dmesg() {
-   command dmesg -xT --color=always "$@" | grep -v 'logitech-djreceiver'
+    command dmesg -xT --color=always "$@" | grep -v 'logitech-djreceiver'
 }
 
 
