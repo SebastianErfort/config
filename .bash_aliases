@@ -234,8 +234,9 @@ function nwrestart() {
 #   command qpdfview "$@" > /dev/null 2>&1 &
 # }
 function subm() {
-    command /usr/local/bin/sublime_merge/sublime_merge "$@" > /dev/null 2>&1 &
+    command /opt/sublime_merge/sublime_merge "$@" > /dev/null 2>&1 &
 }
+alias sublime-merge='subm'
 function okular() {
     command okular "$@" > /dev/null 2>&1 &
 }
