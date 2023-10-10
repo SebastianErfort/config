@@ -135,7 +135,7 @@ ssh -S "$1" -O check bla # bogus arguments required, not used
 function sshcm () {
     [[ -z "$1" ]] && echo -e "Error. Usage: ${FUNCNAME[0]} ${Underline}command${Reset} [argument]" && return 2
     case "$1" in
-        list)
+        ls|list)
             for s in $(ls ~/.ssh/cm_* 2>/dev/null || echo 'None'); do
                 echo "$s"
             done;;
@@ -150,7 +150,7 @@ function sshcm () {
                 echo 'No control masters active.'
                 fi;;
             connect | open)
-                [[ ! -z "$2" ]] && ssh "$2" ;;
+                [[ -n "$2" ]] && ssh "$2" ;;
             disconnect | close | kill)
                 if [[ -n "$2" ]]; then
                     s=$(ls ~/.ssh/cm_*${2}* 2>/dev/null)
@@ -162,7 +162,30 @@ function sshcm () {
                     echo "Unknown command for function ${FUNCNAME[0]}: $1"
                     return 2;;
             esac
-        }
+}
+
+# Update SSH environment variables
+function env-ssh () {
+    local FORCE
+    [[ "$1" == '-f' ]] && FORCE=true || FORCE=false
+    # TODO Ensure agent pid and auth sock match
+    if [[ -z $SSH_AGENT_PID || -z $SSH_AUTH_SOCK ]] || $FORCE; then
+        SSH_AGENT_PID=$(ps -fC ssh-agent | tail -1 | awk '{print $2}' | grep '[0-9]\+') \
+            && SSH_AUTH_SOCK=$(find /tmp -path "/tmp/ssh-*" -name "agent.*" 2>/dev/null || true) \
+            || { echo "No agent found, starting new .."; eval "$(ssh-agent)" >/dev/null; }
+    fi
+}
+env-ssh -q
+
+# Update tmux environment: SSH env. var.s, ...
+# TODO Test and fix
+function env-tmux () {
+    env-ssh
+    for v in $(tmux show-environment | grep '\-SSH_{AGENT_PID,AUTH_SOCK}'); do
+        # echo $v
+        tmux setenv -g "${v#-}" "${!v}"
+    done
+}
 
 # Get disk usage by file type
 function filesizebytype() {
@@ -200,20 +223,31 @@ function passy () {
     msg_options=$(cat << EOM
 Options:
 \t-h, --help\t\tdisplay this help and exit
-\t-c, --copy\t\tcopy result to clipboard"
+\t-c, --copy\t\tcopy result to clipboard
 EOM
 )
-    [[ $# -lt 1 ]] && \
+    [[ -z "$*" ]] && \
         { echo -e "ERROR. $msg_usage\nTry '${FUNCNAME[0]} -h' for more information." >&2; return 2; }
-    [[ "$1" == "-h" || "$1" == "--help" ]] && { echo -e "$msg_usage\n$msg_info\n\n$msg_options\n"; return; }
-
     COPY=false
-    [[ "$1" == "-c" || "$1" == "--copy" ]] && { COPY=true; shift; }
+    case "$1" in
+        -h|--help)
+            echo -e "$msg_usage\n$msg_info\n\n$msg_options\n"
+            return
+        ;;
+        -c|--copy) COPY=true; shift;
+        ;;
+        *)
+            { echo -e "Unknown option '$1'. $msg_usage\nTry '${FUNCNAME[0]} -h' for more information." >&2; return 2; }
+        ;;
+    esac
 
     if [[ $# -ge 2 ]]; then
         { pass_entry="$1"; yaml_key="$2"; }
     elif [[ $# -eq 1 ]]; then 
         { pass_entry="$1"; yaml_key="pw"; }
+    else
+        $COPY && echo "No entry specified" >&2
+        return 2
     fi
 
     $COPY && pass "$pass_entry" | yq '.'$yaml_key | xclip -r -selection clipboard \
@@ -247,7 +281,7 @@ function dolphin() {
     command dolphin "$@" > /dev/null 2>&1 &
 }
 function obsidian() {
-    command obsidian ${@} > /dev/null 2>&1 &
+    command obsidian "$@" > /dev/null 2>&1 &
 }
 function gwenview() {
     command gwenview "$@" > /dev/null 2>&1 &
@@ -319,8 +353,8 @@ function dmesg() {
 
 # Firefox
 alias ffse='nohup firefox -P "Sebastian Erfort" >/dev/null 2>&1 &'
-# Rename images with EXIF data (to date and time taken, plus a number if multiple files with same name)
-# Use like: command directory
+# Rename images using EXIF data: date and time taken, plus a number if multiple files with same name
+# Use like: <command> <directory>
 alias picture_rename="exiftool '-filename<CreateDate' -d %Y%m%d_%H%M%S%%-c.%%e"
 # run latexmk, trying to guess main tex file
 alias latexmkspeciale='grep -l '\''\documentclass'\'' *tex | xargs latexmk -pdf -pvc -silent'
