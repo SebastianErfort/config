@@ -220,12 +220,10 @@ complete -o default -F _pass_complete_entries passy
 function passy () {
     msg_usage="Usage: ${FUNCNAME[0]} [options] <entry> [YAML key (default pw)]"
     msg_info="Parse YAML format pass entries"
-    msg_options=$(cat << EOM
-Options:
+    msg_options='Options:
 \t-h, --help\t\tdisplay this help and exit
-\t-c, --copy\t\tcopy result to clipboard
-EOM
-)
+\t-c, --copy\t\tcopy result to clipboard'
+
     [[ -z "$*" ]] && \
         { echo -e "ERROR. $msg_usage\nTry '${FUNCNAME[0]} -h' for more information." >&2; return 2; }
     COPY=false
@@ -233,12 +231,12 @@ EOM
         -h|--help)
             echo -e "$msg_usage\n$msg_info\n\n$msg_options\n"
             return
-        ;;
+            ;;
         -c|--copy) COPY=true; shift;
-        ;;
+            ;;
         *)
             { echo -e "Unknown option '$1'. $msg_usage\nTry '${FUNCNAME[0]} -h' for more information." >&2; return 2; }
-        ;;
+            ;;
     esac
 
     if [[ $# -ge 2 ]]; then
@@ -351,8 +349,6 @@ function dmesg() {
 
 ### MISC
 
-# Firefox
-alias ffse='nohup firefox -P "Sebastian Erfort" >/dev/null 2>&1 &'
 # Rename images using EXIF data: date and time taken, plus a number if multiple files with same name
 # Use like: <command> <directory>
 alias picture_rename="exiftool '-filename<CreateDate' -d %Y%m%d_%H%M%S%%-c.%%e"

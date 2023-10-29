@@ -6,3 +6,13 @@ sudo zypper addrepo --refresh https://URL repo-name
 sudo zypper --gpg-auto-import-keys refresh
 ## update package cache
 sudo zypper dup --from repo-name
+
+# Search
+
+## find package providing file
+zypper se --provides [--match-exact]
+
+# Update
+
+## dist-upgrade non-interactive
+sudo zypper dup -yl

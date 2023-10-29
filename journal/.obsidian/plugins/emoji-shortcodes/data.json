@@ -4,6 +4,9 @@
   "historyPriority": true,
   "historyLimit": 100,
   "history": [
+    ":warning:",
+    ":ballot_box_with_check:",
+    ":heavy_minus_sign:",
     ":bug:",
     ":climbing_man:",
     ":shrug:",

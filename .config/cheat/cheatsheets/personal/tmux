@@ -29,7 +29,15 @@ tmux ls                           # display session
 <prefix> "       # split windows vertically
 <prefix> <Space> # cycle layouts
 resize-pane -x 50% -y 50% # resize absolute
+resize-pane -Z   # toggle zoomed (full window)
+<prefix> + z     # default shortcut
 
 # start a shared session
 tmux -S /tmp/your_shared_session
 chmod 777 /tmp/your_shared_session
+
+# copy mode (assuming VI mode key bindings)
+<prefix> [  # start copy mode
+<space>     # start text selection
+<enter>     # confirm selection, copy to tmux buffer
+# todo access/copy to system clipboard
