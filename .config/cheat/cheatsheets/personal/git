@@ -1,6 +1,9 @@
 ---
+title: Git Cheatsheet
 tags: [ vcs, git ]
+syntax: markdown
 ---
+
 # CONFIG
 git config --global user.name <name>
 git config --global user.email <email>

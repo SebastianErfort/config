@@ -51,3 +51,12 @@ PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# ------------------------------------------- Other ------------------------------------------------
+# SSH
+# Set ssh-agent environment variables if one is running, but not set up
+# TODO
+# ssh-add -l >/dev/null || eval "$(ssh-agent)"
+# [[ -z "$SSH_AGENT_PID" ]] && export SSH_AGENT_PID=$SSH_AGENT_PID
+# ssh_auth_sock_str=:"/tmp/ssh*/agent.$((SSH_AGENT_PID - 1))"
+# [[ -z "$SSH_AUTH_SOCK" ]] && export SSH_AUTH_SOCK=$(ls "$ssh_auth_sock_str")

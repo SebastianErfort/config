@@ -1,6 +1,6 @@
 # Personal theme: colours, etc.
 if [ -f ~/.bashtheme ]; then
-    . ~/.bashtheme
+    . "$HOME/.bashtheme"
 fi
 
 
@@ -90,16 +90,16 @@ alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
 function extract () {
     if [ -f $1 ] ; then
         case $1 in
-            *.tar)            tar xf $@                               ;;
-            *.tar.gz|*.tgz)   tar xzf $@                              ;;
-            *.tar.bz2|*.tbz2) tar xjf $@                              ;;
-            *.bz2)            bunzip2 -kvd $@                         ;;
-            *.zip)            unzip $@                                ;;
-            *.gz)             gunzip $@                               ;;
-            *.Z)              uncompress $@                           ;;
-            *.rar)            rar x $@                                ;;
-            *.7z)             7z x $@                                 ;;
-            *)                echo "Unknown archive type (extension)" ;;
+            *.tar)            tar xf $@                          ;;
+            *.tar.gz|*.tgz)   tar xzf $@                         ;;
+            *.tar.bz2|*.tbz2) tar xjf $@                         ;;
+            *.bz2)            bunzip2 -kvd $@                    ;;
+            *.zip)            unzip $@                           ;;
+            *.gz)             gunzip $@                          ;;
+            *.Z)              uncompress $@                      ;;
+            *.rar)            rar x $@                           ;;
+            *.7z)             7z x $@                            ;;
+            *)                echo "Unknown archive type (ext.)" ;;
         esac
     else
         echo "No such file: '$1'"
@@ -135,60 +135,123 @@ ssh -S "$1" -O check bla # bogus arguments required, not used
 function sshcm () {
     [[ -z "$1" ]] && echo -e "Error. Usage: ${FUNCNAME[0]} ${Underline}command${Reset} [argument]" && return 2
     case "$1" in
-        list | ls)
-            for s in $(ls ~/.ssh/cm/* 2>/dev/null || echo 'None'); do
+        ls|list)
+            for s in $(ls ~/.ssh/cm_* 2>/dev/null || echo 'None'); do
                 echo "$s"
-            done
-            ;;
-        status | info)
-            if [[ -n "$(ls ~/.ssh/cm/*)" ]]; then
-                while read -r s; do
-                    [[ -n "$s" ]] && { echo "$s"; sshcm-status "$s"; }
-                done <<< $(ls ~/.ssh/cm/* 2>/dev/null)
+            done;;
+        status)
+            control_masters=$(ls ~/.ssh/cm_* 2>/dev/null)
+            if [[ -n $control_masters ]]; then
+                for s in $control_masters; do
+                    echo "$s"
+                    sshcm-status "$s"
+                done
             else
                 echo 'No control masters active.'
-            fi
-            ;;
-        connect | open)
-            [[ ! -z "$2" ]] && ssh "$2"
-            ;;
-        rm | disconnect | close | kill)
-            if [[ -n "$2" ]]; then
-                s=$(ls "~/.ssh/cm/${2}*" 2>/dev/null)
-                [ -z "$s" ] && echo "Nothing to do" && return
-                echo "Disconnecting host $2 (socket $s)."
-                ssh -S "$s" -O exit bla
-            fi
-            ;;
-        *)
-            echo "Unknown command $1 for function ${FUNCNAME[0]}"
-            return 2;;
-    esac
+                fi;;
+            connect | open)
+                [[ -n "$2" ]] && ssh "$2" ;;
+            rm | disconnect | close | kill)
+                if [[ -n "$2" ]]; then
+                    s=$(ls ~/.ssh/cm_*${2}* 2>/dev/null)
+                    [ -z "$s" ] && echo "Nothing to do" && return
+                    echo "Disconnecting host $2 (socket $s)."
+                    ssh -S "$s" -O exit bla
+                    fi;;
+                *)
+                    echo "Unknown command for function ${FUNCNAME[0]}: $1"
+                    return 2;;
+            esac
+}
+
+# Update SSH environment variables
+function env-ssh () {
+    local FORCE
+    [[ "$1" == '-f' ]] && FORCE=true || FORCE=false
+    # TODO Ensure agent pid and auth sock match
+    if [[ -z $SSH_AGENT_PID || -z $SSH_AUTH_SOCK ]] || $FORCE; then
+        SSH_AGENT_PID=$(ps -fC ssh-agent | tail -1 | awk '{print $2}' | grep '[0-9]\+') \
+            && SSH_AUTH_SOCK=$(find /tmp -path "/tmp/ssh-*" -name "agent.*" 2>/dev/null || true) \
+            || { echo "No agent found, starting new .."; eval "$(ssh-agent)" >/dev/null; }
+    fi
+}
+env-ssh -q
+
+# Update tmux environment: SSH env. var.s, ...
+# TODO Test and fix
+function env-tmux () {
+    env-ssh
+    for v in $(tmux show-environment | grep '\-SSH_{AGENT_PID,AUTH_SOCK}'); do
+        # echo $v
+        tmux setenv -g "${v#-}" "${!v}"
+    done
 }
 
 # Get disk usage by file type
 function filesizebytype() {
     find . -type f -iname "*.$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
 }
+alias fsbt='filesizebytype'
 # Get disk usage by file name
 function filesizebyname() {
     find . -type f -iname "$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
 }
+alias fsbn='filesizebyname'
 
 # Generate password within pass command, with characters defined by $PASSWORD_STORE_CHARACTER_SET
 # This set of special characters should be a bit safer with services that don't allow everything.
 . /usr/share/bash-completion/completions/pass
+ 
 complete -o default -F _pass_complete_entries passg
 function passg () {
-    [[ $# -ne 2 ]] && echo "Error. Usage: ${FUNCNAME[0]} name length" && return 2
+    [[ $# -ne 2 ]] && echo "Error. Usage: ${FUNCNAME[0]} <name> <length>" && return 2
     PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate "$1" "$2"
 }
+ 
 complete -o default -F _pass_complete_entries passc
 function passc () {
     local PASS_LINE="1" PASS_ENTRY
     [[ $1 =~ '-c' ]] && PASS_LINE=${1#-c} && PASS_ENTRY="$2" || PASS_ENTRY="$1"
-    pass $PASS_ENTRY | awk "NR == ${PASS_LINE} {print}" | sed 's/^[ ]*[a-z]\+:[ ]*//' | xclip -r -selection clipboard
+    pass "$PASS_ENTRY" | awk "NR == ${PASS_LINE} {print}" | sed 's/^[ ]*[a-z]\+:[ ]*//' | xclip -r -selection clipboard
 }
+ 
+complete -o default -F _pass_complete_entries passy
+# Parse YAML format pass entries
+function passy () {
+    msg_usage="Usage: ${FUNCNAME[0]} [options] <entry> [YAML key (default pw)]"
+    msg_info="Parse YAML format pass entries"
+    msg_options='Options:
+\t-h, --help\t\tdisplay this help and exit
+\t-c, --copy\t\tcopy result to clipboard'
+
+    [[ -z "$*" ]] && \
+        { echo -e "ERROR. $msg_usage\nTry '${FUNCNAME[0]} -h' for more information." >&2; return 2; }
+    COPY=false
+    case "$1" in
+        -h|--help)
+            echo -e "$msg_usage\n$msg_info\n\n$msg_options\n"
+            return
+            ;;
+        -c|--copy) COPY=true; shift;
+            ;;
+        *)
+            { echo -e "Unknown option '$1'. $msg_usage\nTry '${FUNCNAME[0]} -h' for more information." >&2; return 2; }
+            ;;
+    esac
+
+    if [[ $# -ge 2 ]]; then
+        { pass_entry="$1"; yaml_key="$2"; }
+    elif [[ $# -eq 1 ]]; then 
+        { pass_entry="$1"; yaml_key="pw"; }
+    else
+        $COPY && echo "No entry specified" >&2
+        return 2
+    fi
+
+    $COPY && pass "$pass_entry" | yq '.'$yaml_key | xclip -r -selection clipboard \
+        || pass "$pass_entry" | yq '.'$yaml_key
+}
+alias yp='passy'
 
 # System commands
 function nwrestart() {
@@ -203,8 +266,9 @@ function nwrestart() {
 #   command qpdfview "$@" > /dev/null 2>&1 &
 # }
 function subm() {
-    command /usr/local/bin/sublime_merge/sublime_merge "$@" > /dev/null 2>&1 &
+    command /opt/sublime_merge/sublime_merge "$@" > /dev/null 2>&1 &
 }
+alias sublime-merge='subm'
 function okular() {
     command okular "$@" > /dev/null 2>&1 &
 }
@@ -215,7 +279,7 @@ function dolphin() {
     command dolphin "$@" > /dev/null 2>&1 &
 }
 function obsidian() {
-    command obsidian ${@} > /dev/null 2>&1 &
+    command obsidian "$@" > /dev/null 2>&1 &
 }
 function gwenview() {
     command gwenview "$@" > /dev/null 2>&1 &
@@ -285,10 +349,8 @@ function dmesg() {
 
 ### MISC
 
-# Firefox
-alias ffse='nohup firefox -P "Sebastian Erfort" >/dev/null 2>&1 &'
-# Rename images with EXIF data (to date and time taken, plus a number if multiple files with same name)
-# Use like: command directory
+# Rename images using EXIF data: date and time taken, plus a number if multiple files with same name
+# Use like: <command> <directory>
 alias picture_rename="exiftool '-filename<CreateDate' -d %Y%m%d_%H%M%S%%-c.%%e"
 # run latexmk, trying to guess main tex file
 alias latexmkspeciale='grep -l '\''\documentclass'\'' *tex | xargs latexmk -pdf -pvc -silent'

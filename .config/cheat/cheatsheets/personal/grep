@@ -5,6 +5,7 @@ grep -R <pattern> <dir> # recursive and follow links
 grep -f <pattern-file> <file> # Read search patterns from a file (one per line)
 grep -v <pattern> <file> # Find lines NOT containing pattern
 grep -B 3 -A 2 <pattern> <file> # Set how many lines to show before (-B) and after (-A) pattern:
+grep -F # Match literal string, not pattern/regex (alias was fgrep)
 
 # To grep with regular expressions:
 grep "^00" <file>                                               # Match lines starting with 00

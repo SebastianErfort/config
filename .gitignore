@@ -1,2 +1,6 @@
 *
 .vim/plugged
+!./rsrc
+!./journal
+!./.config/nvim
+!./.config/cheat

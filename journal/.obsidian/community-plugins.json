@@ -7,5 +7,9 @@
   "templater-obsidian",
   "obsidian-style-settings",
   "emoji-shortcodes",
-  "obsidian-emoji-toolbar"
+  "obsidian-emoji-toolbar",
+  "quickadd",
+  "tag-wrangler",
+  "obsidian-linter",
+  "obsidian-charts"
 ]

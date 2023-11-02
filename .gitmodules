@@ -1,33 +1,6 @@
-[submodule ".tmux/plugins/tmux-continuum"]
-	path = .tmux/plugins/tmux-continuum
-	url = https://git::@github.com/tmux-plugins/tmux-continuum
-[submodule ".tmux/plugins/tmux-copycat"]
-	path = .tmux/plugins/tmux-copycat
-	url = https://git::@github.com/tmux-plugins/tmux-copycat
-[submodule ".tmux/plugins/tmux-open"]
-	path = .tmux/plugins/tmux-open
-	url = https://git::@github.com/tmux-plugins/tmux-open
-[submodule ".tmux/plugins/tmux-power"]
-	path = .tmux/plugins/tmux-power
-	url = https://git::@github.com/tmux-plugins/tmux-power
-[submodule ".tmux/plugins/tmux-resurrect"]
-	path = .tmux/plugins/tmux-resurrect
-	url = https://git::@github.com/tmux-plugins/tmux-resurrect
-[submodule ".tmux/plugins/tmux-sensible"]
-	path = .tmux/plugins/tmux-sensible
-	url = https://git::@github.com/tmux-plugins/tmux-sensible
-[submodule ".tmux/plugins/tmux-yank"]
-	path = .tmux/plugins/tmux-yank
-	url = https://git::@github.com/tmux-plugins/tmux-yank
 [submodule ".icons/gitlab-svgs"]
 	path = .icons/gitlab-svgs
 	url = https://gitlab.com/gitlab-org/gitlab-svgs.git
-[submodule "rsrc/revealjs/revealjs_markdown_template"]
-	path = rsrc/revealjs/revealjs_markdown_template
-	url = git@github.com:SebastianErfort/revealjs_markdown_template.git
-[submodule "rsrc/revealjs/revealjs_template_markdown_RUG"]
-	path = rsrc/revealjs/revealjs_markdown_template_RUG
-	url = git@github.com:SebastianErfort/revealjs_template_markdown_RUG.git
 [submodule ".config/cheat/cheatsheets/community"]
 	path = .config/cheat/cheatsheets/community
 	url = https://github.com/cheat/cheatsheets.git
@@ -36,13 +9,13 @@
 	path = .config/nvim
 	url = https://github.com/SebastianErfort/kickstart.nvim.git
 	branch = personal
-[submodule "rsrc/gnuplot"]
-	path = rsrc/gnuplot
-	url = git@github.com:SebastianErfort/gnuplot.git
-[submodule "rsrc/flags"]
-	path = rsrc/flags
-	url = https://github.com/gosquared/flags
 [submodule ".local/share/fonts/fontawesome"]
 	path = .local/share/fonts/fontawesome
 	url = https://github.com/FortAwesome/Font-Awesome.git
 	branch = 6.x
+[submodule "rsrc"]
+	path = rsrc
+	url = git@github.com:SebastianErfort/rsrc.git
+[submodule ".tmux"]
+	path = .tmux
+	url = git@github.com:SebastianErfort/tmux.git

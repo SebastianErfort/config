@@ -11,7 +11,8 @@
     "blockquote",
     "callouts"
   ],
-  "cssTheme": "Prism",
+  "cssTheme": "Catppuccin",
   "monospaceFontFamily": "JetBrainsMono Nerd Font Mono",
-  "accentColor": ""
+  "accentColor": "",
+  "textFontFamily": "Fira Sans"
 }

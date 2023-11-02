@@ -1,8 +1,0 @@
-.emph {
-  font-style: italic;
-  color: var(--highlight-color, #0091ff)
-}
-
-.img {
-  vertical-align: middle; /* [top/bottom] */
-}

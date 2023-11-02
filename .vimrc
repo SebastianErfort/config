@@ -74,7 +74,7 @@ autocmd FileType yaml setlocal foldmethod=indent shiftwidth=2 softtabstop=-1 fol
 " Markdown: so far poor support of syntax fold
 autocmd FileType markdown setlocal foldmethod=indent
 " (La)TeX
-autocmd FileType tex setlocal spell
+autocmd FileType tex setlocal ts=2 sw=2 sts=0 spell
 
 " (c)tags file
 set tags=.tags

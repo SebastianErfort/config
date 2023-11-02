@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "type": "group",
+      "ctime": 1684315913278,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1683739486601,
+          "path": "rug/journal/journal.md",
+          "title": "Journal"
+        },
+        {
+          "type": "file",
+          "ctime": 1684315937299,
+          "path": "rug/journal/journal.md",
+          "subpath": "#Todo",
+          "title": "To Do"
+        }
+      ],
+      "title": "CIT"
+    },
+    {
+      "type": "group",
+      "ctime": 1684315916860,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1683739536567,
+          "path": "personal/journal/journal.md",
+          "title": "Journal"
+        }
+      ],
+      "title": "Life"
+    }
+  ]
+}

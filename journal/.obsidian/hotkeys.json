@@ -93,5 +93,24 @@
       ],
       "key": "F"
     }
-  ]
+  ],
+  "obsidian-advanced-slides:open-advanced-slides-preview": [],
+  "file-explorer:new-file": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "N"
+    }
+  ],
+  "obsidian-excalidraw-plugin:insert-link": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "L"
+    }
+  ],
+  "editor:save-file": []
 }

@@ -70,6 +70,8 @@ find . -type f -ctime -2
 find . -type f -Btime -2
 # Or accessed in last 2 days:
 find . -type f -atime -2
+# To delete directories which modification time is more than 60 minutes
+find <path> -type d -name <name/glob> -mmin +60 -exec rm -r {} \;
 
 # To find and rename (imperfect) all files and dirs that have a comma in the
 # name (dry-run):
