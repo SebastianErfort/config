@@ -1,0 +1,1 @@
+rsrc/gnuplot/gnuplotrc

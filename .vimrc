@@ -53,7 +53,7 @@ endif
 " Syntax highlighting, filetype detection
 syntax on " Set syntax highlighting. Needs to be before filetype ... on to be working in split windows.
 filetype indent plugin on " Filetype detection
-au BufNewFile,BufRead *.{gpl,gpls,gplt,gnuplot,gnu,GNU,pal} setf gnuplot
+au BufNewFile,BufRead *.{gp,gpl,gpls,gplt,gnuplot,gnu,GNU,pal} setf gnuplot
 au BufNewFile,BufRead *.{out,log,com,test}* setf fortran
 au BufNewFile,BufRead *.*{yml,yaml} setf yaml
 au BufNewFile,BufRead *.{service,target} setf systemd
@@ -74,7 +74,7 @@ autocmd FileType yaml setlocal foldmethod=indent shiftwidth=2 softtabstop=-1 fol
 " Markdown: so far poor support of syntax fold
 autocmd FileType markdown setlocal foldmethod=indent
 " (La)TeX
-autocmd FileType tex setlocal ts=2 sw=2 sts=0 spell
+autocmd FileType tex setlocal spell
 
 " (c)tags file
 set tags=.tags

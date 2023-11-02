@@ -36,3 +36,13 @@
 	path = .config/nvim
 	url = https://github.com/SebastianErfort/kickstart.nvim.git
 	branch = personal
+[submodule "rsrc/gnuplot"]
+	path = rsrc/gnuplot
+	url = git@github.com:SebastianErfort/gnuplot.git
+[submodule "rsrc/flags"]
+	path = rsrc/flags
+	url = https://github.com/gosquared/flags
+[submodule ".local/share/fonts/fontawesome"]
+	path = .local/share/fonts/fontawesome
+	url = https://github.com/FortAwesome/Font-Awesome.git
+	branch = 6.x

@@ -1,8 +1,10 @@
-# Repositories
+# === REPOSITORIES ===
 
-## add repository
+# add repository
 sudo zypper addrepo --refresh https://URL repo-name
-## import key(s)
+# import key(s)
 sudo zypper --gpg-auto-import-keys refresh
-## update package cache
+# update package cache
 sudo zypper dup --from repo-name
+# find package providing file
+zypper se --provides [--match-exact] <file>

@@ -38,6 +38,7 @@ declare -f function_name
 
 # === TESTS
 [[ -s /path/to/file ]] # success if file exists and has size greater 0
+[[ $- == *i* ]] # interactive shell?
 
 # === STDIN, STDOUT and exit codes
 my_cmd >/dev/null 2>&1 # re-direct STDOUT and STDERR (bashism)
