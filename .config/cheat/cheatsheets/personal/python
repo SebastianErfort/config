@@ -26,3 +26,7 @@ python -m http.server 8000
 
 # SMTP-Server for debugging, messages will be discarded, and printed on stdout.
 python -m smtpd -n -c DebuggingServer localhost:1025
+
+# === Virtual Environments ===
+python -m venv <path> # create new virtual env.
+python -m ensurepip --default-pip # if pip seems missing
