@@ -13,6 +13,14 @@
       "key": "F10"
     }
   ],
+  "editor:insert-tag": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "T"
+    }
+  ],
   "editor:focus-right": [
     {
       "modifiers": [

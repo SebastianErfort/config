@@ -90,16 +90,16 @@ alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
 function extract () {
     if [ -f $1 ] ; then
         case $1 in
-            *.tar)            tar xf $@      ;;
-            *.tar.gz|*.tgz)   tar xzf $@     ;;
-            *.tar.bz2|*.tbz2) tar xjf $@     ;;
-            *.bz2)            bunzip2 $@     ;;
-            *.zip)            unzip $@       ;;
-            *.gz)             gunzip $@      ;;
-            *.Z)              uncompress $@  ;;
-            *.rar)            rar x $@       ;;
-            *.7z)             7z x $@        ;;
-            *)                echo "Unknown archive type (extension)" ;;
+            *.tar)            tar xf $@                          ;;
+            *.tar.gz|*.tgz)   tar xzf $@                         ;;
+            *.tar.bz2|*.tbz2) tar xjf $@                         ;;
+            *.bz2)            bunzip2 -kvd $@                    ;;
+            *.zip)            unzip $@                           ;;
+            *.gz)             gunzip $@                          ;;
+            *.Z)              uncompress $@                      ;;
+            *.rar)            rar x $@                           ;;
+            *.7z)             7z x $@                            ;;
+            *)                echo "Unknown archive type (ext.)" ;;
         esac
     else
         echo "No such file: '$1'"
@@ -151,7 +151,7 @@ function sshcm () {
                 fi;;
             connect | open)
                 [[ -n "$2" ]] && ssh "$2" ;;
-            disconnect | close | kill)
+            rm | disconnect | close | kill)
                 if [[ -n "$2" ]]; then
                     s=$(ls ~/.ssh/cm_*${2}* 2>/dev/null)
                     [ -z "$s" ] && echo "Nothing to do" && return
