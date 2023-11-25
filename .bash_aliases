@@ -169,19 +169,21 @@ function env-ssh () {
     local FORCE
     [[ "$1" == '-f' ]] && FORCE=true || FORCE=false
     # TODO Ensure agent pid and auth sock match
-    if [[ -z $SSH_AGENT_PID || -z $SSH_AUTH_SOCK ]] || $FORCE; then
-        SSH_AGENT_PID=$(ps -fC ssh-agent | tail -1 | awk '{print $2}' | grep '[0-9]\+') \
-            && SSH_AUTH_SOCK=$(find /tmp -path "/tmp/ssh-*" -name "agent.*" 2>/dev/null || true) \
+    if [[ -z "$SSH_AGENT_PID" || -z "$SSH_AUTH_SOCK" ]] || $FORCE; then
+        SSH_AGENT_PID="$(ps -fC ssh-agent | tail -1 | awk '{print $2}' | grep '[0-9]\+')" \
+            && SSH_AUTH_SOCK=$(find /tmp -path "/tmp/ssh-*" -name "agent.*" 2>/dev/null | tail -1 || true) \
             || { echo "No agent found, starting new .."; eval "$(ssh-agent)" >/dev/null; }
     fi
 }
 env-ssh -q
 
 # Update tmux environment: SSH env. var.s, ...
-# TODO Test and fix
+# TODO: Test and fix
 function env-tmux () {
     env-ssh
-    for v in $(tmux show-environment | grep '\-SSH_{AGENT_PID,AUTH_SOCK}'); do
+    # force refreshing all variables? default otherwise.
+    [[ "$1" == "-f" ]] && pattern='*' || pattern='\-SSH_{AGENT_PID,AUTH_SOCK}'
+    for v in $(tmux show-environment | grep "$pattern"); do
         # echo $v
         tmux setenv -g "${v#-}" "${!v}"
     done
@@ -297,7 +299,7 @@ alias gcomm-am='git commit -am'
 # git log cat'ed
 alias glog='GIT_PAGER=cat git log'
 # short ID, author name and 1st line
-alias glog-short='git log --pretty="tformat:%C(auto) %h %Cgreen%aN%Creset %s"'
+alias glogs='git log --pretty="tformat:%C(auto) %h %Cgreen%aN%Creset %s"'
 
 ### KDE ###
 function kwin-reset() {

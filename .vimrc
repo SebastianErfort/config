@@ -67,14 +67,16 @@ set foldmethod=syntax
 autocmd FileType * setlocal shiftwidth=4 softtabstop=-1 expandtab
 " Python: so far poor support of syntax fold
 autocmd FileType python setlocal foldmethod=indent tw=100
-" Fortran: so far poor support of syntax fold. Using 3 bc. of 'historic reasons'
+" Fortran: so far poor support of syntax fold. Using 3 for "historic reasons"
 autocmd FileType fortran setlocal shiftwidth=3 softtabstop=-1 foldmethod=indent
 " YAML: so far poor support of syntax fold
 autocmd FileType yaml setlocal foldmethod=indent shiftwidth=2 softtabstop=-1 foldmethod=indent
 " Markdown: so far poor support of syntax fold
-autocmd FileType markdown setlocal foldmethod=indent spell
+autocmd FileType markdown setlocal sw=4 ts=4 sts=-1 spell foldmethod=indent
 " (La)TeX
-autocmd FileType tex setlocal ts=2 sw=2 sts=0 spell
+autocmd FileType tex setlocal ts=2 sw=2 sts=-1 spell
+" Awk
+autocmd FileType tex setlocal ts=4 sw=4 sts=-1 foldmethod=indent
 
 " (c)tags file
 set tags=.tags
