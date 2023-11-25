@@ -72,7 +72,7 @@ autocmd FileType fortran setlocal shiftwidth=3 softtabstop=-1 foldmethod=indent
 " YAML: so far poor support of syntax fold
 autocmd FileType yaml setlocal foldmethod=indent shiftwidth=2 softtabstop=-1 foldmethod=indent
 " Markdown: so far poor support of syntax fold
-autocmd FileType markdown setlocal foldmethod=indent
+autocmd FileType markdown setlocal foldmethod=indent spell
 " (La)TeX
 autocmd FileType tex setlocal ts=2 sw=2 sts=0 spell
 

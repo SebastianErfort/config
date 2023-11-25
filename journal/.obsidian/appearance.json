@@ -1,6 +1,6 @@
 {
   "baseFontSize": 16,
-  "theme": "moonstone",
+  "theme": "obsidian",
   "enabledCssSnippets": [
     "enlarge_image_hover",
     "hide_from_file_explorer",
