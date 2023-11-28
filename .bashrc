@@ -19,6 +19,9 @@ if [ -f ~/.bashtheme ]; then
   . ~/.bashtheme
 fi
 
+# Path to personal scripts etc. Overwrite if you want to use a project's utils.
+export UTILDIR=${UTILDIR:-~/rsrc}
+
 # --------------------------------------- Bash prompt ----------------------------------------------
 # Default prompt
 PS1="\u@\h:\w>"

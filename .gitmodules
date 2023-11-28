@@ -20,3 +20,9 @@
 [submodule "rsrc"]
 	path = rsrc
 	url = git@github.com:SebastianErfort/rsrc.git
+[submodule "journal/public"]
+	path = journal/public
+	url = git@github.com:SebastianErfort/notes_public.git
+[submodule "git/notes"]
+	path = git/notes
+	url = git@github.com:SebastianErfort/notes.git

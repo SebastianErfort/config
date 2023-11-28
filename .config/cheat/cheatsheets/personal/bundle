@@ -1,0 +1,15 @@
+---
+syntax: bash
+tags: [bundle, ruby, ruby-gem]
+---
+
+# *** CONFIG ***
+
+# to set the path for gem installation (bundle install --path is deprecated)
+bundle config set --local path <path>
+
+# to install ruby gems from a Gemfile
+bundle install
+
+# to run a command
+bundle exec <command>
