@@ -1,5 +1,7 @@
 $include /etc/inputrc
 set completion-ignore-case On
+# bracketed paste: don't executed pasted commands if they contain newlines
+set enable-bracketed-paste On
 # try to fix home, end, etc. keys
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line
