@@ -1,7 +1,6 @@
 [
   "dataview",
   "obsidian-excalidraw-plugin",
-  "obsidian-kanban",
   "obsidian-advanced-slides",
   "templater-obsidian",
   "obsidian-style-settings",
@@ -13,5 +12,7 @@
   "buttons",
   "calendar",
   "emoji-shortcodes",
-  "obsidian-emoji-toolbar"
+  "obsidian-emoji-toolbar",
+  "obsidian-banners",
+  "obsidian-icon-folder"
 ]

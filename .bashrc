@@ -27,7 +27,7 @@ export HISTTIMEFORMAT="[%F %T] "
 export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
-PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
+PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
 
 # ------------------------------- Environment ----------------------------------
 PATH="$PATH:$HOME/go/bin"
@@ -48,6 +48,16 @@ export PATH
 PS1="\u@\h:\w>"
 
 # Personal theme: colours, etc.
-if [ -f ~/.bashtheme ]; then
+if which starship &>/dev/null && eval "$(starship init bash)"; then
+  :
+elif [ -f ~/.bashtheme ]; then
   . "${HOME}/.bashtheme"
 fi
+
+# pnpm
+export PNPM_HOME="/home/erfort/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

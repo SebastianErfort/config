@@ -1,8 +1,5 @@
 # Personal theme: colours, etc.
-if [ -f ~/.bashtheme ]; then
-    . "$HOME/.bashtheme"
-fi
-
+[[ -f ~/.bashtheme ]] && . "$HOME/.bashtheme"
 
 ### BASH COMMANDS ###
 
@@ -187,6 +184,7 @@ function env-tmux () {
         # echo $v
         tmux setenv -g "${v#-}" "${!v}"
     done
+    [[ -f ~/.tmux/startup.sh ]] && . ~/.tmux/startup.sh
 }
 
 # Get disk usage by file type

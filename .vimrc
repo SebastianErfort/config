@@ -64,19 +64,21 @@ set smartindent
 set smarttab
 set foldmethod=syntax
 " General: set indentation for all buffers, all file types
-autocmd FileType * setlocal shiftwidth=4 softtabstop=-1 expandtab
-" Python: so far poor support of syntax fold
-autocmd FileType python setlocal foldmethod=indent tw=100
-" Fortran: so far poor support of syntax fold. Using 3 for "historic reasons"
-autocmd FileType fortran setlocal shiftwidth=3 softtabstop=-1 foldmethod=indent
+autocmd FileType * setlocal sw=4 ts=4 sts=-1 expandtab tw=80
+" shell: so far poor support of syntax fold
+autocmd filetype sh,bash setlocal foldmethod=indent
+" python: so far poor support of syntax fold
+autocmd filetype python setlocal foldmethod=indent
+" Fortran: so far poor support of syntax fold. Using 3 for historic reasons
+autocmd FileType fortran setlocal sw=3 ts=3 sts=-1 foldmethod=indent
 " YAML: so far poor support of syntax fold
-autocmd FileType yaml setlocal foldmethod=indent shiftwidth=2 softtabstop=-1 foldmethod=indent
-" Markdown: so far poor support of syntax fold
-autocmd FileType markdown setlocal sw=4 ts=4 sts=-1 spell foldmethod=indent
-" (La)TeX
-autocmd FileType tex setlocal ts=2 sw=2 sts=-1 spell
+autocmd FileType yaml setlocal sw=2 ts=2 sts=-1 foldmethod=indent
 " Awk
-autocmd FileType tex setlocal ts=4 sw=4 sts=-1 foldmethod=indent
+autocmd FileType awk setlocal foldmethod=indent
+" Markdown: so far poor support of syntax fold
+autocmd FileType markdown setlocal spell foldmethod=indent tw=0
+" (La)TeX
+autocmd FileType tex setlocal sw=2 ts=2 sts=-1 spell
 
 " (c)tags file
 set tags=.tags
