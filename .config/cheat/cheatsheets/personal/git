@@ -18,8 +18,9 @@ git config user.signingkey [KEYID] # GPG key used for signing commits
 # To stage all changes for commit:
 git add --all
 git blame <file> # see who commited which line in a file
+git reset --soft HEAD^ # undo last (unpushed!) commit, keep changes staged
 git reset --hard # undo staged and working directory changes
-git reset --hard HEAD~2 # go back 2 commits
+git reset --hard HEAD~2 # undo las 2 commits
 
 # To undo parts of last commit in a specific file:
 git checkout -p HEAD^ -- /path/to/file
@@ -42,6 +43,7 @@ git filter-branch --env-filter \
          export GIT_COMMITTER_DATE="Sat May 19 01:01:01 2007 -0700"
      fi'
 git commit -a -S -m 'Signed commit' #  sign commit
+git diff HEAD~3 <file> # show changes in file over last 3 commits
 git diff --name-status --diff-filter=U # show unmerged files only in case of conflicts
 git diff --name-only <id1> <id2> # show only names of files changed between two commits
 git diff --color-moved-ws=ignore-space-at-eol # ignore trailing whitespace (e.g. Markdown)
@@ -100,10 +102,18 @@ git stash apply stash@{6} # apply specific stash without removing it from stack
 
 
 # REPOSITORY
+
+# To perform a shallow clone to only get latest commits:
+# (helps save data when cloning large repos)
+git clone --depth 1 <remote-url>
+
 git ls-files --others --exclude-standard # list unstracked files
-git clean -f -d # remove untracked files
-git clean -f -d -x # remove untracked and ignored files
-#
+# remove untracked files (and directories -d, dry run -n, ignored files -x)
+git clean -f [-d] [-n] [-x]
+
+# To download a specific file/folder (using Subversion, replace tree/master in URL by trunk)
+svn export https://github.com/user/repo/trunk/path/to/folder
+
 # sync a fork with the master repo:
 git remote add upstream git@github.com:<username>/<repo>.git # Set a new repo
 git remote -v                                                # Confirm new remote repo
@@ -115,19 +125,16 @@ git merge upstream/master                                    # Merge remote into
 git show 83fb499                                             # Show what a commit did.
 git show 83fb499:path/fo/file.ext                            # Shows the file as it appeared at 83fb499.
 git diff branch_1 branch_2                                   # Check difference between branches
-git log                                                      # Show all the commits
 git status                                                   # Show the changes from last commit
 
 # import commits from another repo:
 git --git-dir=../some_other_repo/.git format-patch -k -1 --stdout <commit SHA> | git am -3 -k
 
-## CLONE
-# To perform a shallow clone to only get latest commits:
-# (helps save data when cloning large repos)
-git clone --depth 1 <remote-url>
-
 
 # LOG (History)
+git log                                                      # Show all the commits
+git log -4 --name-only # show files that changed in last 4 commits
+git log --follow -- <filename> # show commits where a file was changed
 # To view the commit history of a set of files:
 git log --pretty=email --patch-with-stat --reverse --full-index -- Admin\*.py > Sripts.patch
 git log @{u}.. # view commits that will be pushed
@@ -148,3 +155,5 @@ git submodule update --init --recursive --remote
 git submodule update --recursive --remote
 # *or*
 git pull --recurse-submodules
+
+# vim: ft=bash

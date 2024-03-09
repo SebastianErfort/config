@@ -1,45 +1,22 @@
 export EDITOR=nvim
 export BROWSER=firefox
 
-# export PATH=$PATH:/sbin/
 PATH="$PATH:$HOME/.local/bin"
-PATH="$PATH:$HOME/.gem/ruby/3.1.0/bin"
-PATH="$PATH:$HOME/go/bin"
 export PATH
+
 # [[ $TERM =~ screen ]] && export TERM='screen-256color' # force 256 colour
 
 if [ -f ~/.bashrc.local ]; then
-  . ~/.bashrc.local
+  . "${HOME}/.bashrc.local"
 fi
 if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
-fi
-# Personal theme: colours, etc.
-if [ -f ~/.bashtheme ]; then
-  . ~/.bashtheme
+  . "${HOME}/.bash_aliases"
 fi
 
 # Path to personal scripts etc. Overwrite if you want to use a project's utils.
-export UTILDIR=${UTILDIR:-~/rsrc}
+export UTILDIR=${UTILDIR:-"${HOME}/rsrc"}
 
-# --------------------------------------- Bash prompt ----------------------------------------------
-# Default prompt
-PS1="\u@\h:\w>"
-# Test last command for error to switch color of displayed return code
-function error_test {
-  export EXIT_STATUS=$?
-  [[ $EXIT_STATUS -eq 0 ]] && ES_COLOUR=$BGreen || ES_COLOUR=$BRed
-}
-# Custom prompt
-prompt() {
-  error_test
-  PS1="$Reset$Grey[$Reset$BBlue\A$Reset$Grey][$Reset$ES_COLOUR$EXIT_STATUS$Reset$Grey][$Reset$BTeal\u@\h$Reset$Grey]$Reset$BOrange\w$Reset$Grey>$Reset "
-  # Cyberpunk
-  # PS1="$CbDarkBlue[$Reset$BCbBlue\A$Reset$CbDarkBlue][$Reset$ES_COLOUR$EXIT_STATUS$Reset$CbDarkBlue][$Reset$BCbOrange\u@${HOSTNAME}$Reset$CbDarkBlue]$Reset$BCbPink\w$Reset$CbDarkBlue>$Reset"
-}
-PROMPT_COMMAND=prompt
-
-# ----------------------------------- Eternal bash history -----------------------------------------
+# ------------------------------ Eternal History -------------------------------
 # Undocumented feature which sets the size to "unlimited".
 # http://stackoverflow.com/questions/9457233/unlimited-bash-history
 export HISTFILESIZE=
@@ -50,16 +27,37 @@ export HISTTIMEFORMAT="[%F %T] "
 export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
-PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
+PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# ------------------------------- Environment ----------------------------------
+PATH="$PATH:$HOME/go/bin"
+PATH="$PATH:$HOME/.gem/ruby/3.1.0/bin"
+# Add Ruby Version Manager (RVM) to PATH for scripting.
+# Make sure this is the last PATH variable change.
+[[ -d "${HOME}/.rvm/bin" ]] && PATH="${PATH}:${HOME}/.rvm/bin"
+export PATH
+# Use Python HOME dir. virtual environment if present
+# [[ -d "${HOME}/.venv" ]] && . "${HOME}/.venv/bin/activate"
 
-# ------------------------------------------- Other ------------------------------------------------
 # SSH
 # Set ssh-agent environment variables if one is running, but not set up
-# TODO
-# ssh-add -l >/dev/null || eval "$(ssh-agent)"
-# [[ -z "$SSH_AGENT_PID" ]] && export SSH_AGENT_PID=$SSH_AGENT_PID
-# ssh_auth_sock_str=:"/tmp/ssh*/agent.$((SSH_AGENT_PID - 1))"
-# [[ -z "$SSH_AUTH_SOCK" ]] && export SSH_AUTH_SOCK=$(ls "$ssh_auth_sock_str")
+# FIX: SSH environment variables, especially in tmux (after resurrect)
+
+# ---------------------------------- Prompt ------------------------------------
+# Default prompt
+PS1="\u@\h:\w>"
+
+# Personal theme: colours, etc.
+if which starship &>/dev/null && eval "$(starship init bash)"; then
+  :
+elif [ -f ~/.bashtheme ]; then
+  . "${HOME}/.bashtheme"
+fi
+
+# pnpm
+export PNPM_HOME="/home/erfort/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

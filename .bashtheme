@@ -1,89 +1,31 @@
-# Using tput seems to break my terminal (Konsole): using keys such as Home results in the displayed
-# text being f'd up and the caret does weird shit
-if [[ "$TERM" =~ 256 ]]; then
-    Bold="\[$(tput bold)\]"
-    Underline="\[$(tput smul)\]"
-    Italic="\[$(tput sitm)\]"
-    Info="\[$(tput setaf 2)\]"
-    Error="\[$(tput setaf 160)\]"
-    Warn="\[$(tput setaf 214)\]"
-    Reset="\[$(tput sgr0)\]"
-    # Use like
-    # echo "${info}INFO${Reset}: This is an ${bold}info${Reset} message"
-    # echo "${error}ERROR${Reset}: This is an ${underline}error${Reset} message"
-    # echo "${warn}WARN${Reset}: This is a ${italic}warning${Reset} message"
+if [[ -f "${HOME}/rsrc/bash/formatting.sh" ]]; then
+    . "${HOME}/rsrc/bash/formatting.sh"
 
-    # Regular Colors
-    Black="\[$(tput setaf 232)\]"
-    Grey="\[$(tput setaf 250)\]"
-    Red="\[$(tput setaf 1)\]"
-    DarkRed="\[$(tput setaf 88)\]"
-    Green="\[$(tput setaf 34)\]"
-    Yellow="\[$(tput setaf 226)\]"
-    Blue="\[$(tput setaf 69)\]"
-    BrightBlue="\[$(tput setaf 80)\]"
-    Purple="\[$(tput setaf 128)\]"
-    Cyan="\[$(tput setaf 75)\]"
-    White="\[$(tput setaf 255)\]"
-    Teal="\[$(tput setaf 36)\]"
-    Orange="\[$(tput setaf 214)\]"
-    Colours="Black Grey Red DarkRed Green Yellow Blue BrightBlue Purple Cyan White Teal Orange"
+    # Formatting definitions: color, bold/italtic/underline
+    F_TEXT="$F_GREY"
+    F_BAD="$F_BRED"
+    F_GOOD="$F_GREEN"
+    F_INFO="$F_BBLUE"
+    F_HOST="$F_BTEAL"
+    F_PATH="$F_BORANGE"
 
-    # Cyberpunk palette
-    # CbRed="\[$(tput setaf 197)\]"
-    # CbPink="\[$(tput setaf 201)\]"
-    # CbBlue="\[$(tput setaf 87)\]"
-    # CbDarkBlue="\[$(tput setaf 26)\]"
-    # CbGreen="\[$(tput setaf 40)\]"
-    # CbOrange="\[$(tput setaf 214)\]"
-    # CbYellow="\[$(tput setaf 220)\]"
-    # Colours+="CbRed CbPink CbBlue CbDarkBlue CbGreen CbOrange CbYellow"
+    # Test last command for error to switch color of displayed return code
+    function error_test {
+      export EXIT_STATUS=$?
+      [[ $EXIT_STATUS -eq 0 ]] && F_EXIT="${F_GOOD:-"\[\e[1;32m\]"}" || F_EXIT="${F_BAD:-"\[\e[1;31m\]"}"
+    }
 
-    # Bold
-    for c in $Colours; do
-      eval "B$c=\$$c\$Bold"
-    done
-    # Underlined
-    for c in $Colours; do
-      eval "U$c=\$$c\$Underline"
-    done
+    # Custom prompt
+    prompt() {
+      error_test
+      # see colour definitions in ~/.bashtheme
+      PS1="\[${F_RESET}\]\[${F_TEXT}\][\[${F_RESET}\]\[${F_INFO}\]\A\[${F_RESET}\]\[${F_TEXT}\]][\[${F_RESET}\]\[${F_EXIT}\]\[${EXIT_STATUS}\]\[${F_RESET}\]\[${F_TEXT}\]][\[${F_RESET}\]\[${F_HOST}\]\u@\h\[${F_RESET}\]\[${F_TEXT}\]]\[${F_RESET}\]\[${F_PATH}\]\w\[${F_RESET}\]\[${F_TEXT}\]>\[${F_RESET}\] "
+    }
+    PROMPT_COMMAND=prompt
 
 else
-    Bold="\[\e[1m\]"
-    Italic="\[\e[3m\]"
-    Underline="\[\e[4m\]"
-    Reset="\[\e[0m\]"
-
-    # Regular Colors
-    Black="\[\e[0;30m\]"
-    Red="\[\e[0;31m\]"
-    Green="\[\e[0;32m\]"
-    Yellow="\[\e[0;33m\]"
-    Orange="\[\e[0;33m\]"
-    Blue="\[\e[0;34m\]"
-    Purple="\[\e[0;35m\]"
-    Teal="\[\e[0;36m\]"
-    Grey="\[\e[0;37m\]"
-
-    # Bold
-    BBlack="\[\e[1;30m\]"
-    BRed="\[\e[1;31m\]"
-    BGreen="\[\e[1;32m\]"
-    BYellow="\[\e[1;33m\]"
-    BOrange="\[\e[1;33m\]"
-    BBlue="\[\e[1;34m\]"
-    BPurple="\[\e[1;35m\]"
-    BTeal="\[\e[1;36m\]"
-    BGrey="\[\e[1;37m\]"
-
-    # Underlined
-    UBlack="\[\e[4;30m\]"
-    URed="\[\e[4;31m\]"
-    UGreen="\[\e[4;32m\]"
-    UYellow="\[\e[4;33m\]"
-    UOrange="\[\e[4;33m\]"
-    UBlue="\[\e[4;34m\]"
-    UPurple="\[\e[4;35m\]"
-    UTeal="\[\e[4;36m\]"
-    UGrey="\[\e[4;37m\]"
+    # Default prompt
+    PS1="\u@\h:\w> "
 fi
+
+# vi: syntax=bash wrap

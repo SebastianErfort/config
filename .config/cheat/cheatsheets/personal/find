@@ -1,14 +1,17 @@
-# To find files following symlinks (otherwise the symlinks are not followed):
-find -L . -type f
-
-# To find files by case-insensitive extension (ex: .jpg, .JPG, .jpG):
-find . -iname "*.jpg"
-
 # To find directories:
 find . -type d
 
 # To find files:
 find . -type f
+
+# To find files following symlinks:
+find -L . -type f
+
+# To find files case-insensitive (ex: .jpg, .JPG):
+find . -iname "*.jpg"
+
+# To strip preceding starting-point (usually ./) in output
+find -printf "%P\n"
 
 # To find files by octal permission:
 find . -type f -perm 777
@@ -21,17 +24,14 @@ find . -type f -ctime -1 -print0 | xargs -0 -p cp -t <dir>
 # or:
 find . -type f -ctime -1 -print0 | xargs -0 -p -J % cp % <dir>
 
-# To find files with extension '.txt' and remove them:
-find ./path/ -name '*.txt' -delete
-
-# To find files with tilde as postfix and remove them:
-find ./path/ -name '*~' -delete
-
 # To find files with extension '.txt' and dump their contents:
 find ./path/ -name '*.txt' -exec cat '{}' \;
 
 # To find files with extension '.txt' and look for a string into them:
 find ./path/ -name '*.txt' | xargs grep 'string'
+
+# To use multiple regex: group with \( \) and use or with \|
+find . -regex ".*\.\(jpg\|jpeg\|png\)"
 
 # To find files with size bigger than 5 Mebibyte and sort them by size:
 find . -size +5M -type f -print0 | xargs -0 ls -Ssh | sort -z
@@ -72,10 +72,6 @@ find . -type f -Btime -2
 find . -type f -atime -2
 # To delete directories which modification time is more than 60 minutes
 find <path> -type d -name <name/glob> -mmin +60 -exec rm -r {} \;
-
-# To find and rename (imperfect) all files and dirs that have a comma in the
-# name (dry-run):
-find . -name '*,*' | while read f; do echo mv "$f" "${f//,/}"; done
 
 # To find all broken links. Note -L returns a file unless it is a broken link:
 find -L /usr/ports/packages -type l

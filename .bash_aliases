@@ -1,8 +1,5 @@
 # Personal theme: colours, etc.
-if [ -f ~/.bashtheme ]; then
-    . "$HOME/.bashtheme"
-fi
-
+[[ -f ~/.bashtheme ]] && . "$HOME/.bashtheme"
 
 ### BASH COMMANDS ###
 
@@ -187,6 +184,7 @@ function env-tmux () {
         # echo $v
         tmux setenv -g "${v#-}" "${!v}"
     done
+    [[ -f ~/.tmux/startup.sh ]] && . ~/.tmux/startup.sh
 }
 
 # Get disk usage by file type
@@ -217,42 +215,47 @@ function passc () {
     pass "$PASS_ENTRY" | awk "NR == ${PASS_LINE} {print}" | sed 's/^[ ]*[a-z]\+:[ ]*//' | xclip -r -selection clipboard
 }
  
-complete -o default -F _pass_complete_entries passy
 # Parse YAML format pass entries
 function passy () {
-    msg_usage="Usage: ${FUNCNAME[0]} [options] <entry> [YAML key (default pw)]"
-    msg_info="Parse YAML format pass entries"
-    msg_options='Options:
+    local msg_usage="Usage: ${FUNCNAME[0]} [options] <entry> [YAML key (default pw)]"
+    local msg_info="Parse YAML format pass entries"
+    local msg_options='Options:
 \t-h, --help\t\tdisplay this help and exit
 \t-c, --copy\t\tcopy result to clipboard'
+    local msg_help="$msg_usage\n$msg_info\n\n$msg_options\n"
+    local msg_error="${msg_usage}\nTry '${FUNCNAME[0]} -h' for more information."
 
     [[ -z "$*" ]] && \
-        { echo -e "ERROR. $msg_usage\nTry '${FUNCNAME[0]} -h' for more information." >&2; return 2; }
+        { echo -e "ERROR. ${msg_error}" >&2; return 2; }
     COPY=false
-    case "$1" in
-        -h|--help)
-            echo -e "$msg_usage\n$msg_info\n\n$msg_options\n"
-            return
-            ;;
-        -c|--copy) COPY=true; shift;
-            ;;
-        *)
-            { echo -e "Unknown option '$1'. $msg_usage\nTry '${FUNCNAME[0]} -h' for more information." >&2; return 2; }
-            ;;
-    esac
+    # transfer long opt.s to short opt.s, getopts doesn't support long ones
+    for arg in "$@"; do
+        case "$arg" in
+            --help) shift; set -- "$@" '-h'; echo -e "$msg_help"; return ;;
+            --copy) shift; set -- "$@" '-c'                              ;;
+        esac
+    done
+    OPTIND=1 # reset for getopts to work
+    while getopts ":hc" opt; do
+        case "$opt" in
+            h) echo -e "$msg_help"; return;;
+            c) COPY=true;;
+            # :) echo "Option requires an argument: -${OPTARG}"; return 1;;
+            ?) echo "Invalid option: -${OPTARG}"; return 1;;
+        esac
+    done
+    shift $((OPTIND - 1)) # remove options from arguments
 
-    if [[ $# -ge 2 ]]; then
-        { pass_entry="$1"; yaml_key="$2"; }
-    elif [[ $# -eq 1 ]]; then 
-        { pass_entry="$1"; yaml_key="pw"; }
+    pass_entry="$1"
+    [[ -n "$2" ]] && yaml_key="$2" || yaml_key="pw"
+
+    if [[ "$COPY" == 'true' ]]; then
+        pass "$pass_entry" | yq ".${yaml_key}" | xclip -r -selection clipboard
     else
-        $COPY && echo "No entry specified" >&2
-        return 2
+        pass "$pass_entry" | yq ".${yaml_key}"
     fi
-
-    $COPY && pass "$pass_entry" | yq '.'$yaml_key | xclip -r -selection clipboard \
-        || pass "$pass_entry" | yq '.'$yaml_key
 }
+complete -o default -F _pass_complete_entries passy
 alias yp='passy'
 
 # System commands

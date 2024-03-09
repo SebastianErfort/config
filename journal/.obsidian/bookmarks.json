@@ -32,6 +32,19 @@
         }
       ],
       "title": "Life"
+    },
+    {
+      "type": "group",
+      "ctime": 1701355032317,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1701355035738,
+          "path": "public/tech/dev/git/git.md",
+          "title": "Git article dev.to"
+        }
+      ],
+      "title": "CIO"
     }
   ]
 }
