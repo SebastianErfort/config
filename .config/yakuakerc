@@ -1,0 +1,12 @@
+[Appearance]
+Skin=scratchy
+SkinInstalledWithKns=true
+Translucency=true
+
+[Dialogs]
+FirstRun=false
+
+[Window]
+Height=100
+Position=0
+Width=50
