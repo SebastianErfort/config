@@ -115,6 +115,9 @@ ctrl-w=          make all equal size
 :bunload         removes buffer from window
 :taball          open a tab for all buffers
 
+# Execute command on event
+autocmd BufWritePost * !<command> # to execute <command> on saving any file (*)
+
 # Remote Editing (requires netrw, VIM >= 7.2)
 vim <protocoll>://[user@]host/relative/path
 vim <protocoll>://[user@]host//absolute/path
