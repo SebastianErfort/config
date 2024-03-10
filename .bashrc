@@ -27,7 +27,8 @@ export HISTTIMEFORMAT="[%F %T] "
 export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
-PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
+[[ -n "$PROMPT_COMMAND" ]] && \
+    PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
 
 # ------------------------------- Environment ----------------------------------
 PATH="$PATH:$HOME/go/bin"
