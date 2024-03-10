@@ -1,6 +1,3 @@
-# Personal theme: colours, etc.
-[[ -f ~/.bashtheme ]] && . "$HOME/.bashtheme"
-
 ### BASH COMMANDS ###
 
 # enable color support of ls and also add handy aliases
