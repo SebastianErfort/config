@@ -16,6 +16,21 @@ fi
 # Path to personal scripts etc. Overwrite if you want to use a project's utils.
 export UTILDIR=${UTILDIR:-"${HOME}/rsrc"}
 
+# ---------------------------------- Prompt ------------------------------------
+# Default prompt
+PS1="\u@\h:\w>"
+
+# Personal theme: colours, etc.
+if which starship &>/dev/null && eval "$(starship init bash)"; then
+    :
+elif [ -f ~/.bashtheme ]; then
+  . "${HOME}/.bashtheme"
+fi
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+[[ -n "$PROMPT_COMMAND" ]] && \
+    PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
+
 # ------------------------------ Eternal History -------------------------------
 # Undocumented feature which sets the size to "unlimited".
 # http://stackoverflow.com/questions/9457233/unlimited-bash-history
@@ -25,10 +40,6 @@ export HISTTIMEFORMAT="[%F %T] "
 # Change the file location because certain bash sessions truncate .bash_history file upon close.
 # http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
 export HISTFILE=~/.bash_eternal_history
-# Force prompt to write history after every command.
-# http://superuser.com/questions/20900/bash-history-loss
-[[ -n "$PROMPT_COMMAND" ]] && \
-    PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
 
 # ------------------------------- Environment ----------------------------------
 PATH="$PATH:$HOME/go/bin"
@@ -43,17 +54,6 @@ export PATH
 # SSH
 # Set ssh-agent environment variables if one is running, but not set up
 # FIX: SSH environment variables, especially in tmux (after resurrect)
-
-# ---------------------------------- Prompt ------------------------------------
-# Default prompt
-PS1="\u@\h:\w>"
-
-# Personal theme: colours, etc.
-if which starship &>/dev/null && eval "$(starship init bash)"; then
-  :
-elif [ -f ~/.bashtheme ]; then
-  . "${HOME}/.bashtheme"
-fi
 
 # pnpm
 export PNPM_HOME="/home/erfort/.local/share/pnpm"

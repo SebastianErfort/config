@@ -21,11 +21,11 @@ if [[ -f "${HOME}/rsrc/bash/formatting.sh" ]]; then
       # see colour definitions in ~/.bashtheme
       PS1="\[${F_RESET}\]\[${F_TEXT}\][\[${F_RESET}\]\[${F_INFO}\]\A\[${F_RESET}\]\[${F_TEXT}\]][\[${F_RESET}\]\[${F_EXIT}\]\[${EXIT_STATUS}\]\[${F_RESET}\]\[${F_TEXT}\]][\[${F_RESET}\]\[${F_HOST}\]\u@\h\[${F_RESET}\]\[${F_TEXT}\]]\[${F_RESET}\]\[${F_PATH}\]\w\[${F_RESET}\]\[${F_TEXT}\]>\[${F_RESET}\] "
     }
-    PROMPT_COMMAND=prompt
 
 else
     # Default prompt
-    PS1="\u@\h:\w> "
+    prompt() { PS1="\u@\h:\w> "; }
 fi
+PROMPT_COMMAND=prompt
 
 # vi: syntax=bash wrap
