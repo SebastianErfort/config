@@ -78,7 +78,7 @@ autocmd FileType awk setlocal foldmethod=indent
 " Markdown: so far poor support of syntax fold
 autocmd FileType markdown setlocal spell foldmethod=indent tw=0
 " (La)TeX
-autocmd FileType tex setlocal sw=2 ts=2 sts=-1 spell
+autocmd FileType tex setlocal spell " sw=2 ts=2 sts=-1 
 
 " (c)tags file
 set tags=.tags
