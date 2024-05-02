@@ -8,8 +8,11 @@
     "image_center",
     "hide_non-markdown",
     "idea",
+    "checkboxes",
+    "naked_embeds",
     "callouts",
-    "checkboxes"
+    "blockquote",
+    "tags"
   ],
   "cssTheme": "Catppuccin",
   "monospaceFontFamily": "JetBrainsMono Nerd Font Mono",
