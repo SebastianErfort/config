@@ -244,7 +244,7 @@ function passy () {
     shift $((OPTIND - 1)) # remove options from arguments
 
     pass_entry="$1"
-    [[ -n "$2" ]] && yaml_key="$2" || yaml_key="pw"
+    [[ -n "$2" ]] && yaml_key="$2" || yaml_key=""
 
     if [[ "$COPY" == 'true' ]]; then
         pass "$pass_entry" | yq ".${yaml_key}" | xclip -r -selection clipboard

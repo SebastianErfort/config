@@ -1,0 +1,10 @@
+---
+syntax: bash
+tags: [curtin, subiquity, cloud-init, ubuntu, canonical]
+---
+
+# To report disks and partitions in the format used for `storage: config` in autoinstall.yaml
+curtin block-discover
+
+# To run a command in target (chroot)
+curtin in-target -t/target -- <cmd>

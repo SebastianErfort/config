@@ -1,0 +1,16 @@
+---
+tags: [gitlab,git,cicd,automation]
+---
+
+# CI/CD
+
+# RUNNERS
+
+# To register a runner from a template config file
+gitlab-runner register --template-config=<config template>
+
+# To change a runners configuration edit config.toml file
+
+# To test a job on specific runner machine
+# pull policies: always, if-not-present, never (limited by config.toml)
+gitlab-runner exec docker syntax::yaml --docker-image=<image name>:<image tag> --docker-pull-policy=never

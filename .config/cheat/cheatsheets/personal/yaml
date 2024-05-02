@@ -1,0 +1,15 @@
+---
+tags: [YAML]
+syntax: yaml
+---
+---
+list:
+  item1: 1
+  item2: 2
+array:
+  - 3.14
+  - val2
+  - key1: abc
+refkey: &ref refval
+reuse: *ref  # will have value refval
+...
