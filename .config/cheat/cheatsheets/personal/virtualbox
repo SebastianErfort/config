@@ -1,0 +1,14 @@
+# To list running VMs
+vboxmanage list vms
+
+# To register a VM
+vboxmanage registervm <vbox file>
+
+# To start a VM
+vboxmanage startvm <vbox name>
+
+# To power off a VM
+vboxmanage controlvm <vbox name> poweroff
+
+# To unregister a VM
+vboxmanage unregistervm <vbox name>

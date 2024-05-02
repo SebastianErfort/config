@@ -1,6 +1,6 @@
 {
   "command_timeout": 5,
-  "templates_folder": "templates/templater",
+  "templates_folder": "obsidian/templates/templater",
   "templates_pairs": [
     [
       "",
@@ -20,6 +20,7 @@
     }
   ],
   "syntax_highlighting": true,
+  "syntax_highlighting_mobile": false,
   "enabled_templates_hotkeys": [
     ""
   ],

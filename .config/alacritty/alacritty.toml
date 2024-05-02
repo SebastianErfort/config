@@ -1,9 +1,12 @@
+# See https://alacritty.org/config-alacritty.html
+# and https://wiki.archlinux.org/title/Alacritty
+
 import = [
     "~/.config/alacritty/themes/catppuccin-macchiato.toml"
 ]
 
 [font]
-size = 10.0
+size = 10
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
@@ -20,3 +23,4 @@ style = "Bold Italic"
 [font.italic]
 family = "JetBrainsMono Nerd Font"
 style = "Italic"
+

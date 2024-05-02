@@ -1,0 +1,9 @@
+---
+syntax: bash
+tags: [linux, swap]
+---
+
+cat /proc/meminfo # to see total swap, and free swap (all linux)
+cat /proc/swaps # to see which swap devices are being used (all linux)
+swapon -s # to see swap devices and sizes (where swapon is installed)
+vmstat # for current virtual memory statistics

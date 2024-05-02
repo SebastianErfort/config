@@ -63,9 +63,9 @@ function os_version() {
 # pipe output of command to clipboard. use like mycmd | pipe2clip
 alias pipe2clip='xclip -r -selection clipboard'
 # create qr-code from clipboard content
-alias clip2qr='xclip -o | qrencode -o -'
+alias clip2qr='xclip -o | qrencode -o - | feh -'
 # create qr-code from command output. use like mycmd | pipe2qr
-alias pipe2qr='qrencode -o'
+alias pipe2qr='qrencode -o - | feh -'
 # create qr-code from command output and show on screen. use like mycmd | qr2screen
 alias qr2screen='qrencode -o - | feh --force-aliasing -ZF -'
 # show command output as image on screen. use like mycmd | img2screen
@@ -244,7 +244,7 @@ function passy () {
     shift $((OPTIND - 1)) # remove options from arguments
 
     pass_entry="$1"
-    [[ -n "$2" ]] && yaml_key="$2" || yaml_key="pw"
+    [[ -n "$2" ]] && yaml_key="$2" || yaml_key=""
 
     if [[ "$COPY" == 'true' ]]; then
         pass "$pass_entry" | yq ".${yaml_key}" | xclip -r -selection clipboard
