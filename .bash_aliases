@@ -63,9 +63,9 @@ function os_version() {
 # pipe output of command to clipboard. use like mycmd | pipe2clip
 alias pipe2clip='xclip -r -selection clipboard'
 # create qr-code from clipboard content
-alias clip2qr='xclip -o | qrencode -o -'
+alias clip2qr='xclip -o | qrencode -o - | feh -'
 # create qr-code from command output. use like mycmd | pipe2qr
-alias pipe2qr='qrencode -o'
+alias pipe2qr='qrencode -o - | feh -'
 # create qr-code from command output and show on screen. use like mycmd | qr2screen
 alias qr2screen='qrencode -o - | feh --force-aliasing -ZF -'
 # show command output as image on screen. use like mycmd | img2screen
@@ -309,8 +309,8 @@ disown
 kwin --replace >/dev/null 2>&1 &
 disown
 }
-alias zyppurge='sudo zypper rm -u'
-alias zypdup='sudo zypper dup -y --auto-agree-with-licenses'
+alias sysclean='sudo zypper rm -u'
+alias sysup='sudo zypper -n dup -yl'
 
 
 ### DEVICES ###
