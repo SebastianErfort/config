@@ -32,7 +32,7 @@
       "id": "20cbdee8-6dac-47e8-9414-76f247cbfab9",
       "name": "Template - person",
       "type": "Template",
-      "command": false,
+      "command": true,
       "templatePath": "obsidian/templates/quickadd/person.md",
       "fileNameFormat": {
         "enabled": false,
@@ -41,7 +41,7 @@
       "folder": {
         "enabled": true,
         "folders": [],
-        "chooseWhenCreatingNote": false,
+        "chooseWhenCreatingNote": true,
         "createInSameFolderAsActiveFile": false,
         "chooseFromSubfolders": false
       },
@@ -208,7 +208,7 @@
   "devMode": false,
   "templateFolderPath": "obsidian/templates/quickadd",
   "announceUpdates": true,
-  "version": "1.6.1",
+  "version": "1.4.0",
   "disableOnlineFeatures": true,
   "ai": {
     "OpenAIApiKey": "",
