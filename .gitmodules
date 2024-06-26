@@ -26,6 +26,3 @@
 [submodule "git/notes"]
 	path = git/notes
 	url = git@github.com:SebastianErfort/notes.git
-[submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/ohmyzsh/ohmyzsh.git

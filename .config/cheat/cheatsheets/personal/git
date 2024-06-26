@@ -112,6 +112,7 @@ git ls-files --others --exclude-standard # list unstracked files
 git clean -f [-d] [-n] [-x]
 
 # To download a specific file/folder (using Subversion, replace tree/master in URL by trunk)
+# NOTE (2024/06) Doesn't seem to work anymore
 svn export https://github.com/user/repo/trunk/path/to/folder
 
 # sync a fork with the master repo:
