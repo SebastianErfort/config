@@ -41,12 +41,36 @@
     }
   ],
   "editor:toggle-checklist-status": [],
-  "daily-notes": [
+  "editor:focus-left": [
     {
       "modifiers": [
         "Alt"
       ],
-      "key": "D"
+      "key": "ArrowLeft"
+    }
+  ],
+  "editor:focus-top": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "ArrowUp"
+    }
+  ],
+  "editor:focus-bottom": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "ArrowDown"
+    }
+  ],
+  "editor:focus-right": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "ArrowRight"
     }
   ],
   "insert-template": [
@@ -55,6 +79,14 @@
         "Alt"
       ],
       "key": "T"
+    }
+  ],
+  "daily-notes": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "D"
     }
   ]
 }

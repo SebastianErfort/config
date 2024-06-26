@@ -319,8 +319,8 @@ disown
 kwin --replace >/dev/null 2>&1 &
 disown
 }
-alias zyppurge='sudo zypper rm -u'
-alias zypdup='sudo zypper dup -y --auto-agree-with-licenses'
+alias sysclean='sudo zypper rm -u'
+alias sysup='sudo zypper -n dup -yl'
 
 
 ### DEVICES ###
