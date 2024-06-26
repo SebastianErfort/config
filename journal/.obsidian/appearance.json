@@ -12,10 +12,11 @@
     "naked_embeds",
     "callouts",
     "blockquote",
-    "tags"
+    "tags",
+    "dashboard"
   ],
   "cssTheme": "Catppuccin",
   "monospaceFontFamily": "JetBrainsMono Nerd Font Mono",
   "accentColor": "",
-  "textFontFamily": "Fira Sans"
+  "textFontFamily": "Fira Sans,Hack Nerd Font"
 }
