@@ -62,14 +62,19 @@ function os_version() {
 
 # pipe output of command to clipboard. use like mycmd | pipe2clip
 alias pipe2clip='xclip -r -selection clipboard'
+alias p2c='pipe2clip'
 # create qr-code from clipboard content
 alias clip2qr='xclip -o | qrencode -o - | feh -'
+alias c2q='clip2qr'
 # create qr-code from command output. use like mycmd | pipe2qr
 alias pipe2qr='qrencode -o - | feh -'
+alias p2q='pipe2qr'
 # create qr-code from command output and show on screen. use like mycmd | qr2screen
 alias qr2screen='qrencode -o - | feh --force-aliasing -ZF -'
+alias q2s='qr2screen'
 # show command output as image on screen. use like mycmd | img2screen
-alias img2screen='feh --force-aliasing -ZF -'
+alias img2screen='feh --force-aliasing -ZF'
+alias i2s='qr2screen'
 
 # open file in existing instance
 alias gvimadd='gvim --servername GVIM --remote'
@@ -165,8 +170,14 @@ function env-ssh () {
     # TODO Ensure agent pid and auth sock match
     if [[ -z "$SSH_AGENT_PID" || -z "$SSH_AUTH_SOCK" ]] || $FORCE; then
         SSH_AGENT_PID="$(ps -fC ssh-agent | tail -1 | awk '{print $2}' | grep '[0-9]\+')" \
-            && SSH_AUTH_SOCK=$(find /tmp -path "/tmp/ssh-*" -name "agent.*" 2>/dev/null | tail -1 || true) \
-            || { echo "No agent found, starting new .."; eval "$(ssh-agent)" >/dev/null; }
+            SSH_AUTH_SOCK=$(
+                    find /tmp -path "/tmp/ssh-*" -name "agent.*" 2>/dev/null | \
+                        awk -F'agent.' '$2>p{p=$2;s=$0} END{print s}'
+                ) ||
+                {
+                    echo "No agent found, starting new one .."
+                    eval "$(ssh-agent)" >/dev/null
+                }
     fi
 }
 env-ssh -q
@@ -174,11 +185,10 @@ env-ssh -q
 # Update tmux environment: SSH env. var.s, ...
 # TODO: Test and fix
 function env-tmux () {
-    env-ssh
+    env-ssh -f
     # force refreshing all variables? default otherwise.
-    [[ "$1" == "-f" ]] && pattern='*' || pattern='\-SSH_{AGENT_PID,AUTH_SOCK}'
-    for v in $(tmux show-environment | grep "$pattern"); do
-        # echo $v
+    for v in SSH_AGENT_PID SSH_AUTH_SOCK; do
+        tmux setenv "${v#-}" "${!v}"
         tmux setenv -g "${v#-}" "${!v}"
     done
     [[ -f ~/.tmux/startup.sh ]] && . ~/.tmux/startup.sh
