@@ -1,5 +1,7 @@
 $include /etc/inputrc
 set completion-ignore-case On
+# treat e.g. hyphens and underscore the same
+set completion-map-case On
 # bracketed paste: don't executed pasted commands if they contain newlines
 set enable-bracketed-paste On
 # try to fix home, end, etc. keys

@@ -3,13 +3,38 @@ tags: [YAML]
 syntax: yaml
 ---
 ---
-list:
-  item1: 1
-  item2: 2
-array:
+# lists/arrays
+list1:
   - 3.14
   - val2
   - key1: abc
+# mappings
+map1: &m1
+  item1: one
+  item2: two
+#
+# references and merging
 refkey: &ref refval
 reuse: *ref  # will have value refval
+# merge keys: merge maps (not lists!)
+map2: &m2
+  <<: *m1
+  item3: three
+#
+# scalars: see https://yaml-multiline.info/
+# 1. block style indicator
+# 2. block chomping indicator
+# 3. indentation indicator
+block-scalar1: |
+  Keeping newlines.
+  Single newline at end.
+block-scalar2: >-
+  Replace newlines with spaces.
+  No newline at end.
+block-scalar3: |+2
+    Keep 2 spaces indentation.
+    Keep all newlines from end.
+
+
 ...
+# vim: syntax=yaml sw=2

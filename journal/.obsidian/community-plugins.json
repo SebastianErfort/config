@@ -1,6 +1,4 @@
 [
-  "dataview",
-  "obsidian-excalidraw-plugin",
   "obsidian-advanced-slides",
   "templater-obsidian",
   "obsidian-style-settings",
@@ -13,7 +11,7 @@
   "calendar",
   "emoji-shortcodes",
   "obsidian-emoji-toolbar",
-  "obsidian-banners",
   "obsidian-icon-folder",
-  "breadcrumbs"
+  "breadcrumbs",
+  "dataview"
 ]

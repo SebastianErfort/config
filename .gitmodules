@@ -7,7 +7,7 @@
 	branch = master
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = https://github.com/SebastianErfort/kickstart.nvim.git
+	url = https://github.com/dam9000/kickstart-modular.nvim.git
 	branch = personal
 [submodule ".local/share/fonts/fontawesome"]
 	path = .local/share/fonts/fontawesome
@@ -26,3 +26,6 @@
 [submodule "git/notes"]
 	path = git/notes
 	url = git@github.com:SebastianErfort/notes.git
+[submodule ".config/nvchad"]
+	path = .config/nvchad
+	url = https://github.com/NvChad/starter

@@ -6,19 +6,25 @@
     "emojiStyle": "twemoji",
     "iconColor": "#70a9a4",
     "recentlyUsedIcons": [
-      "FiDatabase",
-      "🇳🇱",
-      "LiDoorOpen",
-      "LiAtom",
-      "FiCheckSquare"
+      "LiLanguages",
+      "🇬🇧",
+      "LiHeartPulse",
+      "SiKubernetes",
+      "LiLayoutDashboard"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [
       {
-        "rule": "github.com",
-        "icon": "FabGithub",
+        "rule": "GitLab",
+        "icon": "FiGitlab",
         "for": "everything",
         "order": 0
+      },
+      {
+        "rule": "GitHub",
+        "icon": "FiGithub",
+        "for": "everything",
+        "order": 1
       }
     ],
     "extraMargin": {
@@ -32,7 +38,7 @@
     "iconInFrontmatterEnabled": true,
     "iconsBackgroundCheckEnabled": false,
     "iconsInNotesEnabled": true,
-    "iconInTitlePosition": "above",
+    "iconInTitlePosition": "inline",
     "iconInFrontmatterFieldName": "icon",
     "iconColorInFrontmatterFieldName": "iconColor",
     "iconsInLinksEnabled": true,
@@ -40,8 +46,8 @@
     "debugMode": false
   },
   "_inbox": "LiInbox",
-  "obsidian": "🟪",
-  "personal": "🕴",
+  "obsidian": "LoObsidianSoftwareLogo",
+  "personal": "LiPersonStanding",
   "personal/_inbox": "LiInbox",
   "personal/culinary": "🍲",
   "personal/documents": "LiFiles",
@@ -67,10 +73,26 @@
   "personal/geography": "🌍",
   "personal/journal/check_this_out.md": "LiLightbulb",
   "personal/journal/climbing.md": "🧗‍♂️",
-  "personal/journal/Health.md": "LiHeartPulse",
   "personal/journal/journal.md": "FiBookOpen",
   "personal/research": "LiAtom",
   "public": "LiDoorOpen",
   "rug": "🇳🇱",
-  "rsrc": "FiDatabase"
+  "rsrc": "FiDatabase",
+  "Excalidraw": "FiPenTool",
+  "personal/shopping/shopping.md": "FiShoppingCart",
+  "public/README.md": "FabReadme",
+  "public/tech": "LiComputer",
+  "README.md": "FabReadme",
+  "personal/gear/cycling": "LiBike",
+  "personal/gear/outdoor": "LiMountainSnow",
+  "personal/gear/climbing": "🧗‍♂️",
+  "personal/gear/tech": "LiComputer",
+  "personal/politics": "🕴",
+  "personal/society": "LiHeartHandshake",
+  "public/tech/dev/Kubernetes.md": "SiKubernetes",
+  "personal/projects/tech/homelab/kubernetes.md": "SiKubernetes",
+  "personal/dashboard.md": "LiLayoutDashboard",
+  "personal/journal/Health.md": "LiHeartPulse",
+  "personal/projects/uk/project_uk.md": "🇬🇧",
+  "personal/projects/uk/language_test_uk_visa.md": "LiLanguages"
 }
