@@ -121,10 +121,11 @@ ctrl-w=          make all equal size
 autocmd BufWritePost * !<command> # to execute <command> on saving any file (*)
 
 # Remote Editing (requires netrw, VIM >= 7.2)
+# supported protocolls are: scp, rsync (ftp, http, rcp, sftp)
 vim <protocoll>://[user@]host/relative/path
 vim <protocoll>://[user@]host//absolute/path
-# supported protocolls are: scp, rsync (ftp, http, rcp, sftp)
-vim rsync://[user@]host:~/path/to/dir/ # rsync requires colon, directory requires trailing slash
+# rsync requires colon, directory requires trailing slash
+vim rsync://[user@]host:~/path/to/dir/
 
 # Key Maps
 #   Map (normal mode) F2 to bash call `uuidgen`, trim `\n`, yank to register `"=`, put result

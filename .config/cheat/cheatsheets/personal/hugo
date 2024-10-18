@@ -1,0 +1,11 @@
+# To create a new project
+hugo new site <name>
+
+# To add a theme as a Git submodule
+git submodule add <url> themes/<theme name>
+
+# To use a theme
+echo "theme = '<theme name>'" >> hugo.toml
+
+# To start a local server
+hugo serve[r]
