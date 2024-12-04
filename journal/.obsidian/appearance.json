@@ -13,7 +13,8 @@
     "callouts",
     "blockquote",
     "tags",
-    "dashboard"
+    "dashboard",
+    "cards"
   ],
   "cssTheme": "Catppuccin",
   "monospaceFontFamily": "JetBrainsMono Nerd Font Mono",

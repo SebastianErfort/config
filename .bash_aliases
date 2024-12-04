@@ -43,8 +43,9 @@ alias lsblkl='lsblk -pb -o NAME,MAJ:MIN,TYPE,SIZE,FSSIZE,FSTYPE,MOUNTPOINTS,HOTP
 ### UTILITY ###
 
 alias today='date +"%Y%m%d"' # Print yyyymmdd human-readable
-alias now='date +"%H:%M"' # Print time hh:mm:ss human-readable
+alias now='date +"%H:%M"' # Print time hh:mm human-readable
 alias nows='date +"%H:%M:%S"' # Print time hh:mm:ss human-readable
+alias datetime='date +"%Y%m%d-%H%M"' # Print date and time yyyymmdd-hhmm human-readable
 # Add an "alert" alias for long running commands. Show notification pop-up and play sound when done.
 # Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" \
@@ -212,7 +213,7 @@ alias fsbn='filesizebyname'
 complete -o default -F _pass_complete_entries passg
 function passg () {
     [[ $# -ne 2 ]] && echo "Error. Usage: ${FUNCNAME[0]} <name> <length>" && return 2
-    PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate "$1" "$2"
+    PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate -c "$1" "$2"
 }
  
 complete -o default -F _pass_complete_entries passc
