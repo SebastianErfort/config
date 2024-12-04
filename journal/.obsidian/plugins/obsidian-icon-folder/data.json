@@ -10,15 +10,25 @@
       "LiBriefcase",
       "FasBriefcase",
       "FasSuitcase",
-      "🇬🇧"
+      "LiLanguages",
+      "🇬🇧",
+      "LiHeartPulse",
+      "SiKubernetes",
+      "LiLayoutDashboard"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [
       {
-        "rule": "github.com",
-        "icon": "FabGithub",
+        "rule": "GitLab",
+        "icon": "FiGitlab",
         "for": "everything",
         "order": 0
+      },
+      {
+        "rule": "GitHub",
+        "icon": "FiGithub",
+        "for": "everything",
+        "order": 1
       }
     ],
     "extraMargin": {
@@ -32,7 +42,7 @@
     "iconInFrontmatterEnabled": true,
     "iconsBackgroundCheckEnabled": false,
     "iconsInNotesEnabled": true,
-    "iconInTitlePosition": "above",
+    "iconInTitlePosition": "inline",
     "iconInFrontmatterFieldName": "icon",
     "iconColorInFrontmatterFieldName": "iconColor",
     "iconsInLinksEnabled": true,
@@ -41,8 +51,8 @@
     "lucideIconPackType": "native"
   },
   "_inbox": "LiInbox",
-  "obsidian": "🟪",
-  "personal": "🕴",
+  "obsidian": "LoObsidianSoftwareLogo",
+  "personal": "LiPersonStanding",
   "personal/_inbox": "LiInbox",
   "personal/culinary": "🍲",
   "personal/education": "🧑‍🏫",

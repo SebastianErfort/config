@@ -1,17 +1,10 @@
-export EDITOR=nvim
-export BROWSER=firefox
+[[ ! $TERM =~ 256color$ ]] && TERM="${TERM}-256color" # force 256 colour
+[[ "$TERM" =~ ^alacritty ]] && TERM="screen-256color"
+export TERM
 
-PATH="$PATH:$HOME/.local/bin"
-export PATH
-
-# [[ $TERM =~ screen ]] && export TERM='screen-256color' # force 256 colour
-
-if [ -f ~/.bashrc.local ]; then
-  . "${HOME}/.bashrc.local"
-fi
-if [ -f ~/.bash_aliases ]; then
-  . "${HOME}/.bash_aliases"
-fi
+for f in .profile .bashrc.local .bash_aliases; do
+    [[ -f "$f" ]] && . "${HOME}/${f}" || :
+done
 
 # Path to personal scripts etc. Overwrite if you want to use a project's utils.
 export UTILDIR=${UTILDIR:-"${HOME}/rsrc"}
@@ -24,11 +17,11 @@ PS1="\u@\h:\w>"
 if which starship &>/dev/null && eval "$(starship init bash)"; then
     :
 elif [ -f ~/.bashtheme ]; then
-  . "${HOME}/.bashtheme"
+    . "${HOME}/.bashtheme"
 fi
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
-[[ -n "$PROMPT_COMMAND" ]] && \
+[[ -n "$PROMPT_COMMAND" ]] &&
     PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
 
 # ------------------------------ Eternal History -------------------------------
@@ -58,7 +51,10 @@ export PATH
 # pnpm
 export PNPM_HOME="/home/erfort/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Clean up duplicate entries
+export PATH="$(echo $PATH | awk 'BEGIN{RS=":"} {print}' | uniq | awk 'BEGIN{ORS=":"} /^\S/{print}' | sed 's/:$//')"

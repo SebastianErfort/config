@@ -50,6 +50,12 @@ if has('unnamedplus')
     set clipboard=unnamed,unnamedplus
 endif
 
+" (c)tags file
+set tags=.tags
+
+
+" =============================== FILETYPES ===============================
+
 " Syntax highlighting, filetype detection
 syntax on " Set syntax highlighting. Needs to be before filetype ... on to be working in split windows.
 filetype indent plugin on " Filetype detection
@@ -79,9 +85,28 @@ autocmd FileType awk setlocal foldmethod=indent
 autocmd FileType markdown setlocal spell foldmethod=indent tw=0
 " (La)TeX
 autocmd FileType tex setlocal spell
+" Lua
+autocmd FileType lua setlocal sw=2 ts=2 sts=-1 expandtab
 
-" (c)tags file
-set tags=.tags
+" ~~~ (La)TeX ~~~
+autocmd Filetype tex setlocal nofoldenable wrap linebreak nolist
+autocmd Filetype tex setlocal textwidth=0 wrapmargin=0 formatoptions+=l
+autocmd Filetype tex setlocal spell spelllang=de,en
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a single file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+augroup tex
+    " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
+    " to 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+    " The following changes the default filetype back to 'tex':
+    let g:tex_flavor='latex'
+    let g:Tex_SmartKeyQuote=0
+    " disable conceal to prevent rendering of symbols
+    let g:tex_conceal = ""
+    let g:indentLine_enabled=0 " IndentLine activates conceal which renders like shit
+    " autocmd Filetype tex setlocal makeprg=make
+augroup end
 
 
 " ================================= MAPPINGS ========================================================
@@ -109,48 +134,6 @@ inoremap <C-K> <esc> ddi
 nnoremap <NL> i <CR> <ESC>
 " Copy line from caret to EOL
 map Y y$
-
-
-" ================================= PLUGINS ========================================================
-if has('nvim')
-    " TODO lua-ify and move to nvim config 
-    map <C-n> :NvimTreeToggle <CR>
-else
-    " Load plugins using vim-plug
-    source ~/.vim/plugins.vim
-endif
-" For NeoVIM (nvim) using lazy.nvim
-
-" Colorscheme
-" Important!
-if has('termguicolors')
-    set termguicolors
-endif
-" For dark version.
-set background=dark
-
-
-" =============================== FILETYPES ===============================
-
-" ~~~ (La)TeX ~~~
-autocmd Filetype tex setlocal nofoldenable wrap linebreak nolist
-autocmd Filetype tex setlocal textwidth=0 wrapmargin=0 formatoptions+=l
-autocmd Filetype tex setlocal spell spelllang=de,en
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a single file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-augroup tex
-    " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
-    " to 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-    " The following changes the default filetype back to 'tex':
-    let g:tex_flavor='latex'
-    let g:Tex_SmartKeyQuote=0
-    " disable conceal to prevent rendering of symbols
-    let g:tex_conceal = ""
-    let g:indentLine_enabled=0 " IndentLine activates conceal which renders like shit
-    " autocmd Filetype tex setlocal makeprg=make
-augroup end
 
 
 " ====================================== FUNCTIONS =============================
@@ -181,9 +164,22 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 " augroup end
 
 
-" ========================================= GVIM ===============================
-" GVim Setting
-set guioptions-=m     " remove menu bar
-set guioptions-=T     " remove toolbar
-set guioptions-=r     " remove right-hand scroll bar
-set guioptions-=L     " remove left-hand scroll bar
+" ================================= VIM ========================================================
+if ! has('nvim')
+    " Load plugins using vim-plug
+    source ~/.vim/plugins.vim
+
+    " GVim Setting
+    set guioptions-=m     " remove menu bar
+    set guioptions-=T     " remove toolbar
+    set guioptions-=r     " remove right-hand scroll bar
+    set guioptions-=L     " remove left-hand scroll bar
+
+    " Colorscheme
+    " Important!
+    if has('termguicolors')
+        set termguicolors
+    endif
+    " For dark version.
+    set background=dark
+endif

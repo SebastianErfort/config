@@ -1,12 +1,16 @@
 [Appearance]
 Skin=materia-dark
 SkinInstalledWithKns=true
+TerminalHighlightOnManualActivation=true
 Translucency=true
 
 [Dialogs]
 FirstRun=false
 
+[Notification Messages]
+hinding_title_bar=false
+
 [Window]
-Height=100
-Position=0
+Height=80
+KeepAbove=false
 Width=50

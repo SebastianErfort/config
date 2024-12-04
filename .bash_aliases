@@ -39,13 +39,37 @@ alias du='du -ch'
 
 alias lsblkl='lsblk -pb -o NAME,MAJ:MIN,TYPE,SIZE,FSSIZE,FSTYPE,MOUNTPOINTS,HOTPLUG,LABEL,PARTTYPENAME,PARTFLAGS'
 
-
 ### UTILITY ###
 
-alias today='date +"%Y%m%d"' # Print yyyymmdd human-readable
-alias now='date +"%H:%M"' # Print time hh:mm human-readable
+# Time and Date
+alias today='date +"%Y%m%d"'  # Print yyyymmdd human-readable
+alias now='date +"%H:%M"'     # Print time hh:mm:ss human-readable
 alias nows='date +"%H:%M:%S"' # Print time hh:mm:ss human-readable
-alias datetime='date +"%Y%m%d-%H%M"' # Print date and time yyyymmdd-hhmm human-readable
+tdiff() {
+    local usage="${FUNCNAME[0]} target time [unit]"
+    [[ "$#" -eq 0 || "$#" -gt 2 ]] && {
+        echo "ERROR. Usage: $usage"
+        return 2
+    }
+    local tt="$1" tte tne d td
+    [[ -n "$2" ]] && local u="$2"
+    tne=$(date +%s) # now in epoch
+    d=$(date +%F)
+    tte=$(date -d "$d $tt" +%s)
+    case "$u" in
+    s)
+        td=$((tte - tne))
+        ;;
+    h)
+        td=$(((tte - tne + 1800) / 3600))
+        ;;
+    *)
+        td=$(((tte - tne + 1800) / 3600))
+        ;;
+    esac
+    echo "$td"
+}
+
 # Add an "alert" alias for long running commands. Show notification pop-up and play sound when done.
 # Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')" \
@@ -56,10 +80,10 @@ alias find-lastedited="find . -type f -printf '%TY-%Tm-%Td %TH:%TM %p\n'| sort -
 
 # print OS version
 function os_version() {
-    echo $(sed -n '/\<NAME\>/p' /etc/os-release | awk -F'=' '{print $2}' | \
-        sed 's/"//g') $(sed -n '/\<VERSION\>/p' /etc/os-release | \
-        awk -F'=' '{print $2}' | sed 's/"//g')
-    }
+    echo $(sed -n '/\<NAME\>/p' /etc/os-release | awk -F'=' '{print $2}' |
+        sed 's/"//g') $(sed -n '/\<VERSION\>/p' /etc/os-release |
+            awk -F'=' '{print $2}' | sed 's/"//g')
+}
 
 # pipe output of command to clipboard. use like mycmd | pipe2clip
 alias pipe2clip='xclip -r -selection clipboard'
@@ -76,6 +100,8 @@ alias q2s='qr2screen'
 # show command output as image on screen. use like mycmd | img2screen
 alias img2screen='feh --force-aliasing -ZF'
 alias i2s='qr2screen'
+alias qrcam="zbarcam -1 --nodisplay | sed 's/QR-Code://' | p2c"
+alias qrscan='qrcam' qr2c='qrcam' q2c='qrcam'
 
 # open file in existing instance
 alias gvimadd='gvim --servername GVIM --remote'
@@ -87,19 +113,19 @@ alias ipynb2pdf='ipython nbconvert --to latex --post pdf'
 # add author: --SphinxTransformer.author="$1"
 
 # Extract various different archive formats
-function extract () {
-    if [ -f $1 ] ; then
+function extract() {
+    if [ -f $1 ]; then
         case $1 in
-            *.tar)            tar xf $@                          ;;
-            *.tar.gz|*.tgz)   tar xzf $@                         ;;
-            *.tar.bz2|*.tbz2) tar xjf $@                         ;;
-            *.bz2)            bunzip2 -kvd $@                    ;;
-            *.zip)            unzip $@                           ;;
-            *.gz)             gunzip $@                          ;;
-            *.Z)              uncompress $@                      ;;
-            *.rar)            rar x $@                           ;;
-            *.7z)             7z x $@                            ;;
-            *)                echo "Unknown archive type (ext.)" ;;
+        *.tar) tar xf $@ ;;
+        *.tar.gz | *.tgz) tar xzf $@ ;;
+        *.tar.bz2 | *.tbz2) tar xjf $@ ;;
+        *.bz2) bunzip2 -kvd $@ ;;
+        *.zip) unzip $@ ;;
+        *.gz) gunzip $@ ;;
+        *.Z) uncompress $@ ;;
+        *.rar) rar x $@ ;;
+        *.7z) 7z x $@ ;;
+        *) echo "Unknown archive type (ext.)" ;;
         esac
     else
         echo "No such file: '$1'"
@@ -129,102 +155,109 @@ function extract () {
 # }
 
 # SSH ControlMaster helpers
-function sshcm-status () {
-ssh -S "$1" -O check bla # bogus arguments required, not used
+function sshcm-status() {
+    ssh -S "$1" -O check bla # bogus arguments required, not used
 }
-function sshcm () {
+function sshcm() {
     [[ -z "$1" ]] && echo -e "Error. Usage: ${FUNCNAME[0]} ${Underline}command${Reset} [argument]" && return 2
     case "$1" in
-        ls|list)
-            for s in $(ls ~/.ssh/cm_* 2>/dev/null || echo 'None'); do
+    ls | list)
+        for s in $(ls ~/.ssh/cm_* 2>/dev/null || echo 'None'); do
+            echo "$s"
+        done
+        ;;
+    status)
+        control_masters=$(ls ~/.ssh/cm_* 2>/dev/null)
+        if [[ -n $control_masters ]]; then
+            for s in $control_masters; do
                 echo "$s"
-            done;;
-        status)
-            control_masters=$(ls ~/.ssh/cm_* 2>/dev/null)
-            if [[ -n $control_masters ]]; then
-                for s in $control_masters; do
-                    echo "$s"
-                    sshcm-status "$s"
-                done
-            else
-                echo 'No control masters active.'
-                fi;;
-            connect | open)
-                [[ -n "$2" ]] && ssh "$2" ;;
-            rm | disconnect | close | kill)
-                if [[ -n "$2" ]]; then
-                    s=$(ls ~/.ssh/cm_*${2}* 2>/dev/null)
-                    [ -z "$s" ] && echo "Nothing to do" && return
-                    echo "Disconnecting host $2 (socket $s)."
-                    ssh -S "$s" -O exit bla
-                    fi;;
-                *)
-                    echo "Unknown command for function ${FUNCNAME[0]}: $1"
-                    return 2;;
-            esac
+                sshcm-status "$s"
+            done
+        else
+            echo 'No control masters active.'
+        fi
+        ;;
+    connect | open)
+        [[ -n "$2" ]] && ssh "$2"
+        ;;
+    rm | disconnect | close | kill)
+        if [[ -n "$2" ]]; then
+            s=$(ls ~/.ssh/cm_*${2}* 2>/dev/null)
+            [ -z "$s" ] && echo "Nothing to do" && return
+            echo "Disconnecting host $2 (socket $s)."
+            ssh -S "$s" -O exit bla
+        fi
+        ;;
+    *)
+        echo "Unknown command for function ${FUNCNAME[0]}: $1"
+        return 2
+        ;;
+    esac
 }
 
 # Update SSH environment variables
-function env-ssh () {
+function env-ssh() {
     local FORCE
     [[ "$1" == '-f' ]] && FORCE=true || FORCE=false
     # TODO Ensure agent pid and auth sock match
     if [[ -z "$SSH_AGENT_PID" || -z "$SSH_AUTH_SOCK" ]] || $FORCE; then
         SSH_AGENT_PID="$(ps -fC ssh-agent | tail -1 | awk '{print $2}' | grep '[0-9]\+')" \
-            SSH_AUTH_SOCK=$(
-                    find /tmp -path "/tmp/ssh-*" -name "agent.*" 2>/dev/null | \
-                        awk -F'agent.' '$2>p{p=$2;s=$0} END{print s}'
-                ) ||
-                {
-                    echo "No agent found, starting new one .."
-                    eval "$(ssh-agent)" >/dev/null
-                }
+        SSH_AUTH_SOCK=$(
+            find /tmp -path "/tmp/ssh-*" -name "agent.*" 2>/dev/null |
+                awk -F'agent.' '$2>p{p=$2;s=$0} END{print s}'
+        ) ||
+            {
+                echo "No agent found, starting new one .."
+                eval "$(ssh-agent)" >/dev/null
+            }
     fi
 }
 env-ssh -q
 
 # Update tmux environment: SSH env. var.s, ...
 # TODO: Test and fix
-function env-tmux () {
+function env-tmux() {
     env-ssh -f
     # force refreshing all variables? default otherwise.
     for v in SSH_AGENT_PID SSH_AUTH_SOCK; do
         tmux setenv "${v#-}" "${!v}"
         tmux setenv -g "${v#-}" "${!v}"
     done
+    # export tmux env. var.s back to shell
     [[ -f ~/.tmux/startup.sh ]] && . ~/.tmux/startup.sh
 }
+alias tmuxr='tmux -u2 -e XAUTHORITY=$XAUTHORITY'
 
 # Get disk usage by file type
 function filesizebytype() {
-    find . -type f -iname "*.$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
+    find . -type f -iname "*.$1" -print0 | xargs -r0 du -a | awk '{sum+=$1} END {print sum}'
 }
 alias fsbt='filesizebytype'
 # Get disk usage by file name
 function filesizebyname() {
-    find . -type f -iname "$1" -print0 | xargs -r0 du -a| awk '{sum+=$1} END {print sum}'
+    find . -type f -iname "$1" -print0 | xargs -r0 du -a | awk '{sum+=$1} END {print sum}'
 }
 alias fsbn='filesizebyname'
 
 # Generate password within pass command, with characters defined by $PASSWORD_STORE_CHARACTER_SET
 # This set of special characters should be a bit safer with services that don't allow everything.
 . /usr/share/bash-completion/completions/pass
- 
+
 complete -o default -F _pass_complete_entries passg
-function passg () {
+function passg() {
     [[ $# -ne 2 ]] && echo "Error. Usage: ${FUNCNAME[0]} <name> <length>" && return 2
     PASSWORD_STORE_CHARACTER_SET="[a-zA-Z0-9]"'\!@#$%^&*()-_=+[]{};:.<>\/|' pass generate -c "$1" "$2"
 }
- 
+
 complete -o default -F _pass_complete_entries passc
-function passc () {
+function passc() {
     local PASS_LINE="1" PASS_ENTRY
     [[ $1 =~ '-c' ]] && PASS_LINE=${1#-c} && PASS_ENTRY="$2" || PASS_ENTRY="$1"
     pass "$PASS_ENTRY" | awk "NR == ${PASS_LINE} {print}" | sed 's/^[ ]*[a-z]\+:[ ]*//' | xclip -r -selection clipboard
 }
- 
+
 # Parse YAML format pass entries
-function passy () {
+function passy() {
     local msg_usage="Usage: ${FUNCNAME[0]} [options] <entry> [YAML key (default pw)]"
     local msg_info="Parse YAML format pass entries"
     local msg_options='Options:
@@ -233,23 +266,40 @@ function passy () {
     local msg_help="$msg_usage\n$msg_info\n\n$msg_options\n"
     local msg_error="${msg_usage}\nTry '${FUNCNAME[0]} -h' for more information."
 
-    [[ -z "$*" ]] && \
-        { echo -e "ERROR. ${msg_error}" >&2; return 2; }
+    [[ -z "$*" ]] &&
+        {
+            echo -e "ERROR. ${msg_error}" >&2
+            return 2
+        }
     COPY=false
     # transfer long opt.s to short opt.s, getopts doesn't support long ones
     for arg in "$@"; do
         case "$arg" in
-            --help) shift; set -- "$@" '-h'; echo -e "$msg_help"; return ;;
-            --copy) shift; set -- "$@" '-c'                              ;;
+        --help)
+            shift
+            set -- "$@" '-h'
+            echo -e "$msg_help"
+            return
+            ;;
+        --copy)
+            shift
+            set -- "$@" '-c'
+            ;;
         esac
     done
     OPTIND=1 # reset for getopts to work
     while getopts ":hc" opt; do
         case "$opt" in
-            h) echo -e "$msg_help"; return;;
-            c) COPY=true;;
-            # :) echo "Option requires an argument: -${OPTARG}"; return 1;;
-            ?) echo "Invalid option: -${OPTARG}"; return 1;;
+        h)
+            echo -e "$msg_help"
+            return
+            ;;
+        c) COPY=true ;;
+        # :) echo "Option requires an argument: -${OPTARG}"; return 1;;
+        ?)
+            echo "Invalid option: -${OPTARG}"
+            return 1
+            ;;
         esac
     done
     shift $((OPTIND - 1)) # remove options from arguments
@@ -279,25 +329,24 @@ function nwrestart() {
 #   command qpdfview "$@" > /dev/null 2>&1 &
 # }
 function subm() {
-    command /opt/sublime_merge/sublime_merge "$@" > /dev/null 2>&1 &
+    command /opt/sublime_merge/sublime_merge "$@" >/dev/null 2>&1 &
 }
 alias sublime-merge='subm'
 function okular() {
-    command okular "$@" > /dev/null 2>&1 &
+    command okular "$@" >/dev/null 2>&1 &
 }
 function libreoffice() {
-    command libreoffice "$@" > /dev/null 2>&1 &
+    command libreoffice "$@" >/dev/null 2>&1 &
 }
 function dolphin() {
-    command dolphin "$@" > /dev/null 2>&1 &
+    command dolphin "$@" >/dev/null 2>&1 &
 }
 function obsidian() {
-    command obsidian "$@" > /dev/null 2>&1 &
+    command obsidian "$@" >/dev/null 2>&1 &
 }
 function gwenview() {
-    command gwenview "$@" > /dev/null 2>&1 &
+    command gwenview "$@" >/dev/null 2>&1 &
 }
-
 
 ### GIT ###
 alias gstatus='git status'
@@ -314,27 +363,30 @@ alias glogs='git log --pretty="tformat:%C(auto) %h %Cgreen%aN%Creset %s"'
 
 ### KDE ###
 function kwin-reset() {
-sed -i 's/lastScreen=[1-9]/lastScreen=0/g' ~/.config/plasma-org.kde.plasma.desktop-appletsrc
-plasmashell --replace >/dev/null 2>&1 &
-disown
-kwin --replace >/dev/null 2>&1 &
-disown
+    sed -i 's/lastScreen=[1-9]/lastScreen=0/g' ~/.config/plasma-org.kde.plasma.desktop-appletsrc
+    plasmashell --replace >/dev/null 2>&1 &
+    disown
+    kwin --replace >/dev/null 2>&1 &
+    disown
 }
 alias sysclean='sudo zypper rm -u'
 alias sysup='sudo zypper -n dup -yl'
-
 
 ### DEVICES ###
 
 # Open and mount encrypted USB device
 function crypt_mount() {
     case $# in
-        1)
-            dev_map=cr_usb;;
-        2)
-            dev_map="$2";;
-        *)
-            echo "Error. Usage: ${FUNCNAME[0]} block_device [device_mapper]"; return 1;;
+    1)
+        dev_map=cr_usb
+        ;;
+    2)
+        dev_map="$2"
+        ;;
+    *)
+        echo "Error. Usage: ${FUNCNAME[0]} block_device [device_mapper]"
+        return 1
+        ;;
     esac
     dev=/dev/$(basename "$1")
     dev_map=/dev/mapper/$(basename "$dev_map")
@@ -359,7 +411,6 @@ function dmesg() {
     command dmesg -xT --color=always "$@" | grep -v 'logitech-djreceiver'
 }
 
-
 ### MISC
 
 # Rename images using EXIF data: date and time taken, plus a number if multiple files with same name
@@ -367,3 +418,5 @@ function dmesg() {
 alias picture_rename="exiftool '-filename<CreateDate' -d %Y%m%d_%H%M%S%%-c.%%e"
 # run latexmk, trying to guess main tex file
 alias latexmkspeciale='grep -l '\''\documentclass'\'' *tex | xargs latexmk -pdf -pvc -silent'
+
+alias qemu="qemu-system-x86_64"

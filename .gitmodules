@@ -5,10 +5,6 @@
 	path = .config/cheat/cheatsheets/community
 	url = https://github.com/cheat/cheatsheets.git
 	branch = master
-[submodule ".config/nvim"]
-	path = .config/nvim
-	url = https://github.com/SebastianErfort/kickstart.nvim.git
-	branch = personal
 [submodule ".local/share/fonts/fontawesome"]
 	path = .local/share/fonts/fontawesome
 	url = https://github.com/FortAwesome/Font-Awesome.git
@@ -26,3 +22,6 @@
 [submodule "git/notes"]
 	path = git/notes
 	url = git@github.com:SebastianErfort/notes.git
+[submodule ".config/nvchad"]
+	path = .config/nvchad
+	url = https://github.com/NvChad/starter

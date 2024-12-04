@@ -1,6 +1,6 @@
 {
   "baseFontSize": 15,
-  "theme": "obsidian",
+  "theme": "system",
   "enabledCssSnippets": [
     "enlarge_image_hover",
     "hide_from_file_explorer",
@@ -14,10 +14,11 @@
     "blockquote",
     "tags",
     "dashboard",
-    "cards"
+    "cards",
+    "links"
   ],
   "cssTheme": "Catppuccin",
-  "monospaceFontFamily": "JetBrainsMono Nerd Font Mono",
+  "monospaceFontFamily": "JetBrainsMonoNL Nerd Font Mono,JetBrainsMono Nerd Font Mono,Hack Nerd Font Mono",
   "accentColor": "",
-  "textFontFamily": "Fira Sans,Hack Nerd Font"
+  "textFontFamily": "JetBrainsMonoNL Nerd Font,Hack Nerd Font,Fira Sans"
 }
